@@ -6,10 +6,11 @@ _AUTO_UPDATE = true -- Set this to false to prevent automatic updates
 
 --			[ ChangeLog ]
 -- 	1.0
---	Initial Release (Patch 5.21)
+--	Initial Release. (Patch 5.21)
 
 --	1.1
---	Removed unused code
+--	Added AutoUpdater.
+--	Removed unused code.
 --	Moved jungle KS chat spam to Debuger and added more options to steal camps. :)
 
 --	1.2
