@@ -1,6 +1,6 @@
 -- Katarina Reborn by Furry
 -- Encrypted by burn (thanks anyway PvPSuite xx no h8 pls)
--- Version 1.1
+-- Version 1.2
 
 _AUTO_UPDATE = true -- Set this to false to prevent automatic updates
 
