@@ -178,7 +178,7 @@ function Twitch:OnTick()
 			end
 		else
 			if not checkConfig() then
-				disableError()
+				Error()
 			return
 			end
 			Levelstart()
@@ -1264,7 +1264,7 @@ function parseSkillOrder()
 	end
 end
 
-function disableError()
+function Error()
 	print("<font color='#00FF00'>[Yiffy Twitch] </font><font color='#FF00FF'>-</font><font color='#FFFFFF'> There's something wrong with the AutoLeveler! Please configure and check your settings!</font>")
 	settings.AutoLevelOn = false
 end
