@@ -1,6 +1,6 @@
 -- Yiffy Twitch by Furry
 -- Encrypted by burn
--- Version 1.1
+-- Version 2.0
 
 _AUTO_UPDATE = true -- Set this to false to prevent automatic updates
 
