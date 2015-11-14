@@ -1,6 +1,6 @@
 -- Yiffy Twitch by Furry
 -- Encrypted by burn [Kappa^Bilbao]
--- Version 2.0 [Yiffy Twitch re-release]
+-- Version 2.1 [Yiffy Twitch re-release]
 
 
 _AUTO_UPDATE = true -- Set this to false to prevent automatic updates
@@ -11,8 +11,8 @@ _AUTO_UPDATE = true -- Set this to false to prevent automatic updates
 --			[ ChangeLog ]
 
 if myHero.charName ~= 'Twitch' then return end
-_SCRIPT_VERSION = 2.0
-_SCRIPT_VERSION_MENU = "2.0"
+_SCRIPT_VERSION = 2.1
+_SCRIPT_VERSION_MENU = "2.1"
 _FILE_PATH = SCRIPT_PATH .. GetCurrentEnv().FILE_NAME
 _patch = "5.22"
 
@@ -651,6 +651,7 @@ function OnRemoveBuff(target, buff)
 			VisibleSelf = true
 			stealthLocation = 0
 		end
+	db:delete(target)
 	end
 end
 
@@ -682,12 +683,18 @@ function VisualManager:OnDraw()
 		end
 		if settings.draws.stealthDistance then
 			self:DrawCircle(myHero.x, myHero.y, myHero.z, myHero.ms * (stealthLocation + StealthTime() - os.clock()) + myHero.boundingRadius, ARGB(table.unpack(settings.draws.color.stealthDistancecolor)))
+			DelayAction(function ()
+				db:delete(myHero)
+			end,0.5)
 		end
 	elseif StealthProcess and os.clock() <= StealthProcess.last + 1.5 and settings.draws.stealthTimer then
 		if settings.misc.Debug then
 			print("<font color='#00FF00'>[Yiffy Twitch] </font><font color='#FF00FF'>-</font><font color='#FFFFFF'> Drawing Q-invis Bar</font>")
 		end
 		db:addLine(myHero, StealthProcess.last, StealthProcess.last + 1.5 + GetLatency() / 1000, 255, 255, 0, 0, 255, 0, 255, 0, false)
+		DelayAction(function ()
+			db:delete(myHero)
+		end,0.5)
 	end
 	if settings.draws.Estack then
 		for _, target in pairs(GetEnemyHeroes()) do
@@ -704,6 +711,9 @@ function VisualManager:OnDraw()
 					print("<font color='#00FF00'>[Yiffy Twitch] </font><font color='#FF00FF'>-</font><font color='#FFFFFF'> Drawing E Duration</font>")
 				end
 				db:addLine(target, DeadlyVenom[target.networkID].time, DeadlyVenom[target.networkID].time + 6, 255, 255, 0,255, 255,255, 0, 255, false)
+				DelayAction(function ()
+					db:delete(myHero)
+				end,0.5)
 			end
 			if settings.draws.executeIndicator and myHero:CanUseSpell(_E) == READY and myHero:GetSpellData(_E).level > 0 then
 				if DeadlyVenom[target.networkID] ~= nil then
@@ -965,6 +975,23 @@ function DrawBar:update()
 			for k,v in pairs(bar) do
 				v = nil
 			end
+		end
+	end
+end
+
+
+function DrawBar:delete(target)
+	for _,bar in pairs(self.bars) do
+		local delete = false
+		for k,v in pairs(bar) do
+			if k == 1 then
+				if v == target.networkID then
+					delete = true
+				end
+			end
+		end
+		if delete == true then
+			table.clear(bar)
 		end
 	end
 end
