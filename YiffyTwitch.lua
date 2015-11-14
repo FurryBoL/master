@@ -177,7 +177,7 @@ function Twitch:OnTick()
 				Levelstart()
 			end
 		else
-			if not checkConfig() then
+			if not Config() then
 				Error()
 			return
 			end
@@ -1234,12 +1234,12 @@ function showLeveledSpell(spelldraw)
 	end, settings.autolvl.DrawTextSlider)
 end
 
-function checkConfig()
-	parseSkillOrder()
+function Config()
+	SkillOrder()
 	return countTable(tolevel) == 4 or myHero.level == settings.autolvl.getAllAtLevel
 end
 
-function parseSkillOrder()
+function SkillOrder()
 	tolevel = {}
 	if myHero.level == settings.autolvl.getAllAtLevel then
 		local spelldraw = {
