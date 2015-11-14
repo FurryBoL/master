@@ -1,6 +1,7 @@
 -- Yiffy Twitch by Furry
--- Encrypted by burn
--- Version 2.0
+-- Encrypted by burn [Kappa^Bilbao]
+-- Version 2.0 [Yiffy Twitch re-release]
+
 
 _AUTO_UPDATE = true -- Set this to false to prevent automatic updates
 
@@ -8,12 +9,6 @@ _AUTO_UPDATE = true -- Set this to false to prevent automatic updates
 --  Check forum:
 --  http://forum.botoflegends.com/topic/84420-vipfreesxorbsacr-yiffy-twitch-patch-521/
 --			[ ChangeLog ]
-
--- Yiffy Twitch by Furry
--- Encrypted by burn [Kappa]
--- Version 2.0 [Yiffy Twitch re-release]
-
-_AUTO_UPDATE = false -- Set this to false to prevent automatic updates
 
 if myHero.charName ~= 'Twitch' then return end
 _SCRIPT_VERSION = 2.0
