@@ -11,8 +11,8 @@ _AUTO_UPDATE = true -- Set this to false to prevent automatic updates
 --			[ ChangeLog ]
 
 if myHero.charName ~= 'Twitch' then return end
-_SCRIPT_VERSION = 2.1
-_SCRIPT_VERSION_MENU = "2.1"
+_SCRIPT_VERSION = 3.0
+_SCRIPT_VERSION_MENU = "3.0"
 _FILE_PATH = SCRIPT_PATH .. GetCurrentEnv().FILE_NAME
 _patch = "5.22"
 
@@ -72,6 +72,19 @@ function findorbwalker()
 		print("<font color='#00FF00'>[Yiffy Twitch] </font><font color='#FF00FF'>-</font><font color='#FF8B22'> SAC</font><font color='#FF00FF'>:</font><font color='#FF8B22'>Reborn</font><font color='#FFFFFF'> or </font><font color='#FF8B22'>SxOrbWalk</font><font color='#FFFFFF'> is required.</font>")
 	end
 end
+
+local Qwind = 0
+local Wwind = 0
+local Ewind = 0
+local Rwind = 0
+
+local readytextQ = false
+local channelingQ = false
+local stealthQ = false
+local readytextW = false
+local readytextE = false
+local etext = false
+local readytextR = false
 
 local DeadlyVenom = {}
 local VP
@@ -218,12 +231,10 @@ function OnLoad()
 	if VIP_USER then
 		settings:addSubMenu("Misc", "misc")
 			settings.misc:addParam("Debug", "Debugger", SCRIPT_PARAM_ONOFF, false)
+			settings.misc:addParam("ChatDebug", "Add Chat Debug", SCRIPT_PARAM_ONOFF, false)
 			settings.misc:addParam("Mode","Prediction Mode",SCRIPT_PARAM_LIST,1,{"VPrediction"})
 			settings.misc:addParam("VPHitChance","VPrediction HitChance",SCRIPT_PARAM_LIST,3,{"[0]Target Position","[1]Low Hitchance","[2]High Hitchance","[3]Target slowed/close","[4]Target immobile","[5]Target Dashing"})
 			settings.misc:addParam("VIPHitChance","VIP HitChance: ",SCRIPT_PARAM_SLICE,0.7,0.1,1,2)
-			settings.misc:addParam("space", "", SCRIPT_PARAM_INFO, "")
-			settings.misc:addParam("packets", "Use Packets", SCRIPT_PARAM_ONOFF, true)
-			settings.misc:addParam("space", " - Spell Packets do not work :(", SCRIPT_PARAM_INFO, "")
 	else
 		settings:addSubMenu("Misc", "misc")
 			settings.misc:addParam("G","[General Prediction Settings]",SCRIPT_PARAM_INFO,"")
@@ -442,13 +453,13 @@ function Twitch:KillSteal()
 	for _, target in pairs(GetEnemyHeroes()) do
 		if ValidTarget(target) and GetDistance(myHero, target) <= 1200 then
 			if DeadlyVenom[target.networkID] ~= nil then
-				if self:GetEDamage(target) > target.health then
-					if settings.misc.Debug then
-						print("<font color='#00FF00'>[Yiffy Twitch] </font><font color='#FF00FF'>-</font><font color='#FFFFFF'> Predicting E KillSteal</font>")
+				if self:GetEDmg(target) > target.health then
+					if settings.misc.Debug and settings.misc.ChatDebug then
+						print("<font color='#00FF00'>[Yiffy Twitch] </font><font color='#FF00FF'>-</font><font color='#FFFFFF'> Predicting E KillSteal " .. math.round(self:GetEDmg(target)) .. "</font>")
 					end
 					CastSpell(_E)
 					return
-				elseif self:GetEDamage(target) < target.maxHealth * 0.3 and 1200 then
+				elseif self:GetEDmg(target) < target.maxHealth * 0.3 and 1200 then
 					target = true
 				end
 			end
@@ -606,13 +617,27 @@ end
 function OnProcessSpell(unit, buff)
 	if unit and buff and unit.isMe and buff.name == myHero:GetSpellData(_Q).name then
 		if settings.misc.Debug then
-			print("<font color='#00FF00'>[Yiffy Twitch] </font><font color='#FF00FF'>-</font><font color='#FFFFFF'> Q_Buff_OnProcessSpell</font>")
+			channelingQ = true
+			if settings.misc.ChatDebug then
+				print("<font color='#00FF00'>[Yiffy Twitch] </font><font color='#FF00FF'>-</font><font color='#FFFFFF'> Channeling Stealth!</font>")
+			end
 		end
 		StealthProcess = {
 			started = os.clock(),
 			last = os.clock(),
 			hp = myHero.health
 		}
+	end
+	if buff.name == myHero:GetSpellData(_Q).name then
+		Qwind = buff.windUpTime
+	elseif buff.name == myHero:GetSpellData(_W).name then
+		Wwind = buff.windUpTime
+	elseif buff.name == myHero:GetSpellData(_E).name then
+		Ewind = buff.windUpTime
+	elseif buff.name == myHero:GetSpellData(_R).name then
+		Rwind = buff.windUpTime
+	elseif GetDistance(unit) < 50 then
+		AAwind = buff.windUpTime
 	end
 end
 
@@ -623,7 +648,11 @@ function OnUpdateBuff(target, buff, stacks)
 			stealthLocation = os.clock()
 			StealthProcess = nil
 			if settings.misc.Debug then
-				print("<font color='#00FF00'>[Yiffy Twitch] </font><font color='#FF00FF'>-</font><font color='#FFFFFF'> Q_Buff_OnUpdateBuff</font>")
+				channelingQ = false
+				stealthQ = true
+				if settings.misc.Debug and settings.misc.ChatDebug then
+					print("<font color='#00FF00'>[Yiffy Twitch] </font><font color='#FF00FF'>-</font><font color='#FFFFFF'> Twitch is Stealth!</font>")
+				end
 			end
 		end
 	end
@@ -641,12 +670,17 @@ function OnRemoveBuff(target, buff)
 		if buff.name == "twitchdeadlyvenom" then
 			DeadlyVenom[target.networkID] = nil
 			if settings.misc.Debug then
-				print("<font color='#00FF00'>[Yiffy Twitch] </font><font color='#FF00FF'>-</font><font color='#FFFFFF'> E_Buff_OnRemoveBuff</font>")
+				if settings.misc.Debug and settings.misc.ChatDebug then
+					print("<font color='#00FF00'>[Yiffy Twitch] </font><font color='#FF00FF'>-</font><font color='#FFFFFF'> Passive Stacks Removed!</font>")
+				end
 			end
 		end
 		if target.isMe and buff.name == "TwitchHideInShadows" then
 			if settings.misc.Debug then
-				print("<font color='#00FF00'>[Yiffy Twitch] </font><font color='#FF00FF'>-</font><font color='#FFFFFF'> Q_Buff_OnRemoveBuff</font>")
+				stealthQ = false
+				if settings.misc.Debug and settings.misc.ChatDebug then
+					print("<font color='#00FF00'>[Yiffy Twitch] </font><font color='#FF00FF'>-</font><font color='#FFFFFF'> Twitch is no longer Stealth!</font>")
+				end
 			end
 			VisibleSelf = true
 			stealthLocation = 0
@@ -659,14 +693,14 @@ function StealthTime()
 	return myHero:GetSpellData(_Q).level > 0 and 3 + myHero:GetSpellData(_Q).level or 0
 end
 
-function Twitch:GetEDamage(target)
-	if myHero:GetSpellData(_E).level < 1 then				-- Welcome Bilbao :ph34r: suck a fat one.
+function Twitch:GetEDmg(target)
+	if myHero:GetSpellData(_E).level < 1 then
 		return 0
 	end
-	local baseDamage = 5 + myHero:GetSpellData(_E).level * 15
-	local stackDamage = (10 + myHero:GetSpellData(_E).level * 5 + myHero.ap * 0.2 + myHero.addDamage * 0.25) * DeadlyVenom[target.networkID].stack
-	local totalDamage = baseDamage + stackDamage
-	return totalDamage * (80 / (80 + target.armor))
+	local BaseDamage = { 20, 35, 50, 65, 80}
+	local StackDamage = { 15, 20, 25, 30, 35}
+	local trueDmg = BaseDamage[myHero:GetSpellData(_E).level] + (((StackDamage[myHero:GetSpellData(_E).level]) + ((myHero.ap * (1 + myHero.apPercent)) * 0.2) + (myHero.damage * 0.25)) * DeadlyVenom[target.networkID].stack)
+	return trueDmg * (100 / (100 + target.armor))
 end
 
 class("VisualManager")
@@ -676,9 +710,6 @@ function VisualManager:OnDraw()
 	local stealthTime = StealthTime()
 	if os.clock() < stealthLocation + stealthTime then
 		if settings.draws.stealthTimer then
-			if settings.misc.Debug then
-				print("<font color='#00FF00'>[Yiffy Twitch] </font><font color='#FF00FF'>-</font><font color='#FFFFFF'> Drawing Q-channel Bar</font>")
-			end
 			db:addLine(myHero, stealthLocation, stealthLocation + stealthTime, 255, 0, 255, 0, 255, 255, 0, 0, false)
 		end
 		if settings.draws.stealthDistance then
@@ -688,9 +719,6 @@ function VisualManager:OnDraw()
 			end,0.5)
 		end
 	elseif StealthProcess and os.clock() <= StealthProcess.last + 1.5 and settings.draws.stealthTimer then
-		if settings.misc.Debug then
-			print("<font color='#00FF00'>[Yiffy Twitch] </font><font color='#FF00FF'>-</font><font color='#FFFFFF'> Drawing Q-invis Bar</font>")
-		end
 		db:addLine(myHero, StealthProcess.last, StealthProcess.last + 1.5 + GetLatency() / 1000, 255, 255, 0, 0, 255, 0, 255, 0, false)
 		DelayAction(function ()
 			db:delete(myHero)
@@ -707,9 +735,6 @@ function VisualManager:OnDraw()
 	for _, target in pairs(GetEnemyHeroes()) do 
 		if target.visible and not target.dead and DeadlyVenom[target.networkID] ~= nil and DeadlyVenom[target.networkID].stack >= 1 then
 			if settings.draws.poisonTimer then
-				if settings.misc.Debug then
-					print("<font color='#00FF00'>[Yiffy Twitch] </font><font color='#FF00FF'>-</font><font color='#FFFFFF'> Drawing E Duration</font>")
-				end
 				db:addLine(target, DeadlyVenom[target.networkID].time, DeadlyVenom[target.networkID].time + 6, 255, 255, 0,255, 255,255, 0, 255, false)
 				DelayAction(function ()
 					db:delete(myHero)
@@ -717,11 +742,8 @@ function VisualManager:OnDraw()
 			end
 			if settings.draws.executeIndicator and myHero:CanUseSpell(_E) == READY and myHero:GetSpellData(_E).level > 0 then
 				if DeadlyVenom[target.networkID] ~= nil then
-					if settings.misc.Debug then
-						print("<font color='#00FF00'>[Yiffy Twitch] </font><font color='#FF00FF'>-</font><font color='#FFFFFF'> Drawing DMG Bar</font>")
-					end
 					currLine = 1		
-					DrawLineHPBar(Twitch:GetEDamage(target), currLine, "E Damage"..Twitch:GetEDamage(target), target)
+					DrawLineHPBar(Twitch:GetEDmg(target), currLine, "E Damage " .. math.round(Twitch:GetEDmg(target)), target)
 					currLine = currLine + 1
 				end
 			end
@@ -959,7 +981,7 @@ function DrawBar:draw()
 				local py = baseY+yoffset
 				local cx = baseX+lenght
 				local cy = baseY+yoffset
-				DrawLine(px, py, cx, cy, 7, ARGB(alphaN, redN, greenN, blueN))
+				DrawLine(px, py, cx, cy, 10, ARGB(alphaN, redN, greenN, blueN))
 			end
 		end
 	end
@@ -978,7 +1000,6 @@ function DrawBar:update()
 		end
 	end
 end
-
 
 function DrawBar:delete(target)
 	for _,bar in pairs(self.bars) do
@@ -1275,4 +1296,155 @@ function countTable(spelldraw)
 		spelldraw2 = spelldraw2 + 1
 	end
 	return spelldraw2
+end
+
+--Debug
+function OnTick()
+	if settings.misc.Debug then
+		if myHero:CanUseSpell(_Q) == READY then
+			readytextQ = true
+		else
+			readytextQ = false
+		end
+		if myHero:CanUseSpell(_W) == READY then
+			readytextW = true
+		else
+			readytextW = false
+		end
+		if myHero:CanUseSpell(_E) == READY then
+			readytextE = true
+		else
+			readytextE = false
+		end
+		if myHero:CanUseSpell(_R) == READY then
+			readytextR = true
+		else
+			readytextR = false
+		end
+	end
+end
+
+function OnDraw()
+	if settings.misc.Debug then
+		local totalAP = myHero.ap * (1 + myHero.apPercent)
+		local World_x1 = 150
+		local World_x2 = 330
+		local World_x3 = 510
+		local World_x4 = 690
+		local World_y1 = 150
+		DrawText("" .. myHero.charName .. "", 35, World_x1 - 20, World_y1 - 50, ARGB(255, 0, 255, 255))
+		DrawText("Level: " .. myHero.level, 18, World_x1 + 85, World_y1 - 30, ARGB(255, 255, 255, 255))
+		DrawText("Attack Damage: (       +       ) = ", 15, World_x1 - 20, World_y1 - 10, ARGB(255, 255, 255, 255))
+		DrawText("" .. math.round(myHero.addDamage), 15, World_x1 + 77, World_y1 - 10, ARGB(255, 0,255, 255))
+		DrawText("" .. math.round(myHero.damage), 15, World_x1 + 108, World_y1 - 10, ARGB(255, 0, 255, 0))
+		DrawText("" .. math.round(myHero.totalDamage), 15, World_x1 + 144, World_y1 - 10, ARGB(255, 255, 0, 255))
+		DrawText("Ability Power: (   +       ) = ", 15, World_x1 - 20, World_y1 + 5, ARGB(255, 255, 255, 255))
+		DrawText("0", 15, World_x1 + 65, World_y1 + 5, ARGB(255, 0,255, 255))
+		DrawText("" .. totalAP, 15, World_x1 + 82, World_y1 + 5, ARGB(255, 0, 255, 0))
+		DrawText("" .. totalAP, 15, World_x1 + 118, World_y1 + 5, ARGB(255, 255, 0, 255))
+
+		-- [Q Debug]
+		DrawText("Q Debug", 15, World_x1, World_y1 + 20, ARGB(255, 0, 255, 255))
+		DrawText("Name:", 15, World_x1, World_y1 + 35, ARGB(255, 255, 255, 255))
+		DrawText("" .. myHero:GetSpellData(_Q).name, 15, World_x1 + 40, World_y1 + 35, ARGB(255, 255, 255, 0))
+		DrawText("Ready:", 15, World_x1, World_y1 + 50, ARGB(255, 255, 255, 255))
+		if readytextQ then
+			DrawText("true", 15, World_x1 + 43, World_y1 + 50, ARGB(255, 0, 255, 0))
+		elseif channelingQ then
+			DrawText("Channeling", 15, World_x1 + 43, World_y1 + 50, ARGB(255, 255, 255, 0))
+		elseif stealthQ then
+			DrawText("Stealth", 15, World_x1 + 43, World_y1 + 50, ARGB(255, 255, 175, 0))
+		elseif readytextQ == false then
+			DrawText("false", 15, World_x1 + 43, World_y1 + 50, ARGB(255, 255, 0, 0))
+		end
+		DrawText("Level:", 15, World_x1, World_y1 + 65, ARGB(255, 255, 255, 255))
+		if myHero:GetSpellData(_Q).level < 5 then
+			DrawText("" .. myHero:GetSpellData(_Q).level, 15, World_x1 + 38, World_y1 + 65, ARGB(255, 255, 175, 0))
+		elseif myHero:GetSpellData(_Q).level >= 5 then
+			DrawText("MAX", 15, World_x1 + 38, World_y1 + 65, ARGB(255, 0, 255, 0))
+		end
+		DrawText("Delay:", 15, World_x1, World_y1 + 80, ARGB(255, 255, 255, 255))
+		DrawText("" .. Qwind, 15, World_x1 + 38, World_y1 + 80, ARGB(255, 255, 175, 0))
+
+		-- [W Debug]
+		DrawText("W Debug", 15, World_x2, World_y1 + 20, ARGB(255, 0, 255, 255))
+		DrawText("Name:", 15, World_x2, World_y1 + 35, ARGB(255, 255, 255, 255))
+		DrawText("" .. myHero:GetSpellData(_W).name, 15, World_x2 + 40, World_y1 + 35, ARGB(255, 255, 255, 0))
+		DrawText("Ready:", 15, World_x2, World_y1 + 50, ARGB(255, 255, 255, 255))
+		if readytextW then
+			DrawText("true", 15, World_x2 + 43, World_y1 + 50, ARGB(255, 0, 255, 0))
+		elseif readytextW == false then
+			DrawText("false", 15, World_x2 + 43, World_y1 + 50, ARGB(255, 255, 0, 0))
+		end
+		DrawText("Level:", 15, World_x2, World_y1 + 65, ARGB(255, 255, 255, 255))
+		if myHero:GetSpellData(_W).level < 5 then
+			DrawText("" .. myHero:GetSpellData(_W).level, 15, World_x2 + 38, World_y1 + 65, ARGB(255, 255, 175, 0))
+		elseif myHero:GetSpellData(_W).level >= 5 then
+			DrawText("MAX", 15, World_x2 + 38, World_y1 + 65, ARGB(255, 0, 255, 0))
+		end
+		DrawText("Delay:", 15, World_x2, World_y1 + 80, ARGB(255, 255, 255, 255))
+		DrawText("" .. Wwind, 15, World_x2 + 38, World_y1 + 80, ARGB(255, 255, 175, 0))
+
+		-- [E Debug]
+		DrawText("E Debug", 15, World_x3, World_y1 + 20, ARGB(255, 0, 255, 255))
+		DrawText("Name:", 15, World_x3, World_y1 + 35, ARGB(255, 255, 255, 255))
+		DrawText("" .. myHero:GetSpellData(_E).name, 15, World_x3 + 40, World_y1 + 35, ARGB(255, 255, 255, 0))
+		DrawText("Ready:", 15, World_x3, World_y1 + 50, ARGB(255, 255, 255, 255))
+		if readytextE then
+			DrawText("true", 15, World_x3 + 43, World_y1 + 50, ARGB(255, 0, 255, 0))
+		elseif readytextE == false then
+			DrawText("false", 15, World_x3 + 43, World_y1 + 50, ARGB(255, 255, 0, 0))
+		end
+		DrawText("Level:", 15, World_x3, World_y1 + 65, ARGB(255, 255, 255, 255))
+		if myHero:GetSpellData(_E).level < 5 then
+			DrawText("" .. myHero:GetSpellData(_E).level, 15, World_x3 + 38, World_y1 + 65, ARGB(255, 255, 175, 0))
+		elseif myHero:GetSpellData(_E).level >= 5 then
+			DrawText("MAX", 15, World_x3 + 38, World_y1 + 65, ARGB(255, 0, 255, 0))
+		end
+		DrawText("Delay:", 15, World_x3, World_y1 + 80, ARGB(255, 255, 255, 255))
+		DrawText("" .. Ewind, 15, World_x3 + 38, World_y1 + 80, ARGB(255, 255, 175, 0))
+		DrawText("Bonus AP:", 15, World_x3, World_y1 + 95, ARGB(255, 255, 255, 255))
+		DrawText("" .. math.round(totalAP * 0.2), 15, World_x3 + 61, World_y1 + 95, ARGB(255, 0, 255, 0))
+		DrawText("Bonus AD:", 15, World_x3, World_y1 + 110, ARGB(255, 255, 255, 255))
+		DrawText("" .. math.round(myHero.damage * 0.25), 15, World_x3 + 61, World_y1 + 110, ARGB(255, 0, 255, 0))
+		DrawText("Stack Count:", 15, World_x3, World_y1 + 125, ARGB(255, 255, 255, 255))
+		if not etext then
+			DrawText("nil", 15, World_x3 + 78, World_y1 + 125, ARGB(255, 255, 0, 255))
+		end
+		local i = 0
+		local flag = false
+		for _, target in pairs(GetEnemyHeroes()) do
+			if target.visible and not target.dead and DeadlyVenom[target.networkID] ~= nil and DeadlyVenom[target.networkID].stack >= 1 then
+				DrawText(tostring(DeadlyVenom[target.networkID].stack .. ""), 15, World_x3 + 78, World_y1 + 125 + (i*15), ARGB(255, 255, 0, 255))
+				DrawText("on " .. target.charName, 15, World_x3 + 88, World_y1 + 125 + (i*15), ARGB(255, 255, 255, 255))
+				DrawText("Damage:" , 15, World_x3 + 78, World_y1 + 140 + (i*15), ARGB(255, 255, 255, 255))
+				DrawText("" .. math.round(Twitch:GetEDmg(target)), 15, World_x3 + 131, World_y1 + 140 + (i*15), ARGB(255, 0, 255, 0))
+				etext = true
+				flag = true
+				i = i + 2
+			end
+		end
+		if flag == false then
+			etext = false
+		end
+
+		-- [R Debug]
+		DrawText("R Debug", 15, World_x4, World_y1 + 20, ARGB(255, 0, 255, 255))
+		DrawText("Name:", 15, World_x4, World_y1 + 35, ARGB(255, 255, 255, 255))
+		DrawText("" .. myHero:GetSpellData(_R).name, 15, World_x4 + 40, World_y1 + 35, ARGB(255, 255, 255, 0))
+		DrawText("Ready:", 15, World_x4, World_y1 + 50, ARGB(255, 255, 255, 255))
+		if readytextR then
+			DrawText("true", 15, World_x4 + 43, World_y1 + 50, ARGB(255, 0, 255, 0))
+		elseif readytextR == false then
+			DrawText("false", 15, World_x4 + 43, World_y1 + 50, ARGB(255, 255, 0, 0))
+		end
+		DrawText("Level:", 15, World_x4, World_y1 + 65, ARGB(255, 255, 255, 255))
+		if myHero:GetSpellData(_R).level < 3 then
+			DrawText("" .. myHero:GetSpellData(_R).level, 15, World_x4 + 38, World_y1 + 65, ARGB(255, 255, 175, 0))
+		elseif myHero:GetSpellData(_R).level >= 3 then
+			DrawText("MAX", 15, World_x4 + 38, World_y1 + 65, ARGB(255, 0, 255, 0))
+		end
+		DrawText("Delay:", 15, World_x4, World_y1 + 80, ARGB(255, 255, 255, 255))
+		DrawText("" .. Rwind, 15, World_x4 + 38, World_y1 + 80, ARGB(255, 255, 175, 0))
+	end
 end
