@@ -14,7 +14,7 @@ if myHero.charName ~= 'Twitch' then return end
 _SCRIPT_VERSION = 3.0
 _SCRIPT_VERSION_MENU = "3.0"
 _FILE_PATH = SCRIPT_PATH .. GetCurrentEnv().FILE_NAME
-_patch = "5.22"
+_PATCH = "5.22"
 
 class("Twitch")
 function Twitch:__init()
@@ -343,7 +343,7 @@ function OnLoad()
 			settings.AutoLevelOn = true
 		end
 		settings:addParam("theversion", "Version: ", SCRIPT_PARAM_INFO, tostring(_SCRIPT_VERSION_MENU))
-		print("<font color='#00FF00'>[Yiffy Twitch] <font color='#FF00FF'>-</font></font><font color='#FFFFFF'> by </font><font color='#FF8B22'>Furry</font> <font color='#FFFFFF'>Version </font><font color='#00FFFF'>" .. _SCRIPT_VERSION_MENU .. "</font><font color='#FFFFFF'> Patch: </font><font color='#00FFFF'>" .. _patch .. "</font>")
+		print("<font color='#00FF00'>[Yiffy Twitch] <font color='#FF00FF'>-</font></font><font color='#FFFFFF'> by </font><font color='#FF8B22'>Furry</font> <font color='#FFFFFF'>Version </font><font color='#00FFFF'>" .. _SCRIPT_VERSION_MENU .. "</font><font color='#FFFFFF'> Patch: </font><font color='#00FFFF'>" .. _PATCH .. "</font>")
 		if _AUTO_UPDATE then
 			GetAsyncWebResult("raw.github.com", "/FurryBoL/master/master/YiffyTwitch.version", function(result)
 				local latest = tonumber(result)
@@ -359,7 +359,7 @@ function OnLoad()
 				end
 			end)
 		end
-		settings:addParam("thepatch", "Patch:", SCRIPT_PARAM_INFO, _patch)
+		settings:addParam("thepatch", "Patch:", SCRIPT_PARAM_INFO, _PATCH)
 		settings:addParam("furry", "Yiffy Twitch By:", SCRIPT_PARAM_INFO, "Furry")
 				settings:permaShow("comboactive")
 				settings:permaShow("harassKey")
