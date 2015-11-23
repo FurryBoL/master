@@ -11,8 +11,8 @@ _AUTO_UPDATE = true -- Set this to false to prevent automatic updates
 --			[ ChangeLog ]
 
 if myHero.charName ~= 'Twitch' then return end
-_SCRIPT_VERSION = 3.0
-_SCRIPT_VERSION_MENU = "3.0"
+_SCRIPT_VERSION = 3.1
+_SCRIPT_VERSION_MENU = "3.1"
 _FILE_PATH = SCRIPT_PATH .. GetCurrentEnv().FILE_NAME
 _PATCH = "5.22"
 
@@ -1340,8 +1340,8 @@ function OnDraw()
 		DrawText("" .. math.round(myHero.totalDamage), 15, World_x1 + 144, World_y1 - 10, ARGB(255, 255, 0, 255))
 		DrawText("Ability Power: (   +       ) = ", 15, World_x1 - 20, World_y1 + 5, ARGB(255, 255, 255, 255))
 		DrawText("0", 15, World_x1 + 65, World_y1 + 5, ARGB(255, 0,255, 255))
-		DrawText("" .. totalAP, 15, World_x1 + 82, World_y1 + 5, ARGB(255, 0, 255, 0))
-		DrawText("" .. totalAP, 15, World_x1 + 118, World_y1 + 5, ARGB(255, 255, 0, 255))
+		DrawText("" .. math.round(totalAP), 15, World_x1 + 82, World_y1 + 5, ARGB(255, 0, 255, 0))
+		DrawText("" .. math.round(totalAP), 15, World_x1 + 118, World_y1 + 5, ARGB(255, 255, 0, 255))
 
 		-- [Q Debug]
 		DrawText("Q Debug", 15, World_x1, World_y1 + 20, ARGB(255, 0, 255, 255))
