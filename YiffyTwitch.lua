@@ -1104,7 +1104,7 @@ end)
 
 function OnWndMsg(a, b)
 	if a == KEY_DOWN and settings.Qsettings.AlwaysQB and myHero:CanUseSpell(_Q) == READY and b == GetKey("B") then
-		if settings.misc.Debug then
+		if settings.misc.Debug and settings.misc.ChatDebug then
 			print("<font color='#00FF00'>[Yiffy Twitch] </font><font color='#FF00FF'>-</font><font color='#FFFFFF'> Attempting to Recall invisible!</font>")
 		end
 		CastSpell(_Q)
