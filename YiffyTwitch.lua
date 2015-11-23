@@ -230,7 +230,7 @@ function OnLoad()
 			settings.Rsettings:addParam("useItems", "Use items in Combo(not tested!)", SCRIPT_PARAM_ONOFF, true)
 	if VIP_USER then
 		settings:addSubMenu("Misc", "misc")
-			settings.misc:addParam("Debug", "Debugger", SCRIPT_PARAM_ONOFF, false)
+			settings.misc:addParam("Debug", "Debugger", SCRIPT_PARAM_ONOFF, true)
 			settings.misc:addParam("ChatDebug", "Add Chat Debug", SCRIPT_PARAM_ONOFF, false)
 			settings.misc:addParam("Mode","Prediction Mode",SCRIPT_PARAM_LIST,1,{"VPrediction"})
 			settings.misc:addParam("VPHitChance","VPrediction HitChance",SCRIPT_PARAM_LIST,3,{"[0]Target Position","[1]Low Hitchance","[2]High Hitchance","[3]Target slowed/close","[4]Target immobile","[5]Target Dashing"})
