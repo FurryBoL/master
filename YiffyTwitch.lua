@@ -661,7 +661,7 @@ function OnUpdateBuff(target, buff, stacks)
 	end
 	if buff.name == "twitchdeadlyvenom" then
 		DeadlyVenom[target.networkID] = {
-			stack = DeadlyVenom[target.networkID].stack + 1,
+			stack = 6,
 			time = os.clock(),
 			hp = target.health
 		}
