@@ -372,7 +372,7 @@ function OnLoad()
 				[4] = 'Whistler Village',
 				[5] = 'Medieval',
 				[6] = 'Gangster',
-				[7] = 'Vandal(nil_5.22)',
+				[7] = 'Vandal',
 				[8] = 'Pickpocket',
 				[9] = 'SSW',
 			})
