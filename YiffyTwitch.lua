@@ -1,6 +1,6 @@
 -- Yiffy Twitch by Furry
 -- Encrypted by burn [Kappa^Bilbao]
--- Version 3.2 [Yiffy Twitch re-release]
+-- Version 3.21 [Yiffy Twitch re-release]
 
 
 _AUTO_UPDATE = true -- Set this to false to prevent automatic updates
@@ -11,8 +11,8 @@ _AUTO_UPDATE = true -- Set this to false to prevent automatic updates
 --			[ ChangeLog ]
 
 if myHero.charName ~= 'Twitch' then return end
-_SCRIPT_VERSION = 3.2
-_SCRIPT_VERSION_MENU = "3.2"
+_SCRIPT_VERSION = 3.21
+_SCRIPT_VERSION_MENU = "3.21"
 _FILE_PATH = SCRIPT_PATH .. GetCurrentEnv().FILE_NAME
 _PATCH = "5.22"
 
@@ -344,9 +344,6 @@ function OnLoad()
 		end
 		settings:addParam("theversion", "Version: ", SCRIPT_PARAM_INFO, tostring(_SCRIPT_VERSION_MENU))
 		print("<font color='#00FF00'>[Yiffy Twitch] <font color='#FF00FF'>-</font></font><font color='#FFFFFF'> by </font><font color='#FF8B22'>Furry</font> <font color='#FFFFFF'>Version </font><font color='#00FFFF'>" .. _SCRIPT_VERSION_MENU .. "</font><font color='#FFFFFF'> Patch: </font><font color='#00FFFF'>" .. _PATCH .. "</font>")
-		print("<font color='#00FF00'>[Yiffy Twitch] </font><font color='#FF00FF'>-</font><font color='#FFFFFF'> This Version (3.2) should fix the bug with E Stack not applying properly.</font>")
-		print("<font color='#00FF00'>[Yiffy Twitch] </font><font color='#FF00FF'>-</font><font color='#FFFFFF'> If it does not work or if there are errors, change line 664 to: 'stack = 6,'</font>")
-		print("<font color='#00FF00'>[Yiffy Twitch] </font><font color='#FF00FF'>-</font><font color='#FFFFFF'> This will be removed next update(?) if everything works.</font>")
 		if _AUTO_UPDATE then
 			GetAsyncWebResult("raw.github.com", "/FurryBoL/master/master/YiffyTwitch.version", function(result)
 				local latest = tonumber(result)
