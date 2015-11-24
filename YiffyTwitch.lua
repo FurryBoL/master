@@ -1189,27 +1189,23 @@ function SendSkinPacket(mObject, skinPB, networkID)
 	end
 end
 
-if (string.find(GetGameVersion(), 'Releases/5.22') ~= nil) then
+if (string.find(GetGameVersion(), 'Releases/5.23') ~= nil) then
 	_G.LevelSpell = function(id)
-		local offsets = {
-			[_Q] = 0xB8,
-			[_W] = 0xBA,
-			[_E] = 0x79,
-			[_R] = 0x7B,
+		local offsets = { 
+			[_Q] = 0x61,
+			[_W] = 0x81,
+			[_E] = 0xA1,
+			[_R] = 0xC1,
 		}
-		local p
-		p = CLoLPacket(0x0050)
-		p.vTable = 0xF38DAC
+		local p = CLoLPacket(0x0033)
+		p.vTable = 0xE556E8
 		p:EncodeF(myHero.networkID)
+		p:Encode1(0x73)
+		for i = 1, 4 do p:Encode1(0xF9) end
+		for i = 1, 4 do p:Encode1(0x1E) end
 		p:Encode1(offsets[id])
-		p:Encode1(0x3C)
-		for i = 1, 4 do p:Encode1(0xF6) end
-		for i = 1, 4 do p:Encode1(0x5E) end
-		for i = 1, 4 do p:Encode1(0xE0) end
-		p:Encode1(0x24)
-		p:Encode1(0xF1)
-		p:Encode1(0x27)
-		p:Encode1(0x00)
+		for i = 1, 4 do p:Encode1(0x99) end
+		for i = 1, 4 do p:Encode1(0x00) end
 		SendPacket(p)
 	end
 end
