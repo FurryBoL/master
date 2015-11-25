@@ -1,6 +1,6 @@
 -- Yiffy Twitch by Furry
 -- Encrypted by burn [Kappa^Bilbao]
--- Version 3.23 [Yiffy Twitch re-release]
+-- Version 3.24 [Yiffy Twitch re-release]
 
 
 _AUTO_UPDATE = true -- Set this to false to prevent automatic updates
@@ -11,8 +11,8 @@ _AUTO_UPDATE = true -- Set this to false to prevent automatic updates
 --			[ ChangeLog ]
 
 if myHero.charName ~= 'Twitch' then return end
-_SCRIPT_VERSION = 3.23
-_SCRIPT_VERSION_MENU = "3.23"
+_SCRIPT_VERSION = 3.24
+_SCRIPT_VERSION_MENU = "3.24"
 _FILE_PATH = SCRIPT_PATH .. GetCurrentEnv().FILE_NAME
 _PATCH = "5.22"
 
@@ -226,7 +226,6 @@ function OnLoad()
 		settings:addSubMenu("R Settings", "Rsettings")
 			settings.Rsettings:addParam("UseR", "Use R on grouped enemies", SCRIPT_PARAM_ONOFF, true)
 			settings.Rsettings:addParam("REnemies", "    Set number of grouped enemies", SCRIPT_PARAM_SLICE, 3, 1, 5, 0)
-			settings.Rsettings:addParam("space", "", SCRIPT_PARAM_INFO, "")
 	if VIP_USER then
 		settings:addSubMenu("Misc", "misc")
 			settings.misc:addParam("Debug", "Debugger", SCRIPT_PARAM_ONOFF, true)
