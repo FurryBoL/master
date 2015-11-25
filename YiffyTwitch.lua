@@ -1,6 +1,6 @@
 -- Yiffy Twitch by Furry
 -- Encrypted by burn [Kappa^Bilbao]
--- Version 3.22 [Yiffy Twitch re-release]
+-- Version 3.23 [Yiffy Twitch re-release]
 
 
 _AUTO_UPDATE = true -- Set this to false to prevent automatic updates
@@ -11,8 +11,8 @@ _AUTO_UPDATE = true -- Set this to false to prevent automatic updates
 --			[ ChangeLog ]
 
 if myHero.charName ~= 'Twitch' then return end
-_SCRIPT_VERSION = 3.22
-_SCRIPT_VERSION_MENU = "3.22"
+_SCRIPT_VERSION = 3.23
+_SCRIPT_VERSION_MENU = "3.23"
 _FILE_PATH = SCRIPT_PATH .. GetCurrentEnv().FILE_NAME
 _PATCH = "5.22"
 
