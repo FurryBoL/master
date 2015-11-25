@@ -227,7 +227,6 @@ function OnLoad()
 			settings.Rsettings:addParam("UseR", "Use R on grouped enemies", SCRIPT_PARAM_ONOFF, true)
 			settings.Rsettings:addParam("REnemies", "    Set number of grouped enemies", SCRIPT_PARAM_SLICE, 3, 1, 5, 0)
 			settings.Rsettings:addParam("space", "", SCRIPT_PARAM_INFO, "")
-			settings.Rsettings:addParam("useItems", "Use items in Combo(not tested!)", SCRIPT_PARAM_ONOFF, true)
 	if VIP_USER then
 		settings:addSubMenu("Misc", "misc")
 			settings.misc:addParam("Debug", "Debugger", SCRIPT_PARAM_ONOFF, true)
@@ -472,9 +471,6 @@ function Twitch:GetDrawText(target)
 end
 
 function Twitch:Combo(target)
-	if settings.Rsettings.useItems then
-		self:UseItems(target)
-	end
 	if  settings.Qsettings.UseQ and self.skills.SkillQ.ready and CountEnemyHeroInRange(1000) >= settings.Qsettings.QEnemies then
 		self:Cast("Q", target)
 	end
@@ -547,15 +543,6 @@ function Twitch:GetTarget()
 		return _G.AutoCarry.Attack_Crosshair.target 
 	elseif settings.ts.target and ValidTarget(settings.ts.target) then
 		return settings.ts.target
-	end
-end
-
-function Twitch:UseItems(a)
-	for b, c in pairs(self.items) do
-		local d = self.items[b]
-		if GetInventoryItemIsCastable(d.id) and GetDistanceSqr(a) <= d.range * d.range then
-			CastItem(d.id, a)
-		end
 	end
 end
 
