@@ -1,6 +1,6 @@
 -- Yiffy Twitch by Furry
 -- Encrypted by burn [Kappa^Bilbao]
--- Version 3.25 [Yiffy Twitch re-release]
+-- Version 3.3 [Yiffy Twitch re-release]
 
 
 _AUTO_UPDATE = true -- Set this to false to prevent automatic updates
@@ -11,8 +11,8 @@ _AUTO_UPDATE = true -- Set this to false to prevent automatic updates
 --			[ ChangeLog ]
 
 if myHero.charName ~= 'Twitch' then return end
-_SCRIPT_VERSION = 3.25
-_SCRIPT_VERSION_MENU = "3.25"
+_SCRIPT_VERSION = 3.3
+_SCRIPT_VERSION_MENU = "3.3"
 _FILE_PATH = SCRIPT_PATH .. GetCurrentEnv().FILE_NAME
 _PATCH = "5.22"
 
@@ -81,6 +81,7 @@ local Rwind = 0
 local readytextQ = false
 local channelingQ = false
 local stealthQ = false
+local ValidR = false
 local readytextW = false
 local readytextE = false
 local etext = false
@@ -280,6 +281,8 @@ function OnLoad()
 			settings.draws:addParam("LFCwidth", "LFC - Width", 4, 2, 1, 5, 0)
 			settings.draws:addParam("LFCsnap", "LFC - Length Before Snapping", 4, 100, 50, 510, 0)
 			settings.draws:addParam("space", "", SCRIPT_PARAM_INFO, "")
+			settings.draws:addParam("Beta", "Draw Ultimate Particle Length - BETA", SCRIPT_PARAM_ONOFF, false)
+			settings.draws:addParam("space", "", SCRIPT_PARAM_INFO, "")
 			settings.draws:addParam("particles", "Draw Particles", SCRIPT_PARAM_ONOFF, true)
 			settings.draws:addParam("SizeE", "Size of E Stack Text", SCRIPT_PARAM_SLICE, 25, 10, 50, 0)
 			settings.draws:addParam("drawkillable", "Draw Damage Text on Enemy", SCRIPT_PARAM_ONOFF, true)
@@ -421,18 +424,6 @@ function Twitch:checks()
 			self.summonerSpells.flash = SUMMONER_2
 		end
 	end
-	self.items = {
-		BLACKFIRE = {id = 3188, range = 750},
-		BRK = {id = 3153, range = 500},
-		BWC = {id = 3144, range = 450},
-		HXG = {id = 3146, range = 700},
-		ODYNVEIL = {id = 3180, range = 525},
-		DVN = {id = 3131, range = 200},
-		ENT = {id = 3184, range = 350},
-		HYDRA = {id = 3074, range = 350},
-		TIAMAT = {id = 3077, range = 350},
-		YGB = {id = 3142, range = 350}
-	}
 end
 
 function CountEnemyNearPerson(a, target)
@@ -600,7 +591,11 @@ end
 function PoisonStacker(obj, number)
 	for _, target in pairs(GetEnemyHeroes()) do
 		if ValidTarget(target) and target.visible and not target.dead and GetDistance(target, obj) < 50 then
-			DeadlyVenom[target.networkID].stack = number
+			DeadlyVenom[target.networkID] = {
+				stack = number,
+				time = os.clock(),
+				hp = target.health
+			}
 		end
 	end
 end
@@ -620,6 +615,9 @@ function OnProcessSpell(unit, buff)
 			hp = myHero.health
 		}
 	end
+	if unit and buff and unit.isMe and buff.name == myHero:GetSpellData(_R).name then
+		ValidR = true
+	end
 	if buff.name == myHero:GetSpellData(_Q).name then
 		Qwind = buff.windUpTime
 	elseif buff.name == myHero:GetSpellData(_W).name then
@@ -634,7 +632,7 @@ function OnProcessSpell(unit, buff)
 end
 
 function OnUpdateBuff(target, buff, stacks)
-	if target and buff and stacks then
+	if target.isMe then
 		if buff.name == "TwitchHideInShadows" then
 			VisibleSelf = false
 			stealthLocation = os.clock()
@@ -677,12 +675,19 @@ function OnRemoveBuff(target, buff)
 			VisibleSelf = true
 			stealthLocation = 0
 		end
+		if target.isMe and buff.name == "TwitchFullAutomatic" then
+			ValidR = false
+		end
 	db:delete(target)
 	end
 end
 
 function StealthTime()
-	return myHero:GetSpellData(_Q).level > 0 and 3 + myHero:GetSpellData(_Q).level or 0
+	if myHero:GetSpellData(_Q).level > 0 then
+		return 3 + myHero:GetSpellData(_Q).level
+	else
+		return 0
+	end
 end
 
 function Twitch:GetEDmg(target)
@@ -699,13 +704,15 @@ class("VisualManager")
 function VisualManager:__init()
 end
 function VisualManager:OnDraw()
+	--print("" .. stealthLocation)
 	local stealthTime = StealthTime()
-	if os.clock() < stealthLocation + stealthTime then
+	if os.clock() < (stealthLocation + stealthTime) then
+		--print("" .. stealthLocation)
 		if settings.draws.stealthTimer then
 			db:addLine(myHero, stealthLocation, stealthLocation + stealthTime, 255, 0, 255, 0, 255, 255, 0, 0, false)
 		end
 		if settings.draws.stealthDistance then
-			self:DrawCircle(myHero.x, myHero.y, myHero.z, myHero.ms * (stealthLocation + StealthTime() - os.clock()) + myHero.boundingRadius, ARGB(table.unpack(settings.draws.color.stealthDistancecolor)))
+			self:DrawCircle(myHero.x, myHero.y, myHero.z, myHero.ms * (stealthLocation + stealthTime - os.clock()) + myHero.boundingRadius, ARGB(table.unpack(settings.draws.color.stealthDistancecolor)))
 			DelayAction(function ()
 				db:delete(myHero)
 			end,0.5)
@@ -779,7 +786,25 @@ function VisualManager:OnDraw()
 	end
 	if settings.draws.particles and not myHero.dead then
 		if Gobj then
-			self:DrawCircle(Gobj.x, Gobj.y, Gobj.z, 30, ARGB(table.unpack(settings.draws.color.particlescolor)))
+			if ValidR and settings.draws.Beta then
+				for _, target in pairs(GetEnemyHeroes()) do
+					if ValidTarget(target, 1100) then
+						local dst = math.sqrt(((myHero.x - target.x) ^ 2) + ((myHero.y - target.y) ^ 2) + ((myHero.z - target.z) ^ 2))
+						DrawText3D(tostring(dst), target.x, target.y, target.z, 18, ARGB(255,255,255,255))
+						local X = target.x - myHero.x
+						local Y = target.y - myHero.y
+						local Z = target.z - myHero.z
+						local nvec = Vector(X,Y,Z)
+						nvec = nvec:normalized()
+						local lenght = 1100
+						local dvec = nvec * lenght
+						DrawLineBorder3D(Gobj.x, Gobj.y, Gobj.z, Gobj.x + dvec.x, Gobj.y + dvec.y, Gobj.z + dvec.z, 60, ARGB(255,255,255,255), 1)
+					end
+				end
+			elseif not ValidR then
+				--DrawLine3D(myHero.x, myHero.y, myHero.z, Gobj.x, Gobj.y, Gobj.z, 5, ARGB(table.unpack(settings.draws.color.particlescolor)))
+				self:DrawCircle(Gobj.x, Gobj.y, Gobj.z, 30, ARGB(table.unpack(settings.draws.color.particlescolor)))
+			end
 		end
 	end
 	if settings.draws.DrawQ then
@@ -1423,6 +1448,8 @@ function OnDraw()
 		DrawText("Ready:", 15, World_x4, World_y1 + 50, ARGB(255, 255, 255, 255))
 		if readytextR then
 			DrawText("true", 15, World_x4 + 43, World_y1 + 50, ARGB(255, 0, 255, 0))
+		elseif ValidR then
+			DrawText("Ultimate Enabled!", 15, World_x4 + 43, World_y1 + 50, ARGB(255, 0, 255, 255))
 		elseif readytextR == false then
 			DrawText("false", 15, World_x4 + 43, World_y1 + 50, ARGB(255, 255, 0, 0))
 		end
