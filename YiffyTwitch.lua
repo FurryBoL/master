@@ -14,7 +14,7 @@ if myHero.charName ~= 'Twitch' then return end
 _SCRIPT_VERSION = 3.3
 _SCRIPT_VERSION_MENU = "3.3"
 _FILE_PATH = SCRIPT_PATH .. GetCurrentEnv().FILE_NAME
-_PATCH = "5.22"
+_PATCH = "5.23"
 
 class("Twitch")
 function Twitch:__init()
