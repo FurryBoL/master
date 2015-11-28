@@ -7,20 +7,9 @@ _AUTO_UPDATE = true -- Set this to false to prevent automatic updates
 _SCRIPT_VERSION = 2.0
 _SCRIPT_VERSION_MENU = "2.0"
 _PATCH = "5.23"
-_GAME_VERSION = string.find(GetGameVersion(), 'Releases/5.22') -- Change this after a patch if you want errors and bugsplats :)
+_GAME_VERSION = string.find(GetGameVersion(), 'Releases/5.23') -- Change this after a patch if you want errors and bugsplats :)
 
--- Skin Order:
-	--|>  Original
-	--|>  Mercenary
-	--|>  Red Card
-	--|>  Bilgewater
-	--|>  Kitty Cat
-	--|>  High Command (Broken 5.22)
-	--|>  Sandstorm
-	--|>  Slay Belle
-	--|>  Warring Kingdoms
-
-if (string.find(GetGameVersion(), 'Releases/5.23') ~= nil) then
+if (_GAME_VERSION ~= nil) then
 	_G.LevelSpell = function(id)
 		local offsets = { 
 			[_Q] = 0x61,
