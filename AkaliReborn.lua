@@ -17,7 +17,7 @@ _AUTO_UPDATE = true -- Set this to false to prevent automatic updates
 
 --			[ ChangeLog ]
 --  Check forum:
---  
+--  http://forum.botoflegends.com/topic/86079-vipfreesxorbsacr-akali-reborn-patch-523/
 --			[ ChangeLog ]
 
 if myHero.charName ~= 'Akali' then return end
