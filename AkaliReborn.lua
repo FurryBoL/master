@@ -13,7 +13,7 @@
 -- by Furry
 -- Version 1.0
 
-_AUTO_UPDATE = false -- Set this to false to prevent automatic updates
+_AUTO_UPDATE = true -- Set this to false to prevent automatic updates
 
 --			[ ChangeLog ]
 --  Check forum:
@@ -432,14 +432,14 @@ function OnLoad()
 						0
 					})
 		if _G.Reborn_Loaded then
-			SAC = print("<font color='#00FF00'>[Akali Reborn] </font><font color='#FF00FF'>-</font><font color='#FF8B22'> SAC</font><font color='#FF00FF'>:</font><font color='#FF8B22'>Reborn</font><font color='#FFFFFF'> Loading... Please wait! </font>")
+			SAC = print("<font color='#FFFF00'>[Akali Reborn] </font><font color='#FF0000'>-</font><font color='#FF8B22'> SAC</font><font color='#FF0000'>:</font><font color='#FF8B22'>Reborn</font><font color='#FFFFFF'> Loading... Please wait! </font>")
 			SACENABLED = true
 			DelayAction(function()
 			settings:addSubMenu("Orbwalker", "orbWalk")
 			settings.orbWalk:addParam("SACLoaded", "SAC:R integration supported!", SCRIPT_PARAM_INFO, "")
 			end, 5)
 		elseif not _G.Reborn_Loaded and FileExist(LIB_PATH .. "SxOrbWalk.lua") then
-			print("<font color='#00FF00'>[Akali Reborn] </font><font color='#FF00FF'>-</font><font color='#FF8B22'>SxOrbWalk</font><font color='#FFFFFF'> Loading... Please wait! </font>")
+			print("<font color='#FFFF00'>[Akali Reborn] </font><font color='#FF0000'>-</font><font color='#FF8B22'>SxOrbWalk</font><font color='#FFFFFF'> Loading... Please wait! </font>")
 			SxOrb = true
 			require("SxOrbWalk")
 			DelayAction(function()
@@ -449,7 +449,7 @@ function OnLoad()
 			_G.SxOrb:LoadToMenu(settings.orbWalk)
 			end, 5)
 		elseif SAC ~= true and SxOrb ~= true then
-			print("<font color='#00FF00'>[Akali Reborn] </font><font color='#FF00FF'>-</font><font color='#FF8B22'> SAC</font><font color='#FF00FF'>:</font><font color='#FF8B22'>Reborn</font><font color='#FFFFFF'> or </font><font color='#FF8B22'>SxOrbWalk</font><font color='#FFFFFF'> is required.</font>")
+			print("<font color='#FFFF00'>[Akali Reborn] </font><font color='#FF0000'>-</font><font color='#FF8B22'> SAC</font><font color='#FF0000'>:</font><font color='#FF8B22'>Reborn</font><font color='#FFFFFF'> or </font><font color='#FF8B22'>SxOrbWalk</font><font color='#FFFFFF'> is required.</font>")
 		end
 		settings:addParam("comboactive", "Combo Key", SCRIPT_PARAM_ONKEYDOWN, false, 32)
 		settings:addParam("harassKey", "Harass Key", SCRIPT_PARAM_ONKEYDOWN, false, GetKey("C"))
@@ -465,17 +465,17 @@ function OnLoad()
 			settings.AutoLevelOn = true
 		end
 		settings:addParam("theversion", "Version: ", SCRIPT_PARAM_INFO, tostring(_SCRIPT_VERSION_MENU))
-		print("<font color='#00FF00'>[Akali Reborn] <font color='#FF00FF'>-</font></font><font color='#FFFFFF'> by </font><font color='#FF8B22'>Furry</font> <font color='#FFFFFF'>Version </font><font color='#00FFFF'>" .. _SCRIPT_VERSION_MENU .. "</font><font color='#FFFFFF'> Patch: </font><font color='#00FFFF'>" .. _PATCH .. "</font>")
+		print("<font color='#FFFF00'>[Akali Reborn] <font color='#FF0000'>-</font></font><font color='#FFFFFF'> by </font><font color='#FF8B22'>Furry</font> <font color='#FFFFFF'>Version </font><font color='#00FFFF'>" .. _SCRIPT_VERSION_MENU .. "</font><font color='#FFFFFF'> Patch: </font><font color='#00FFFF'>" .. _PATCH .. "</font>")
 		if _AUTO_UPDATE then
-			GetAsyncWebResult("raw.github.com", "/FurryBoL/master/master/YiffyTwitch.version", function(result)
+			GetAsyncWebResult("raw.github.com", "/FurryBoL/master/master/AkaliReborn.version", function(result)
 				local latest = tonumber(result)
 				if latest > _SCRIPT_VERSION then
-					print("<font color='#00FF00'>[Akali Reborn] </font><font color='#FF00FF'>-</font><font color='#FFFFFF'> A update has been found and it is now downloading!</font>")
+					print("<font color='#FFFF00'>[Akali Reborn] </font><font color='#FF0000'>-</font><font color='#FFFFFF'> A update has been found and it is now downloading!</font>")
 					DelayAction(DownloadFile, 0, {
-						"https://raw.githubusercontent.com/FurryBoL/master/master/YiffyTwitch.lua",
+						"https://raw.githubusercontent.com/FurryBoL/master/master/AkaliReborn.lua",
 						_FILE_PATH,
 						function()
-							print("<font color='#00FF00'>[Akali Reborn] </font><font color='#FF00FF'>-</font><font color='#FFFFFF'> Script has been updated, please reload! (2xF9)</font>")
+							print("<font color='#FFFF00'>[Akali Reborn] </font><font color='#FF0000'>-</font><font color='#FFFFFF'> Script has been updated, please reload! (2xF9)</font>")
 						end
 					})
 				end
@@ -512,7 +512,7 @@ end
 --		                                                ░   
 
 function OnUnload()
-	print("<font color='#00FF00'>[Akali Reborn] </font><font color='#FF00FF'>-</font><font color='#FFFFFF'> Unloaded! </font>")
+	print("<font color='#FFFF00'>[Akali Reborn] </font><font color='#FF0000'>-</font><font color='#FFFFFF'> Unloaded! </font>")
 end
 
 --		▓█████▄  ▄▄▄       ███▄ ▄███▓ ▄▄▄        ▄████ ▓█████        ▄████▄   ▄▄▄       ██▓     ▄████▄  
@@ -895,7 +895,7 @@ function OnRemoveBuff(target, buff)
 			if settings.misc.Debug then
 				stealthW = false
 				if settings.misc.Debug and settings.misc.ChatDebug then
-					print("<font color='#00FF00'>[Akali Reborn] </font><font color='#FF00FF'>-</font><font color='#FFFFFF'> Akali is no longer Stealth!</font>")
+					print("<font color='#FFFF00'>[Akali Reborn] </font><font color='#FF0000'>-</font><font color='#FFFFFF'> Akali is no longer Stealth!</font>")
 				end
 			end
 			VisibleSelf = true
@@ -1315,8 +1315,8 @@ function showLeveledSpell(spelldraw)
 	elseif levelvariable == 3 then
 		SpellText = "R"
 	end
-	local spelldraw2 = " Spell " .. "<font color='#00FFFF'>(" .. SpellText .. ") <font color='#FF00FF'>-</font></font> is now " .. leveltext
-	print("<font color='#00FF00'>[Akali Reborn] <font color='#FF00FF'>-</font><font color='#FFFFFF'>" .. spelldraw2 .. "</font>")
+	local spelldraw2 = " Spell " .. "<font color='#00FFFF'>(" .. SpellText .. ") <font color='#FF0000'>-</font></font> is now " .. leveltext
+	print("<font color='#FFFF00'>[Akali Reborn] <font color='#FF0000'>-</font><font color='#FFFFFF'>" .. spelldraw2 .. "</font>")
 	DelayAction(function()
 		drawlevelup = false
 	end, settings.autolvl.DrawTextSlider)
@@ -1353,7 +1353,7 @@ function SkillOrder()
 end
 
 function Error()
-	print("<font color='#00FF00'>[Akali Reborn] </font><font color='#FF00FF'>-</font><font color='#FFFFFF'> There's something wrong with the AutoLeveler! Please configure and check your settings!</font>")
+	print("<font color='#FFFF00'>[Akali Reborn] </font><font color='#FF0000'>-</font><font color='#FFFFFF'> There's something wrong with the AutoLeveler! Please configure and check your settings!</font>")
 	settings.AutoLevelOn = false
 end
 
