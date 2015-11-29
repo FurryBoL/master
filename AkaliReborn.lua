@@ -11,7 +11,7 @@
 --		      ░  ░░  ░        ░  ░    ░  ░ ░           ░        ░  ░ ░          ░ ░     ░              ░ 
 --		                                                               ░ 
 -- by Furry
--- Version 1.2
+-- Version 1.3
 
 _AUTO_UPDATE = true -- Set this to false to prevent automatic updates
 
@@ -21,8 +21,8 @@ _AUTO_UPDATE = true -- Set this to false to prevent automatic updates
 --			[ ChangeLog ]
 
 if myHero.charName ~= 'Akali' then return end
-_SCRIPT_VERSION = 1.2
-_SCRIPT_VERSION_MENU = "1.2"
+_SCRIPT_VERSION = 1.3
+_SCRIPT_VERSION_MENU = "1.3"
 _FILE_PATH = SCRIPT_PATH .. GetCurrentEnv().FILE_NAME
 _PATCH = "5.23"
 
@@ -329,8 +329,8 @@ function OnLoad()
 		settings:addSubMenu("Misc", "misc")
 			settings.misc:addParam("Debug", "Debugger", SCRIPT_PARAM_ONOFF, true)
 			settings.misc:addParam("ChatDebug", "Add Chat Debug", SCRIPT_PARAM_ONOFF, false)
-			settings.misc:addParam("xAxis", "X Axis", SCRIPT_PARAM_SLICE, 150, 0, 1000, 0)
-			settings.misc:addParam("yAxis", "Y Axis", SCRIPT_PARAM_SLICE, 150, 0, 1000, 0)
+			settings.misc:addParam("xAxis", "X Axis", SCRIPT_PARAM_SLICE, 150, 0, 1230, 0)
+			settings.misc:addParam("yAxis", "Y Axis", SCRIPT_PARAM_SLICE, 150, 0, 750, 0)
 	end
 		settings:addSubMenu("Kill Steal", "killsteal")
 			settings.killsteal:addParam("killsteal", "Killsteal with Spells", SCRIPT_PARAM_ONOFF, true)
@@ -1417,11 +1417,11 @@ end
 function OnDraw()
 	if settings.misc.Debug then
 		local totalAP = myHero.ap * (1 + myHero.apPercent)
-		local World_x1 = settings.misc.xAxis
-		local World_x2 = 150 + settings.misc.xAxis
-		local World_x3 = 300 + settings.misc.xAxis
-		local World_x4 = 450 + settings.misc.xAxis
-		local World_y1 = settings.misc.yAxis
+		local World_x1 = 40 + settings.misc.xAxis
+		local World_x2 = 220 + settings.misc.xAxis
+		local World_x3 = 370 + settings.misc.xAxis
+		local World_x4 = 520 + settings.misc.xAxis
+		local World_y1 = 60 + settings.misc.yAxis
 		DrawText("" .. myHero.charName .. "", 35, World_x1 - 20, World_y1 - 50, ARGB(255, 0, 255, 255))
 		DrawText("Level: " .. myHero.level, 18, World_x1 + 85, World_y1 - 30, ARGB(255, 255, 255, 255))
 		DrawText("Attack Damage: (       +       ) = ", 15, World_x1 - 20, World_y1 - 10, ARGB(255, 255, 255, 255))
