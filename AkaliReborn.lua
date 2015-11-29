@@ -21,8 +21,8 @@ _AUTO_UPDATE = true -- Set this to false to prevent automatic updates
 --			[ ChangeLog ]
 
 if myHero.charName ~= 'Akali' then return end
-_SCRIPT_VERSION = 1.4
-_SCRIPT_VERSION_MENU = "1.4"
+_SCRIPT_VERSION = 1.5
+_SCRIPT_VERSION_MENU = "1.5"
 _FILE_PATH = SCRIPT_PATH .. GetCurrentEnv().FILE_NAME
 _PATCH = "5.23"
 
@@ -48,7 +48,8 @@ assert(load(Base64Decode("G0x1YVIAAQQEBAgAGZMNChoKAAAAAAAAAAAAAQIKAAAABgBAAEFAAA
 --		   ░ ░░    ▒   ▒▒ ░  ░▒ ░ ▒░ ▒ ░  ▒   ▒▒ ░▒░▒   ░ ░ ░ ▒  ░ ░ ░  ░░ ░▒  ░ ░
 --		     ░░    ░   ▒     ░░   ░  ▒ ░  ░   ▒    ░    ░   ░ ░      ░   ░  ░  ░  
 --		      ░        ░  ░   ░      ░        ░  ░ ░          ░  ░   ░  ░      ░  
---		     ░                                          ░ 
+--		     ░                                          ░
+
 class("Akali")
 function Akali:__init()
 	targetsWithQ = {}
@@ -109,9 +110,8 @@ local readytextE = false
 local etext = false
 local readytextR = false
 
-local DrawSpeelLines = false
+local DrawSpellLines = false
 local VisibleSelf = true
-local stealthLocation = 0
 local cfgpath = LIB_PATH.."Saves\\Akali_Reborn.cfg"
 local level, tolevel, point, leveltick, levelvariable, spellLevel, latency
 local enable = false
@@ -350,7 +350,7 @@ function OnLoad()
 			settings.farm:addParam("farmq", "Use Q Lane Clear", SCRIPT_PARAM_ONOFF, false)
 			settings.farm:addParam("farme", "Use E Lane Clear", SCRIPT_PARAM_ONOFF, false)
 			settings.farm:addParam("space", "", SCRIPT_PARAM_INFO, "")
-			settings.farm:addParam("space", "Jungle Creeps:", SCRIPT_PARAM_INFO, "")---------
+			settings.farm:addParam("space", "Jungle Creeps:", SCRIPT_PARAM_INFO, "")
 			settings.farm:addParam("farmqjng", "Use Q Jungle Creeps", SCRIPT_PARAM_ONOFF, true)
 			settings.farm:addParam("farmejng", "Use E Jungle Creeps", SCRIPT_PARAM_ONOFF, true)
 		settings:addSubMenu("Auto Level", "autolvl")
@@ -681,10 +681,10 @@ end
 --		 ░  ░  ░      ░  ░   ░           ░  ░      ░        ░  
 
 function Akali:harass(target)
-	if settings.harass.harassq and GetDistance(target) <= self.skills.SkillQ.range then
+	if settings.harass.harassq and self.skills.SkillQ.ready and GetDistance(target) <= self.skills.SkillQ.range then
 		self:Cast("Q", target)
 	end
-	if settings.harass.harasse and GetDistanceSqr(target) <= self.skills.SkillE.range * self.skills.SkillE.range then
+	if settings.harass.harasse and self.skills.SkillE.ready and GetDistanceSqr(target) <= self.skills.SkillE.range * self.skills.SkillE.range then
 		if settings.harass.EWaitQ then
 			if targetsWithQ[target.networkID] == nil then
 				self:Cast("E", target)
@@ -857,7 +857,7 @@ function OnCreateObj(obj)
 		Wobj = obj
 	end
 	if obj.name:find("Akali_Base_W_Speedlines_01.troy") and GetDistanceSqr(obj, myHero) <= 4900 then
-		DrawSpeelLines = true
+		DrawSpellLines = true
 	end
 	if obj.spellOwner == myHero and obj.name:find("missile") then
 		Gobj = obj
@@ -869,7 +869,7 @@ function OnDeleteObj(obj)
 		Wobj = nil
 	end
 	if obj.name and obj.name:find("Akali_Base_W_Speedlines_01.troy") then
-		DrawSpeelLines = false
+		DrawSpellLines = false
 	end
 	if obj.name == "Akali_Base_shadowDance_mis.troy" then
 		ValidR = false
@@ -912,7 +912,6 @@ function OnRemoveBuff(target, buff)
 				end
 			end
 			VisibleSelf = true
-			stealthLocation = 0
 		end
 		if buff.name == "AkaliMota" then
 			targetsWithQ[target.networkID] = nil
@@ -1024,7 +1023,7 @@ function VisualManager:OnDraw()
 	if settings.draws.DrawHitBox and not myHero.dead then
 		self:DrawCircle(myHero.x, myHero.y, myHero.z, myHero.boundingRadius, ARGB(table.unpack(settings.draws.color.HitBoxcolor)))
 	end
-	if DrawSpeelLines and not myHero.dead then
+	if DrawSpellLines and not myHero.dead then
 		DrawLine3D(myHero.x - 70, myHero.y, myHero.z - 70, myHero.x - 40, myHero.y, myHero.z - 40, 2, ARGB(255, 255, 255, 255))
 		DrawLine3D(myHero.x + 70, myHero.y, myHero.z - 70, myHero.x + 40, myHero.y, myHero.z - 40, 2, ARGB(255, 255, 255, 255))
 		DrawLine3D(myHero.x - 70, myHero.y, myHero.z + 70, myHero.x - 40, myHero.y, myHero.z + 40, 2, ARGB(255, 255, 255, 255))
@@ -1100,18 +1099,18 @@ function VisualManager:OnDraw()
 		DrawLine(w, h1/1.05, w, h2/1.97, w/1.75, ARGB(120, 63,236, 0 ))
 		DrawLine(w, h1, w, h2/2, w/1.8, ARGB(120, 50, 0 , 0 ))
 		DrawTextA(tostring("Welcome to Akali Reborn!"), WINDOW_H*.028, (WINDOW_W/2), (WINDOW_H*.18), ARGB(255, 0 , 255, 255),"center","center")
-		DrawTextA(tostring(""), WINDOW_H*.015, (WINDOW_W/2.65), (WINDOW_H*.210), ARGB(255, 255, 255, 255))
-		DrawTextA(tostring(""), WINDOW_H*.015, (WINDOW_W/2.65), (WINDOW_H*.225), ARGB(255, 255, 255, 255))
-		DrawTextA(tostring(""), WINDOW_H*.015, (WINDOW_W/2.65), (WINDOW_H*.240), ARGB(255, 255, 255, 255))
-		DrawTextA(tostring(""), WINDOW_H*.015, (WINDOW_W/2.65), (WINDOW_H*.255), ARGB(255, 255, 255, 255))
-		DrawTextA(tostring(""), WINDOW_H*.015, (WINDOW_W/2.65), (WINDOW_H*.270), ARGB(255, 255, 255, 255))
-		DrawTextA(tostring(""), WINDOW_H*.015, (WINDOW_W/2.65), (WINDOW_H*.285), ARGB(255, 255, 255, 255))
-		DrawTextA(tostring(""), WINDOW_H*.015, (WINDOW_W/2.65), (WINDOW_H*.300), ARGB(255, 255, 255, 255))
-		DrawTextA(tostring(""), WINDOW_H*.015, (WINDOW_W/2.65), (WINDOW_H*.315), ARGB(255, 255, 255, 255))
+		DrawTextA(tostring("Hold Spacebar to cast standard R + Q Combo."), WINDOW_H*.015, (WINDOW_W/2.65), (WINDOW_H*.210), ARGB(255, 255, 255, 255))
+		DrawTextA(tostring("Script will not E unless Target does not have Q on them."), WINDOW_H*.015, (WINDOW_W/2.65), (WINDOW_H*.225), ARGB(255, 255, 255, 255))
+		DrawTextA(tostring("You can turn off this Setting if you wish.."), WINDOW_H*.015, (WINDOW_W/2.65), (WINDOW_H*.240), ARGB(255, 255, 255, 255))
+		DrawTextA(tostring("Script will Auto Detect Ignite(?) and will add it to KillSteal setting"), WINDOW_H*.015, (WINDOW_W/2.65), (WINDOW_H*.255), ARGB(255, 255, 255, 255))
+		DrawTextA(tostring("Script will cast ultimate again if:"), WINDOW_H*.015, (WINDOW_W/2.65), (WINDOW_H*.270), ARGB(255, 255, 255, 255))
+		DrawTextA(tostring("  You are under % HP (configurable)"), WINDOW_H*.015, (WINDOW_W/2.65), (WINDOW_H*.285), ARGB(255, 255, 255, 255))
+		DrawTextA(tostring("  If you can kill the target with another Roation + Ultimate"), WINDOW_H*.015, (WINDOW_W/2.65), (WINDOW_H*.300), ARGB(255, 255, 255, 255))
+		DrawTextA(tostring("Please make setting adjustments in the Drawings menu to your liking! :)"), WINDOW_H*.015, (WINDOW_W/2.65), (WINDOW_H*.315), ARGB(255, 255, 255, 255))
 		DrawTextA(tostring(""), WINDOW_H*.015, (WINDOW_W/2.65), (WINDOW_H*.330), ARGB(255, 255, 255, 255))
 		DrawTextA(tostring("VIP Users unlock:"), WINDOW_H*.015, (WINDOW_W/2.65), (WINDOW_H*.345), ARGB(225, 225, 140, 0))
-		DrawTextA(tostring("  Auto Leveler (updated 5.23)"), WINDOW_H*.015, (WINDOW_W/2.65), (WINDOW_H*.360), ARGB(255, 255, 255, 255))
-		DrawTextA(tostring("  Skin Changer (updated 5.23)"), WINDOW_H*.015, (WINDOW_W/2.65), (WINDOW_H*.375), ARGB(255, 255, 255, 255))
+		DrawTextA(tostring("  Auto Leveler (updated " .. _PATCH ..")"), WINDOW_H*.015, (WINDOW_W/2.65), (WINDOW_H*.360), ARGB(255, 255, 255, 255))
+		DrawTextA(tostring("  Advanced Debugger"), WINDOW_H*.015, (WINDOW_W/2.65), (WINDOW_H*.375), ARGB(255, 255, 255, 255))
 		local w, h1, h2 = (WINDOW_W*0.49), (WINDOW_H*.70), (WINDOW_H*.75)
 		DrawLine(w, h1/1.775, w, h2/1.68, w*.11, ARGB(255, 0 ,255,255))
 		--DrawLine(w*.98, h1*.98, w*.98, h2*.98, w*.1*.98, ARGB(205,255,255,255))
@@ -1246,9 +1245,9 @@ end
 
 class("Minions")
 function Minions:__init()
-	self.enemyMinions = minionManager(MINION_ENEMY, 670, player, MINION_SORT_HEALTH_ASC)
-	self.allyMinions = minionManager(MINION_ALLY, 670, player, MINION_SORT_HEALTH_ASC)
-	self.jungleMinions = minionManager(MINION_JUNGLE, 670, myHero, MINION_SORT_HEALTH_ASC)
+	self.enemyMinions = minionManager(MINION_ENEMY, 740, player, MINION_SORT_HEALTH_ASC)
+	self.allyMinions = minionManager(MINION_ALLY, 740, player, MINION_SORT_HEALTH_ASC)
+	self.jungleMinions = minionManager(MINION_JUNGLE, 740, myHero, MINION_SORT_HEALTH_ASC)
 	return self
 end
 
