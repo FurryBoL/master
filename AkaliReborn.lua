@@ -11,7 +11,7 @@
 --		      ░  ░░  ░        ░  ░    ░  ░ ░           ░        ░  ░ ░          ░ ░     ░              ░ 
 --		                                                               ░ 
 -- by Furry
--- Version 1.3
+-- Version 1.4
 
 _AUTO_UPDATE = true -- Set this to false to prevent automatic updates
 
@@ -21,8 +21,8 @@ _AUTO_UPDATE = true -- Set this to false to prevent automatic updates
 --			[ ChangeLog ]
 
 if myHero.charName ~= 'Akali' then return end
-_SCRIPT_VERSION = 1.3
-_SCRIPT_VERSION_MENU = "1.3"
+_SCRIPT_VERSION = 1.4
+_SCRIPT_VERSION_MENU = "1.4"
 _FILE_PATH = SCRIPT_PATH .. GetCurrentEnv().FILE_NAME
 _PATCH = "5.23"
 
@@ -715,7 +715,7 @@ function Akali:lastHit()
 					self:Cast("Q", target)
 					break
 				end
-			elseif not settings.farm.lasthitq2 then
+			elseif not settings.farm.lasthitq2 or not self.skills.SkillE.ready then
 				self:Cast("Q", target)
 				break
 			end
