@@ -11,7 +11,7 @@
 --		      ░  ░░  ░        ░  ░    ░  ░ ░           ░        ░  ░ ░          ░ ░     ░              ░ 
 --		                                                               ░ 
 -- by Furry
--- Version 1.1
+-- Version 1.2
 
 _AUTO_UPDATE = true -- Set this to false to prevent automatic updates
 
@@ -21,8 +21,8 @@ _AUTO_UPDATE = true -- Set this to false to prevent automatic updates
 --			[ ChangeLog ]
 
 if myHero.charName ~= 'Akali' then return end
-_SCRIPT_VERSION = 1.1
-_SCRIPT_VERSION_MENU = "1.1"
+_SCRIPT_VERSION = 1.2
+_SCRIPT_VERSION_MENU = "1.2"
 _FILE_PATH = SCRIPT_PATH .. GetCurrentEnv().FILE_NAME
 _PATCH = "5.23"
 
@@ -329,6 +329,8 @@ function OnLoad()
 		settings:addSubMenu("Misc", "misc")
 			settings.misc:addParam("Debug", "Debugger", SCRIPT_PARAM_ONOFF, true)
 			settings.misc:addParam("ChatDebug", "Add Chat Debug", SCRIPT_PARAM_ONOFF, false)
+			settings.misc:addParam("xAxis", "X Axis", SCRIPT_PARAM_SLICE, 150, 0, 1000, 0)
+			settings.misc:addParam("yAxis", "Y Axis", SCRIPT_PARAM_SLICE, 150, 0, 1000, 0)
 	end
 		settings:addSubMenu("Kill Steal", "killsteal")
 			settings.killsteal:addParam("killsteal", "Killsteal with Spells", SCRIPT_PARAM_ONOFF, true)
@@ -369,7 +371,7 @@ function OnLoad()
 				enable = true
 			end
 		settings:addSubMenu("Drawing", "draws")
-			settings.draws:addParam("DrawQ", "Draw Invisibility", SCRIPT_PARAM_ONOFF, true)
+			settings.draws:addParam("DrawVisi", "Draw Invisibility", SCRIPT_PARAM_ONOFF, true)
 			settings.draws:addParam("DrawQ", "Draw Q Range", SCRIPT_PARAM_ONOFF, true)
 			settings.draws:addParam("DrawW", "Draw W Range", SCRIPT_PARAM_ONOFF, true)
 			settings.draws:addParam("DrawW2", "Draw W Radius", SCRIPT_PARAM_ONOFF, true)
@@ -1083,7 +1085,7 @@ function VisualManager:OnDraw()
 			end
 		end
 	end
-	if settings.draws.DrawQ then
+	if settings.draws.DrawVisi then
 		local VisibleSelfvec = WorldToScreen(D3DXVECTOR3(myHero.x, myHero.y, myHero.z))
 		if not myHero.dead then
 			if not VisibleSelf then
@@ -1415,11 +1417,11 @@ end
 function OnDraw()
 	if settings.misc.Debug then
 		local totalAP = myHero.ap * (1 + myHero.apPercent)
-		local World_x1 = 150
-		local World_x2 = 330
-		local World_x3 = 510
-		local World_x4 = 690
-		local World_y1 = 150
+		local World_x1 = settings.misc.xAxis
+		local World_x2 = 150 + settings.misc.xAxis
+		local World_x3 = 300 + settings.misc.xAxis
+		local World_x4 = 450 + settings.misc.xAxis
+		local World_y1 = settings.misc.yAxis
 		DrawText("" .. myHero.charName .. "", 35, World_x1 - 20, World_y1 - 50, ARGB(255, 0, 255, 255))
 		DrawText("Level: " .. myHero.level, 18, World_x1 + 85, World_y1 - 30, ARGB(255, 255, 255, 255))
 		DrawText("Attack Damage: (       +       ) = ", 15, World_x1 - 20, World_y1 - 10, ARGB(255, 255, 255, 255))
