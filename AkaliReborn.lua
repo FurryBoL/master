@@ -11,7 +11,7 @@
 --		      ░  ░░  ░        ░  ░    ░  ░ ░           ░        ░  ░ ░          ░ ░     ░              ░ 
 --		                                                               ░ 
 -- by Furry
--- Version 1.4
+-- Version 1.5
 
 _AUTO_UPDATE = true -- Set this to false to prevent automatic updates
 
@@ -112,7 +112,7 @@ local readytextR = false
 
 local DrawSpellLines = false
 local VisibleSelf = true
-local cfgpath = LIB_PATH.."Saves\\Akali_Reborn.cfg"
+local cfgpath = LIB_PATH.."Saves\\Akali_Reborn_2.cfg"
 local level, tolevel, point, leveltick, levelvariable, spellLevel, latency
 local enable = false
 local drawlevelup = false
