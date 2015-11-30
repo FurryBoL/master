@@ -1,6 +1,6 @@
 -- Yiffy Twitch by Furry
 -- Encrypted by burn [Kappa^Bilbao]
--- Version 4.1 [Yiffy Twitch re-release]
+-- Version 4.2 [Yiffy Twitch re-release]
 
 
 _AUTO_UPDATE = true -- Set this to false to prevent automatic updates
@@ -11,8 +11,8 @@ _AUTO_UPDATE = true -- Set this to false to prevent automatic updates
 --			[ ChangeLog ]
 
 if myHero.charName ~= 'Twitch' then return end
-_SCRIPT_VERSION = 4.1
-_SCRIPT_VERSION_MENU = "4.1"
+_SCRIPT_VERSION = 4.2
+_SCRIPT_VERSION_MENU = "4.2"
 _FILE_PATH = SCRIPT_PATH .. GetCurrentEnv().FILE_NAME
 _PATCH = "5.23"
 
@@ -719,6 +719,7 @@ function VisualManager:OnDraw()
 			if settings.draws.executeIndicator and myHero:CanUseSpell(_E) == READY and myHero:GetSpellData(_E).level > 0 then
 				if DeadlyVenom[target.networkID] ~= nil then
 					currLine = 1		
+					DrawLineHPBar2(Twitch:GetMyDmg(target), currLine, "", target)
 					DrawLineHPBar(Twitch:GetEDmg(target), currLine, "E Damage " .. math.round(Twitch:GetEDmg(target)), target)
 					currLine = currLine + 1
 				end
@@ -1051,6 +1052,22 @@ function DrawLineHPBar(damage, line, text, unit)
 		DrawLine(Offs_X-150, StartPos.y-(30+(line*15)), Offs_X-150, StartPos.y-2, 2, ARGB(mytrans, my_redpart,255,0))
 		DrawText(tostring(text),15,Offs_X-148,StartPos.y-(30+(line*15)), ARGB(mytrans, my_redpart,255,0))
 	end
+end
+
+function DrawLineHPBar2(damage, line, text, unit)
+	local thedmg = 0
+	if damage >= unit.maxHealth then
+		thedmg = unit.maxHealth-1
+	else
+		thedmg=damage
+	end
+	local StartPos, EndPos = GetHPBarPos(unit)
+	local Real_X = StartPos.x+24
+	local Offs_X = (Real_X + ((unit.health-thedmg)/unit.maxHealth) * (EndPos.x - StartPos.x - 2))
+	if Offs_X < Real_X then
+		Offs_X = Real_X
+	end
+	DrawLine(Offs_X-150, StartPos.y-(line*15), StartPos.x-20, StartPos.y-(line*15), 10, ARGB(140, 0, 0, 0))
 end
 
 class("Minions")
