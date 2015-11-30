@@ -719,7 +719,7 @@ function VisualManager:OnDraw()
 			if settings.draws.executeIndicator and myHero:CanUseSpell(_E) == READY and myHero:GetSpellData(_E).level > 0 then
 				if DeadlyVenom[target.networkID] ~= nil then
 					currLine = 1		
-					DrawLineHPBar2(Twitch:GetMyDmg(target), currLine, "", target)
+					DrawLineHPBar2(Twitch:GetEDmg(target), currLine, "", target)
 					DrawLineHPBar(Twitch:GetEDmg(target), currLine, "E Damage " .. math.round(Twitch:GetEDmg(target)), target)
 					currLine = currLine + 1
 				end
