@@ -1,6 +1,6 @@
 -- Yiffy Twitch by Furry
 -- Encrypted by burn [Kappa^Bilbao]
--- Version 4.0 [Yiffy Twitch re-release]
+-- Version 4.1 [Yiffy Twitch re-release]
 
 
 _AUTO_UPDATE = true -- Set this to false to prevent automatic updates
@@ -11,8 +11,8 @@ _AUTO_UPDATE = true -- Set this to false to prevent automatic updates
 --			[ ChangeLog ]
 
 if myHero.charName ~= 'Twitch' then return end
-_SCRIPT_VERSION = 4.0
-_SCRIPT_VERSION_MENU = "4.0"
+_SCRIPT_VERSION = 4.1
+_SCRIPT_VERSION_MENU = "4.1"
 _FILE_PATH = SCRIPT_PATH .. GetCurrentEnv().FILE_NAME
 _PATCH = "5.23"
 
@@ -216,6 +216,8 @@ function OnLoad()
 		settings:addSubMenu("Misc", "misc")
 			settings.misc:addParam("Debug", "Debugger", SCRIPT_PARAM_ONOFF, true)
 			settings.misc:addParam("ChatDebug", "Add Chat Debug", SCRIPT_PARAM_ONOFF, false)
+			settings.misc:addParam("xAxis", "X Axis", SCRIPT_PARAM_SLICE, 150, 0, 1230, 0)
+			settings.misc:addParam("yAxis", "Y Axis", SCRIPT_PARAM_SLICE, 150, 0, 750, 0)
 			settings.misc:addParam("Mode","Prediction Mode",SCRIPT_PARAM_LIST,1,{"VPrediction"})
 			settings.misc:addParam("VPHitChance","VPrediction HitChance",SCRIPT_PARAM_LIST,3,{"[0]Target Position","[1]Low Hitchance","[2]High Hitchance","[3]Target slowed/close","[4]Target immobile","[5]Target Dashing"})
 			settings.misc:addParam("VIPHitChance","VIP HitChance: ",SCRIPT_PARAM_SLICE,0.7,0.1,1,2)
@@ -426,7 +428,14 @@ function Twitch:KillSteal()
 end
 
 function Twitch:GetDrawText(target)
--- [chucka, chucka, chucka]
+	local DmgTable = {
+		E = Twitch:GetEDmg(target),
+	}
+	if DmgTable.E > target.health then
+		return "E", RGBA(0, 255, 0, 255)
+	else
+		return "Can't Kill Yet", RGBA(255, 0, 0, 255)
+	end
 end
 
 function Twitch:Combo(target)
@@ -568,7 +577,6 @@ function PoisonStacker(obj, number)
 		end
 	end
 end
-
 
 function OnProcessSpell(unit, buff)
 	if unit and buff and unit.isMe and buff.name == myHero:GetSpellData(_Q).name then
@@ -961,7 +969,7 @@ function DrawBar:draw()
 				local baseY = barPos.y + barOffset.y * 50 + 12.5
 				local yoffset = 10
 				if settings.draws.lineoffset then
-					yoffset = 20
+					yoffset = 30
 				end
 				local px = baseX
 				local py = baseY+yoffset
@@ -1242,11 +1250,11 @@ end
 function OnDraw()
 	if settings.misc.Debug then
 		local totalAP = myHero.ap * (1 + myHero.apPercent)
-		local World_x1 = 150
-		local World_x2 = 330
-		local World_x3 = 510
-		local World_x4 = 690
-		local World_y1 = 150
+		local World_x1 = 40 + settings.misc.xAxis
+		local World_x2 = 220 + settings.misc.xAxis
+		local World_x3 = 370 + settings.misc.xAxis
+		local World_x4 = 520 + settings.misc.xAxis
+		local World_y1 = 60 + settings.misc.yAxis
 		DrawText("" .. myHero.charName .. "", 35, World_x1 - 20, World_y1 - 50, ARGB(255, 0, 255, 255))
 		DrawText("Level: " .. myHero.level, 18, World_x1 + 85, World_y1 - 30, ARGB(255, 255, 255, 255))
 		DrawText("Attack Damage: (       +       ) = ", 15, World_x1 - 20, World_y1 - 10, ARGB(255, 255, 255, 255))
