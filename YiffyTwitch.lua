@@ -91,16 +91,16 @@ local etext = false
 local readytextR = false
 
 local DeadlyVenom = {}
+local VP
+local VisibleSelf = true
+local stealthLocation = 0
+local cfgpath = LIB_PATH.."Saves\\Yiffy_Twitch_2.cfg"
 local skinsPB = {}
 local skinObjectPos = nil
 local skinHeader = nil
 local dispellHeader = nil
 local skinH = nil
 local skinHPos = nil
-local VP
-local VisibleSelf = true
-local stealthLocation = 0
-local cfgpath = LIB_PATH.."Saves\\Yiffy_Twitch_2.cfg"
 local level, tolevel, point, leveltick, levelvariable, spellLevel, latency
 local enable = false
 local drawlevelup = false
