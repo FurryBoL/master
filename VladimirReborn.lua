@@ -2,7 +2,7 @@
 -- by Furry
 -- Version 1.0
 
-_AUTO_UPDATE = false -- Set this to false to prevent automatic updates
+_AUTO_UPDATE = true -- Set this to false to prevent automatic updates
 
 --			[ ChangeLog ]
 --  Check forum:
