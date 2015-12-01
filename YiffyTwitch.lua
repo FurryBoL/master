@@ -1,6 +1,6 @@
 -- Yiffy Twitch by Furry
 -- Encrypted by burn [Kappa^Bilbao]
--- Version 4.2 [Yiffy Twitch re-release]
+-- Version 4.3 [Yiffy Twitch re-release]
 
 
 _AUTO_UPDATE = true -- Set this to false to prevent automatic updates
@@ -11,8 +11,8 @@ _AUTO_UPDATE = true -- Set this to false to prevent automatic updates
 --			[ ChangeLog ]
 
 if myHero.charName ~= 'Twitch' then return end
-_SCRIPT_VERSION = 4.2
-_SCRIPT_VERSION_MENU = "4.2"
+_SCRIPT_VERSION = 4.3
+_SCRIPT_VERSION_MENU = "4.3"
 _FILE_PATH = SCRIPT_PATH .. GetCurrentEnv().FILE_NAME
 _PATCH = "5.23"
 
@@ -91,6 +91,12 @@ local etext = false
 local readytextR = false
 
 local DeadlyVenom = {}
+local skinsPB = {}
+local skinObjectPos = nil
+local skinHeader = nil
+local dispellHeader = nil
+local skinH = nil
+local skinHPos = nil
 local VP
 local VisibleSelf = true
 local stealthLocation = 0
@@ -99,6 +105,11 @@ local level, tolevel, point, leveltick, levelvariable, spellLevel, latency
 local enable = false
 local drawlevelup = false
 local leveltext = ""
+
+function CurrentTimeInMillis()
+	return (os.clock() * 1000);
+end
+local lastTimeTickCalled = 0
 
 function Twitch:OnTick()
 	settings.target = self:GetTarget()
@@ -162,6 +173,13 @@ function Twitch:OnTick()
 			end
 		else
 			StealthProcess.hp = myHero.health
+		end
+	end
+	if ((CurrentTimeInMillis() - lastTimeTickCalled) > 200) then
+		lastTimeTickCalled = CurrentTimeInMillis()
+		if settings.selectedTwitchSkin ~= lastSkin then
+			lastSkin = settings.selectedTwitchSkin
+			SendSkinPacket(myHero.charName, skinsPB[settings.selectedTwitchSkin], myHero.networkID)
 		end
 	end
 	if not settings.AutoLevelOn or not enable then
@@ -349,6 +367,19 @@ function OnLoad()
 		end
 		settings:addParam("thepatch", "Patch:", SCRIPT_PARAM_INFO, _PATCH)
 		settings:addParam("furry", "Yiffy Twitch By:", SCRIPT_PARAM_INFO, "Furry")
+		if VIP_USER then
+			settings:addParam("selectedTwitchSkin", "Skin Changer", SCRIPT_PARAM_LIST, 1, {
+				[1] = 'Off',
+				[2] = 'Original',
+				[3] = 'Kingpin',
+				[4] = 'Whistler Village',
+				[5] = 'Medieval',
+				[6] = 'Gangster',
+				[7] = 'Vandal',
+				[8] = 'Pickpocket',
+				[9] = 'SSW',
+			})
+		end
 				settings:permaShow("comboactive")
 				settings:permaShow("harassKey")
 				settings:permaShow("AutoLevelOn")
@@ -368,6 +399,9 @@ end
 
 function OnUnload()
 	print("<font color='#00FF00'>[Yiffy Twitch] </font><font color='#FF00FF'>-</font><font color='#FFFFFF'> Unloaded! </font>")
+	if VIP_USER then
+		SendSkinPacket(myHero.charName, nil, myHero.networkID)
+	end
 end
 
 function Twitch:checks()
@@ -806,11 +840,11 @@ function VisualManager:OnDraw()
 		DrawTextA(tostring("Script will Auto Detect Ignite(?) and will add it to KillSteal setting"), WINDOW_H*.015, (WINDOW_W/2.65), (WINDOW_H*.255), ARGB(255, 255, 255, 255))
 		DrawTextA(tostring("When you Recall if you have Q available script will recal invisible"), WINDOW_H*.015, (WINDOW_W/2.65), (WINDOW_H*.270), ARGB(255, 255, 255, 255))
 		DrawTextA(tostring("Please make setting adjustments in the Drawings menu to your liking! :)"), WINDOW_H*.015, (WINDOW_W/2.65), (WINDOW_H*.285), ARGB(255, 255, 255, 255))
-		DrawTextA(tostring(""), WINDOW_H*.015, (WINDOW_W/2.65), (WINDOW_H*.300), ARGB(255, 255, 255, 255))
-		DrawTextA(tostring("Script should Auto E when killable"), WINDOW_H*.015, (WINDOW_W/2.65), (WINDOW_H*.315), ARGB(255, 255, 255, 255))
-		DrawTextA(tostring(""), WINDOW_H*.015, (WINDOW_W/2.65), (WINDOW_H*.330), ARGB(255, 255, 255, 255))
-		DrawTextA(tostring("VIP Users unlock:"), WINDOW_H*.015, (WINDOW_W/2.65), (WINDOW_H*.345), ARGB(225, 225, 140, 0))
-		DrawTextA(tostring("  Advanced Debugger"), WINDOW_H*.015, (WINDOW_W/2.65), (WINDOW_H*.360), ARGB(255, 255, 255, 255))
+		DrawTextA(tostring("Script should Auto E when killable"), WINDOW_H*.015, (WINDOW_W/2.65), (WINDOW_H*.300), ARGB(255, 255, 255, 255))
+		DrawTextA(tostring(""), WINDOW_H*.015, (WINDOW_W/2.65), (WINDOW_H*.315), ARGB(255, 255, 255, 255))
+		DrawTextA(tostring("VIP Users unlock:"), WINDOW_H*.015, (WINDOW_W/2.65), (WINDOW_H*.330), ARGB(255, 255, 255, 255))
+		DrawTextA(tostring("  Advanced Debugger"), WINDOW_H*.015, (WINDOW_W/2.65), (WINDOW_H*.345), ARGB(225, 225, 140, 0))
+		DrawTextA(tostring("  Skin Changer (updated 5.23)"), WINDOW_H*.015, (WINDOW_W/2.65), (WINDOW_H*.360), ARGB(255, 255, 255, 255))
 		DrawTextA(tostring("  Auto Leveler (updated 5.23)"), WINDOW_H*.015, (WINDOW_W/2.65), (WINDOW_H*.375), ARGB(255, 255, 255, 255))
 		local w, h1, h2 = (WINDOW_W*0.49), (WINDOW_H*.70), (WINDOW_H*.75)
 		DrawLine(w, h1/1.775, w, h2/1.68, w*.11, ARGB(255, 0 ,255,255))
@@ -882,7 +916,6 @@ function DrawBar:__init()
 	self.bars = {}
 end
 
--- Thanks S1mple
 function DrawBar:addLine(target, starttime, endtime, alpha, red, green, blue, alphafade, redfade, greenfade, bluefade, inc)
 	if not target then target = myHero end
 	if not starttime then error("starttime required") end
@@ -1113,14 +1146,14 @@ AddDrawCallback(function()
 	db:draw()
 end)
 
-function OnWndMsg(a, b)
-	if a == KEY_DOWN and settings.Qsettings.AlwaysQB and myHero:CanUseSpell(_Q) == READY and b == GetKey("B") then
+function OnWndMsg(Type, Key)
+	if myHero:GetSpellData(_Q).level >= 4 and Type == KEY_DOWN and settings.Qsettings.AlwaysQB and myHero:CanUseSpell(_Q) == READY and Key == GetKey("B") then
 		if settings.misc.Debug and settings.misc.ChatDebug then
 			print("<font color='#00FF00'>[Yiffy Twitch] </font><font color='#FF00FF'>-</font><font color='#FFFFFF'> Attempting to Recall invisible!</font>")
 		end
 		CastSpell(_Q)
 	end
-	if a == WM_LBUTTONDOWN then
+	if Type == WM_LBUTTONDOWN then
 		if PopUp1 then
 			PopUp1 = false
 		end
@@ -1236,6 +1269,66 @@ function countTable(spelldraw)
 		spelldraw2 = spelldraw2 + 1
 	end
 	return spelldraw2
+end
+
+if (string.find(GetGameVersion(), 'Releases/5.23') ~= nil) then
+	skinsPB = {
+		[1] = nil,
+		[2] = 0x74,
+		[3] = 0xF4,
+		[4] = 0xB4,
+		[5] = 0x34,
+		[6] = 0x54,
+		[7] = 0xD4,
+		[8] = 0x94,
+		[9] = 0x14,
+	}
+	skinObjectPos = 11
+	skinHeader = 0x13
+	dispellHeader = 0x13B
+	skinH = 0x74
+	skinHPos = 11
+end
+
+	-- Skin Order:
+		--|>  Original
+		--|>  Kingpin
+		--|>  Whistler Village
+		--|>  Medieval
+		--|>  Gangster
+		--|>  Vandal
+		--|>  Pickpocket
+		--|>  SSW
+
+function SendSkinPacket(mObject, skinPB, networkID)
+	if (string.find(GetGameVersion(), 'Releases/5.23') ~= nil) then
+		local mP = CLoLPacket(0x13)
+		mP.vTable = 0xF4FDE0
+		mP:EncodeF(myHero.networkID)
+		mP:Encode4(0x00000000)
+		mP:Encode1(0x00)
+		if (skinPB == nil) then
+			mP:Encode4(0x2F2F2F2F)
+		else
+			mP:Encode1(skinPB)
+			for I = 1, 3 do
+				mP:Encode1(0x74)
+			end
+			end
+		mP:Encode1(0x75)
+		for I = 1, string.len(mObject) do
+			mP:Encode1(string.byte(string.sub(mObject, I, I)))
+		end
+		for I = 1, (16 - string.len(mObject)) do
+			mP:Encode1(0x00)
+		end
+		mP:Encode4(0x00000000)
+		mP:Encode4(0x0000000F)
+		mP:Encode4(0x00000000)
+		mP:Encode1(0x00)
+		mP:Hide()
+		RecvPacket(mP)
+	end
 end
 
 --Debug
