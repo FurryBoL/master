@@ -1,11 +1,17 @@
 -- Katarina Reborn by Furry
 -- Encrypted by http://puu.sh/lAyMg/e0783e32ea.jpg
--- Version 2.1
+-- Version 2.2
+
+_AUTO_UPDATE = true -- Set this to false to prevent automatic updates
+
+--			[ ChangeLog ]
+--  Check forum:
+--  http://forum.botoflegends.com/topic/84048-vipfreesxorbsacr-katarina-reborn-patch-523/
+--			[ ChangeLog ]
 
 if myHero.charName ~= 'Katarina' then return end
-_AUTO_UPDATE = true -- Set this to false to prevent automatic updates
-_SCRIPT_VERSION = 2.1
-_SCRIPT_VERSION_MENU = "2.1"
+_SCRIPT_VERSION = 2.2
+_SCRIPT_VERSION_MENU = "2.2"
 _PATCH = "5.23"
 _GAME_VERSION = string.find(GetGameVersion(), 'Releases/5.23') -- Change this after a patch if you want errors and bugsplats :)
 _GAME_VERSION_LEVELER = string.find(GetGameVersion(), 'Releases/5.23') -- Change this after a patch if you want errors and bugsplats :)
