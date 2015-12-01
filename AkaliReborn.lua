@@ -11,7 +11,7 @@
 --		      ░  ░░  ░        ░  ░    ░  ░ ░           ░        ░  ░ ░          ░ ░     ░              ░ 
 --		                                                               ░ 
 -- by Furry
--- Version 1.6
+-- Version 1.7
 
 _AUTO_UPDATE = true -- Set this to false to prevent automatic updates
 
@@ -21,8 +21,8 @@ _AUTO_UPDATE = true -- Set this to false to prevent automatic updates
 --			[ ChangeLog ]
 
 if myHero.charName ~= 'Akali' then return end
-_SCRIPT_VERSION = 1.6
-_SCRIPT_VERSION_MENU = "1.6"
+_SCRIPT_VERSION = 1.7
+_SCRIPT_VERSION_MENU = "1.7"
 _FILE_PATH = SCRIPT_PATH .. GetCurrentEnv().FILE_NAME
 _PATCH = "5.23"
 _GAME_VERSION = string.find(GetGameVersion(), 'Releases/5.23') -- Change this after a patch if you want errors and bugsplats :)
@@ -1496,7 +1496,7 @@ end
  --		░                   ░  
 
 function OnTick()
-	if settings.misc.Debug then
+	if VIP_USER and settings.misc.Debug then
 		if myHero:CanUseSpell(_Q) == READY then
 			readytextQ = true
 		else
@@ -1521,7 +1521,7 @@ function OnTick()
 end
 
 function OnDraw()
-	if settings.misc.Debug then
+	if VIP_USER and settings.misc.Debug then
 		local totalAP = myHero.ap * (1 + myHero.apPercent)
 		local World_x1 = 40 + settings.misc.xAxis
 		local World_x2 = 220 + settings.misc.xAxis
