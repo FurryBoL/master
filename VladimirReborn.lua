@@ -2467,7 +2467,9 @@ function OnLoad()
 				settings:permaShow("harassKey")
 				settings:permaShow("lastHit")
 				settings:permaShow("clearKey")
+			if VIP_USER then
 				settings:permaShow("AutoLevelOn")
+			end
 	if FileExist(cfgpath) == false then
 		settings.instruct = true
 		WriteFile("Delete this file if you want to run instructions on first load.", cfgpath)
