@@ -1,6 +1,6 @@
 -- Yiffy Twitch by Furry
 -- Encrypted by burn [Kappa^Bilbao]
--- Version 4.5 [Yiffy Twitch re-release]
+-- Version 4.6 [Yiffy Twitch re-release]
 
 
 _AUTO_UPDATE = true -- Set this to false to prevent automatic updates
@@ -11,8 +11,8 @@ _AUTO_UPDATE = true -- Set this to false to prevent automatic updates
 --			[ ChangeLog ]
 
 if myHero.charName ~= 'Twitch' then return end
-_SCRIPT_VERSION = 4.5
-_SCRIPT_VERSION_MENU = "4.5"
+_SCRIPT_VERSION = 4.6
+_SCRIPT_VERSION_MENU = "4.6"
 _FILE_PATH = SCRIPT_PATH .. GetCurrentEnv().FILE_NAME
 _PATCH = "5.23"
 _GAME_VERSION = string.find(GetGameVersion(), 'Releases/5.23') -- Change this after a patch if you want errors and bugsplats :)
@@ -384,7 +384,9 @@ function OnLoad()
 		end
 				settings:permaShow("comboactive")
 				settings:permaShow("harassKey")
+			if VIP_USER then
 				settings:permaShow("AutoLevelOn")
+			end
 	if FileExist(cfgpath) == false then
 		settings.instruct = true
 		WriteFile("Delete this file if you want to run instructions on first load.", cfgpath)
