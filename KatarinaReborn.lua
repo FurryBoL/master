@@ -1,6 +1,6 @@
 -- Katarina Reborn by Furry
 -- Encrypted by http://puu.sh/lAyMg/e0783e32ea.jpg
--- Version 2.3
+-- Version 2.4
 
 _AUTO_UPDATE = true -- Set this to false to prevent automatic updates
 
@@ -10,8 +10,8 @@ _AUTO_UPDATE = true -- Set this to false to prevent automatic updates
 --			[ ChangeLog ]
 
 if myHero.charName ~= 'Katarina' then return end
-_SCRIPT_VERSION = 2.3
-_SCRIPT_VERSION_MENU = "2.3"
+_SCRIPT_VERSION = 2.4
+_SCRIPT_VERSION_MENU = "2.4"
 _PATCH = "5.23"
 _GAME_VERSION = string.find(GetGameVersion(), 'Releases/5.23') -- Change this after a patch if you want errors and bugsplats :)
 _GAME_VERSION_LEVELER = string.find(GetGameVersion(), 'Releases/5.23') -- Change this after a patch if you want errors and bugsplats :)
@@ -25,7 +25,7 @@ if (_GAME_VERSION_LEVELER ~= nil) then
 			[_R] = 0xC1,
 		}
 		local p = CLoLPacket(0x0033)
-		p.vTable = 0xE556E8
+		p.vTable = 0xEECE14
 		p:EncodeF(myHero.networkID)
 		p:Encode1(0x73)
 		for i = 1, 4 do p:Encode1(0xF9) end
