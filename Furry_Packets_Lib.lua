@@ -15,9 +15,9 @@ _GAME_VERSION_LEVELER = string.find(GetGameVersion(), 'Releases/5.23') -- Change
 
 
 if _AUTO_UPDATE_FURRY then
-	GetAsyncWebResult("raw.github.com", "/FurryBoL/master/master/Furry_Packets_Lib.version", function(result)
-		local latest = tonumber(result)
-		if latest > _SCRIPT_VERSION_FURRY then
+	GetAsyncWebResult("raw.github.com", "/FurryBoL/master/master/Furry_Packets_Lib.version", function(resultFurry)
+		local latestFurry = tonumber(resultFurry)
+		if latestFurry > _SCRIPT_VERSION_FURRY then
 			print("<font color='#9900FF'>[Furry Packets Lib] </font><font color='#FF0000'>-</font><font color='#00FFFF'> A update has been found and it is now downloading!</font>")
 			DelayAction(DownloadFile, 0, {
 				"https://raw.githubusercontent.com/FurryBoL/master/master/Furry_Packets_Lib.lua",
