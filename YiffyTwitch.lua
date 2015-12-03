@@ -1,6 +1,6 @@
 -- Yiffy Twitch by Furry
 -- Encrypted by burn [Kappa^Bilbao]
--- Version 4.7 [Yiffy Twitch re-release]
+-- Version 4.8 [Yiffy Twitch re-release]
 
 
 _AUTO_UPDATE = true -- Set this to false to prevent automatic updates
@@ -11,8 +11,8 @@ _AUTO_UPDATE = true -- Set this to false to prevent automatic updates
 --			[ ChangeLog ]
 
 if myHero.charName ~= 'Twitch' then return end
-_SCRIPT_VERSION = 4.7
-_SCRIPT_VERSION_MENU = "4.7"
+_SCRIPT_VERSION = 4.8
+_SCRIPT_VERSION_MENU = "4.8"
 _FILE_PATH = SCRIPT_PATH .. GetCurrentEnv().FILE_NAME
 _PATCH = "5.23"
 _GAME_VERSION = string.find(GetGameVersion(), 'Releases/5.23') -- Change this after a patch if you want errors and bugsplats :)
@@ -709,10 +709,14 @@ function Twitch:GetEDmg(target)
 	if myHero:GetSpellData(_E).level < 1 then
 		return 0
 	end
-	local BaseDamage = { 20, 35, 50, 65, 80}
-	local StackDamage = { 15, 20, 25, 30, 35}
-	local trueDmg = BaseDamage[myHero:GetSpellData(_E).level] + (((StackDamage[myHero:GetSpellData(_E).level]) + ((myHero.ap * (1 + myHero.apPercent)) * 0.2) + (myHero.damage * 0.25)) * DeadlyVenom[target.networkID].stack)
-	return trueDmg * (100 / (100 + target.armor))
+	if DeadlyVenom[target.networkID] ~= nil then
+		local BaseDamage = { 20, 35, 50, 65, 80}
+		local StackDamage = { 15, 20, 25, 30, 35}
+		local trueDmg = BaseDamage[myHero:GetSpellData(_E).level] + (((StackDamage[myHero:GetSpellData(_E).level]) + ((myHero.ap * (1 + myHero.apPercent)) * 0.2) + (myHero.damage * 0.25)) * DeadlyVenom[target.networkID].stack)
+		return trueDmg * (100 / (100 + target.armor))
+	else
+		return 0
+	end
 end
 
 class("VisualManager")
@@ -1130,6 +1134,10 @@ minions = Minions()
 twitch = Twitch()
 
 AddCreateObjCallback(function(obj)
+	OnCreateObj(obj)
+end)
+
+AddUpdateBuffCallback(function(obj)
 	OnCreateObj(obj)
 end)
 
