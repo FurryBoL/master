@@ -10,7 +10,7 @@
 --		     ░                     ░                                                              ░
 
 -- by Furry
--- Version 1.5
+-- Version 1.6
 
 _AUTO_UPDATE = true -- Set this to false to prevent automatic updates
 
@@ -20,12 +20,28 @@ _AUTO_UPDATE = true -- Set this to false to prevent automatic updates
 --			[ ChangeLog ]
 
 if myHero.charName ~= 'Vladimir' then return end
-_SCRIPT_VERSION = 1.5
-_SCRIPT_VERSION_MENU = "1.5"
+
+local FakeLoad = false
+if VIP_USER then
+	if FileExist(LIB_PATH .. "Furry_Packets_Lib.lua") then
+		require("Furry_Packets_Lib")
+		SkinChanger()
+	else
+		FakeLoad = true
+		DelayAction(DownloadFile, 0, {
+			"https://raw.githubusercontent.com/FurryBoL/master/master/Furry_Packets_Lib.lua",
+			LIB_PATH.."\\Furry_Packets_Lib.lua",
+			function ()
+				print("<font color='#9900FF'>[Furry Packets Lib] </font><font color='#FF0000'>-</font><font color='#00FFFF'> Downloaded <font color='#FF0000'>Furry_Packets_Lib.lua</font>, Reload! (2xF9)</font>")
+			end
+		})
+	end
+end
+
+_SCRIPT_VERSION = 1.6
+_SCRIPT_VERSION_MENU = "1.6"
 _FILE_PATH = SCRIPT_PATH .. GetCurrentEnv().FILE_NAME
 _PATCH = "5.23"
-_GAME_VERSION = string.find(GetGameVersion(), 'Releases/5.23') -- Change this after a patch if you want errors and bugsplats :)
-_GAME_VERSION_LEVELER = string.find(GetGameVersion(), 'Releases/5.23') -- Change this after a patch if you want errors and bugsplats :)
 
 --		  ██████  ▄████▄   ██▀███   ██▓ ██▓███  ▄▄▄█████▓        ██████ ▄▄▄█████▓ ▄▄▄     ▄▄▄█████▓ █    ██   ██████ 
 --		▒██    ▒ ▒██▀ ▀█  ▓██ ▒ ██▒▓██▒▓██░  ██▒▓  ██▒ ▓▒      ▒██    ▒ ▓  ██▒ ▓▒▒████▄   ▓  ██▒ ▓▒ ██  ▓██▒▒██    ▒ 
@@ -116,16 +132,18 @@ local flashFound = false
 
 local TargetableSelf = true
 local cfgpath = LIB_PATH.."Saves\\Vladimir_Reborn_2.cfg"
-local skinsPB = {}
-local skinObjectPos = nil
-local skinHeader = nil
-local dispellHeader = nil
-local skinH = nil
-local skinHPos = nil
 local level, tolevel, point, leveltick, levelvariable, spellLevel, latency
 local enable = false
 local drawlevelup = false
 local leveltext = ""
+if FakeLoad then
+	local skinsPB = {}
+	local skinObjectPos = nil
+	local skinHeader = nil
+	local dispellHeader = nil
+	local skinH = nil
+	local skinHPos = nil
+end
 
 function CurrentTimeInMillis()
 	return (os.clock() * 1000);
@@ -2138,11 +2156,13 @@ function Vladimir:OnTick()
 			end
 		end
 	end
-	if ((CurrentTimeInMillis() - lastTimeTickCalled) > 200) then
-		lastTimeTickCalled = CurrentTimeInMillis()
-		if settings.selectedVladimirSkin ~= lastSkin then
-			lastSkin = settings.selectedVladimirSkin
-			SendSkinPacket(myHero.charName, skinsPB[settings.selectedVladimirSkin], myHero.networkID)
+	if not FakeLoad then
+		if ((CurrentTimeInMillis() - lastTimeTickCalled) > 200) then
+			lastTimeTickCalled = CurrentTimeInMillis()
+			if settings.selectedVladimirSkin ~= lastSkin then
+				lastSkin = settings.selectedVladimirSkin
+				SendSkinPacket(myHero.charName, skinsPB[settings.selectedVladimirSkin], myHero.networkID)
+			end
 		end
 	end
 	if not settings.AutoLevelOn or not enable then
@@ -2494,7 +2514,7 @@ end
 
 function OnUnload()
 	print("<font color='#FF0000'>[Vladimir Reborn] </font><font color='#FFFF00'>-</font><font color='#FFFFFF'> Unloaded! </font>")
-	if VIP_USER then
+	if VIP_USER and not FakeLoad then
 		SendSkinPacket(myHero.charName, nil, myHero.networkID)
 	end
 end
@@ -3296,27 +3316,6 @@ end
 --		      ░  ░   ░                  ░ ░            ░  ░   ░  ░     ░     ░  ░    ░  ░   ░  ░   ░     
 --		                                                              ░   
 
-if (string.find(GetGameVersion(), 'Releases/5.23') ~= nil) then
-	_G.LevelSpell = function(id)
-		local offsets = { 
-			[_Q] = 0x61,
-			[_W] = 0x81,
-			[_E] = 0xA1,
-			[_R] = 0xC1,
-		}
-		local p = CLoLPacket(0x0033)
-		p.vTable = 0xEECE14
-		p:EncodeF(myHero.networkID)
-		p:Encode1(0x73)
-		for i = 1, 4 do p:Encode1(0xF9) end
-		for i = 1, 4 do p:Encode1(0x1E) end
-		p:Encode1(offsets[id])
-		for i = 1, 4 do p:Encode1(0x99) end
-		for i = 1, 4 do p:Encode1(0x00) end
-		SendPacket(p)
-	end
-end
-
 function Levelstart()
 	if countTable(tolevel) == 0 then
 		Levelend()
@@ -3399,77 +3398,6 @@ function countTable(spelldraw)
 		spelldraw2 = spelldraw2 + 1
 	end
 	return spelldraw2
-end
-
---		  ██████  ██ ▄█▀ ██▓ ███▄    █        ▄████▄   ██░ ██  ▄▄▄       ███▄    █   ▄████ ▓█████  ██▀███  
---		▒██    ▒  ██▄█▒ ▓██▒ ██ ▀█   █       ▒██▀ ▀█  ▓██░ ██▒▒████▄     ██ ▀█   █  ██▒ ▀█▒▓█   ▀ ▓██ ▒ ██▒
---		░ ▓██▄   ▓███▄░ ▒██▒▓██  ▀█ ██▒      ▒▓█    ▄ ▒██▀▀██░▒██  ▀█▄  ▓██  ▀█ ██▒▒██░▄▄▄░▒███   ▓██ ░▄█ ▒
---		  ▒   ██▒▓██ █▄ ░██░▓██▒  ▐▌██▒      ▒▓▓▄ ▄██▒░▓█ ░██ ░██▄▄▄▄██ ▓██▒  ▐▌██▒░▓█  ██▓▒▓█  ▄ ▒██▀▀█▄  
---		▒██████▒▒▒██▒ █▄░██░▒██░   ▓██░      ▒ ▓███▀ ░░▓█▒░██▓ ▓█   ▓██▒▒██░   ▓██░░▒▓███▀▒░▒████▒░██▓ ▒██▒
---		▒ ▒▓▒ ▒ ░▒ ▒▒ ▓▒░▓  ░ ▒░   ▒ ▒       ░ ░▒ ▒  ░ ▒ ░░▒░▒ ▒▒   ▓▒█░░ ▒░   ▒ ▒  ░▒   ▒ ░░ ▒░ ░░ ▒▓ ░▒▓░
---		░ ░▒  ░ ░░ ░▒ ▒░ ▒ ░░ ░░   ░ ▒░        ░  ▒    ▒ ░▒░ ░  ▒   ▒▒ ░░ ░░   ░ ▒░  ░   ░  ░ ░  ░  ░▒ ░ ▒░
---		░  ░  ░  ░ ░░ ░  ▒ ░   ░   ░ ░       ░         ░  ░░ ░  ░   ▒      ░   ░ ░ ░ ░   ░    ░     ░░   ░ 
---		      ░  ░  ░    ░           ░       ░ ░       ░  ░  ░      ░  ░         ░       ░    ░  ░   ░     
---		                                     ░
-
-if (_GAME_VERSION ~= nil) then
-	skinsPB = {
-		[1] = nil,
-		[2] = 0x74,
-		[3] = 0xF4,
-		[4] = 0xB4,
-		[5] = 0x34,
-		[6] = 0x54,
-		[7] = 0xD4,
-		[8] = 0x94,
-		[9] = 0x14,
-	}
-	skinObjectPos = 11
-	skinHeader = 0x13
-	dispellHeader = 0x13B
-	skinH = 0x74
-	skinHPos = 11
-end
-
-	-- Skin Order:
-		--|>  Original
-		--|>  Count
-		--|>  Marquis
-		--|>  Nosferatu
-		--|>  Vandal
-		--|>  Blood Lord
-		--|>  Soulstealer
-		--|>  Academy
-
-function SendSkinPacket(mObject, skinPB, networkID)
-	if (_GAME_VERSION ~= nil) then
-		local mP = CLoLPacket(0x13)
-		mP.vTable = 0xF4FDE0
-		mP:EncodeF(myHero.networkID)
-		mP:Encode4(0x00000000)
-		mP:Encode1(0x00)
-		if (skinPB == nil) then
-			mP:Encode4(0x2F2F2F2F)
-		else
-			mP:Encode1(skinPB)
-			for I = 1, 3 do
-				mP:Encode1(0x74)
-			end
-			end
-		mP:Encode1(0x75)
-		for I = 1, string.len(mObject) do
-			mP:Encode1(string.byte(string.sub(mObject, I, I)))
-		end
-		for I = 1, (16 - string.len(mObject)) do
-			mP:Encode1(0x00)
-		end
-		mP:Encode4(0x00000000)
-		mP:Encode4(0x0000000F)
-		mP:Encode4(0x00000000)
-		mP:Encode1(0x00)
-		mP:Hide()
-		RecvPacket(mP)
-	end
 end
 
 --		▓█████▄ ▓█████  ▄▄▄▄    █    ██   ▄████   ▄████ ▓█████  ██▀███  
