@@ -2,7 +2,7 @@
 -- by Furry
 -- Version 5.23
 
-_AUTO_UPDATE_FURRY = false -- Set this to false to prevent automatic updates
+_AUTO_UPDATE_FURRY = true -- Set this to false to prevent automatic updates
 
 --			[ ChangeLog ]
 --  There is no ChangeLog, this is just a script to keep AutoLeveler and SkinChanger Packets all in one place, so when I need to update them, all I need to do is update this script.
