@@ -3305,7 +3305,7 @@ if (string.find(GetGameVersion(), 'Releases/5.23') ~= nil) then
 			[_R] = 0xC1,
 		}
 		local p = CLoLPacket(0x0033)
-		p.vTable = 0xE556E8
+		p.vTable = 0xEECE14
 		p:EncodeF(myHero.networkID)
 		p:Encode1(0x73)
 		for i = 1, 4 do p:Encode1(0xF9) end
