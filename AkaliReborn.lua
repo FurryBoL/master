@@ -11,7 +11,7 @@
 --		      ░  ░░  ░        ░  ░    ░  ░ ░           ░        ░  ░ ░          ░ ░     ░              ░ 
 --		                                                               ░ 
 -- by Furry
--- Version 1.8
+-- Version 1.9
 
 _AUTO_UPDATE = true -- Set this to false to prevent automatic updates
 
@@ -21,8 +21,8 @@ _AUTO_UPDATE = true -- Set this to false to prevent automatic updates
 --			[ ChangeLog ]
 
 if myHero.charName ~= 'Akali' then return end
-_SCRIPT_VERSION = 1.8
-_SCRIPT_VERSION_MENU = "1.8"
+_SCRIPT_VERSION = 1.9
+_SCRIPT_VERSION_MENU = "1.9"
 _FILE_PATH = SCRIPT_PATH .. GetCurrentEnv().FILE_NAME
 _PATCH = "5.23"
 _GAME_VERSION = string.find(GetGameVersion(), 'Releases/5.23') -- Change this after a patch if you want errors and bugsplats :)
@@ -1319,7 +1319,7 @@ if (_GAME_VERSION_LEVELER ~= nil) then
 			[_R] = 0xC1,
 		}
 		local p = CLoLPacket(0x0033)
-		p.vTable = 0xE556E8
+		p.vTable = 0xEECE14
 		p:EncodeF(myHero.networkID)
 		p:Encode1(0x73)
 		for i = 1, 4 do p:Encode1(0xF9) end
