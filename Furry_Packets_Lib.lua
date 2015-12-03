@@ -9,27 +9,37 @@ _AUTO_UPDATE_FURRY = true -- Set this to false to prevent automatic updates
 --			[ ChangeLog ]
 
 _SCRIPT_VERSION_FURRY = 5.23
-_FILE_LIB_PATH = LIB_PATH .. GetCurrentEnv().FILE_NAME
 _GAME_VERSION = string.find(GetGameVersion(), 'Releases/5.23') -- Change this after a patch if you want errors and bugsplats :)
 _GAME_VERSION_LEVELER = string.find(GetGameVersion(), 'Releases/5.23') -- Change this after a patch if you want errors and bugsplats :)
 
-
-if _AUTO_UPDATE_FURRY then
-	GetAsyncWebResult("raw.github.com", "/FurryBoL/master/master/Furry_Packets_Lib.version", function(resultFurry)
-		local latestFurry = tonumber(resultFurry)
-		if latestFurry > _SCRIPT_VERSION_FURRY then
-			print("<font color='#9900FF'>[Furry Packets Lib] </font><font color='#FF0000'>-</font><font color='#00FFFF'> A update has been found and it is now downloading!</font>")
-			DelayAction(DownloadFile, 0, {
-				"https://raw.githubusercontent.com/FurryBoL/master/master/Furry_Packets_Lib.lua",
-				_FILE_LIB_PATH,
-				function()
-					print("<font color='#9900FF'>[Furry Packets Lib] </font><font color='#FF0000'>-</font><font color='#00FFFF'> Script has been updated, please reload! (2xF9)</font>")
-				end
-			})
+local serveradress = "raw.githubusercontent.com"
+local scriptadress = "/FurryBoL/master/master"
+local LocalVersion = "5.23"
+ 
+ 
+if _AUTO_UPDATE_FURRY or true then
+	local ServerVersionDATA = GetWebResult(serveradress , scriptadress.."/Furry_Packets_Lib.version")
+	if ServerVersionDATA then
+		local ServerVersion = tonumber(ServerVersionDATA)
+		if ServerVersion then
+			if ServerVersion > tonumber(LocalVersion) then
+				print("<font color='#9900FF'>[Furry Packets Lib] </font><font color='#FF0000'>-</font><font color='#00FFFF'> Updating Furry_Packets_Lib, don't press F9</font>")
+				DelayAction(DownloadFile, 0, {
+					"http://"..serveradress..scriptadress.."/Furry_Packets_Lib.lua",
+					LIB_PATH.."\\Furry_Packets_Lib.lua",
+					function ()
+						print("<font color='#9900FF'>[Furry Packets Lib] </font><font color='#FF0000'>-</font><font color='#00FFFF'> Updated, press 2xF9</font>")
+					end
+				})
+			end
+		else
+			print("<font color='#9900FF'>[Furry Packets Lib] </font><font color='#FF0000'>-</font><font color='#00FFFF'> An error occured, while updating, please reload</font>")
 		end
-	end)
+	else
+		print("<font color='#9900FF'>[Furry Packets Lib] </font><font color='#FF0000'>-</font><font color='#00FFFF'> Could not connect to update Server</font>")
+	end
 end
-
+	
 print("<font color='#9900FF'>[Furry Packets Lib] </font><font color='#FF0000'>-</font><font color='#00FFFF'> Loaded!</font>")
 
 if (_GAME_VERSION_LEVELER ~= nil) then
