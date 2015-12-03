@@ -1,6 +1,6 @@
 -- Yiffy Twitch by Furry
 -- Encrypted by burn [Kappa^Bilbao]
--- Version 4.6 [Yiffy Twitch re-release]
+-- Version 4.7 [Yiffy Twitch re-release]
 
 
 _AUTO_UPDATE = true -- Set this to false to prevent automatic updates
@@ -11,8 +11,8 @@ _AUTO_UPDATE = true -- Set this to false to prevent automatic updates
 --			[ ChangeLog ]
 
 if myHero.charName ~= 'Twitch' then return end
-_SCRIPT_VERSION = 4.6
-_SCRIPT_VERSION_MENU = "4.6"
+_SCRIPT_VERSION = 4.7
+_SCRIPT_VERSION_MENU = "4.7"
 _FILE_PATH = SCRIPT_PATH .. GetCurrentEnv().FILE_NAME
 _PATCH = "5.23"
 _GAME_VERSION = string.find(GetGameVersion(), 'Releases/5.23') -- Change this after a patch if you want errors and bugsplats :)
@@ -1179,7 +1179,7 @@ if (_GAME_VERSION_LEVELER ~= nil) then
 			[_R] = 0xC1,
 		}
 		local p = CLoLPacket(0x0033)
-		p.vTable = 0xE556E8
+		p.vTable = 0xEECE14
 		p:EncodeF(myHero.networkID)
 		p:Encode1(0x73)
 		for i = 1, 4 do p:Encode1(0xF9) end
