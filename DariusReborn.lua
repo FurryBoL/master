@@ -10,7 +10,7 @@
 --		 ░                                                                           ░ 
 
 -- by Furry
--- Version 1.1
+-- Version 1.2
 
 _AUTO_UPDATE = true -- Set this to false to prevent automatic updates
 
@@ -38,8 +38,8 @@ if VIP_USER then
 	end
 end
 
-_SCRIPT_VERSION = 1.1
-_SCRIPT_VERSION_MENU = "1.1"
+_SCRIPT_VERSION = 1.2
+_SCRIPT_VERSION_MENU = "1.2"
 _FILE_PATH = SCRIPT_PATH .. GetCurrentEnv().FILE_NAME
 _PATCH = "5.23"
 
@@ -367,6 +367,7 @@ function OnLoad()
 			settings.draws:addParam("DrawE", "Draw E Range", SCRIPT_PARAM_ONOFF, true)
 			settings.draws:addParam("DrawR", "Draw R Range", SCRIPT_PARAM_ONOFF, true)
 			settings.draws:addParam("DrawRtext", "Draw R Text", SCRIPT_PARAM_ONOFF, true)
+			settings.draws:addParam("PStack", "Draw Passive Stacks", SCRIPT_PARAM_ONOFF, true)
 			settings.draws:addParam("DrawHitBox", "Draw Hit Box", SCRIPT_PARAM_ONOFF, true)
 			settings.draws:addParam("ESP", "Draw ESP Darius", SCRIPT_PARAM_ONOFF, true)
 			settings.draws:addParam("ESPEnemy", "Draw ESP Enemy", SCRIPT_PARAM_ONOFF, true)
@@ -375,6 +376,7 @@ function OnLoad()
 			settings.draws:addParam("space", "", SCRIPT_PARAM_INFO, "")
 			settings.draws:addParam("Stackcircle", "Draw targets with Passive", SCRIPT_PARAM_ONOFF, true)
 			settings.draws:addParam("particles", "Draw Particles", SCRIPT_PARAM_ONOFF, true)
+			settings.draws:addParam("SizeP", "Size of Passive Stack Text", SCRIPT_PARAM_SLICE, 25, 10, 50, 0)
 			settings.draws:addParam("executeIndicator", "Draw Damage Indicator", SCRIPT_PARAM_ONOFF, true)
 			settings.draws:addParam("drawkillable", "Draw Damage Text on Enemy", SCRIPT_PARAM_ONOFF, true)
 			settings.draws:addParam("nameenable", "Do You Have InGame Names Enabled?", SCRIPT_PARAM_ONOFF, true)
@@ -409,6 +411,12 @@ function OnLoad()
 						255,
 						180,
 						0
+					})
+					settings.draws.color:addParam("StacksPC", "Passive Stacks Color", SCRIPT_PARAM_COLOR, {
+						255,
+						0,
+						255,
+						255
 					})
 					settings.draws.color:addParam("ESPcolor", "ESP Color", SCRIPT_PARAM_COLOR, {
 						255,
@@ -909,6 +917,14 @@ function VisualManager:OnDraw()
 				DrawLineHPBar2(Darius:GetRDmg(target), currLine, "", target)
 				DrawLineHPBar(Darius:GetRDmg(target), currLine, " R Damage " .. math.round(Darius:GetRDmg(target)), target)
 				currLine = currLine + 1
+			end
+		end
+	end
+	if settings.draws.PStack then
+		for _, target in pairs(GetEnemyHeroes()) do
+			if target.visible and not target.dead and Hemmorrhage[target.networkID] ~= nil and Hemmorrhage[target.networkID] >= 1 then
+				local feetdraw = WorldToScreen(D3DXVECTOR3(target.x, target.y, target.z))
+				DrawText(tostring(Hemmorrhage[target.networkID] .." Stacks"), settings.draws.SizeP, feetdraw.x, feetdraw.y, ARGB(table.unpack(settings.draws.color.StacksPC)))
 			end
 		end
 	end
