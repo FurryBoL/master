@@ -1,6 +1,6 @@
 -- Yiffy Twitch by Furry
 -- Encrypted by burn [Kappa^Bilbao]
--- Version 5.0 [Yiffy Twitch re-release]
+-- Version 5.1 [Yiffy Twitch re-release]
 
 
 _AUTO_UPDATE = true -- Set this to false to prevent automatic updates
@@ -29,8 +29,8 @@ if VIP_USER then
 	end
 end
 
-_SCRIPT_VERSION = 5.0
-_SCRIPT_VERSION_MENU = "5.0"
+_SCRIPT_VERSION = 5.1
+_SCRIPT_VERSION_MENU = "5.1"
 _FILE_PATH = SCRIPT_PATH .. GetCurrentEnv().FILE_NAME
 _PATCH = "5.23"
 
@@ -613,7 +613,7 @@ function OnCreateObj(obj)
 	elseif obj and obj.name:lower():find("twitch_poison_counter_06") then
 		PoisonStacker(obj, 6)
 	end
-	if obj.spellOwner == myHero and obj.name:find("missile") then
+	if obj and obj.spellOwner == myHero and obj.name:find("missile") then
 		Gobj = obj
 	end
 end
