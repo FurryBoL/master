@@ -1,6 +1,6 @@
 -- Yiffy Twitch by Furry
 -- Encrypted by burn [Kappa^Bilbao]
--- Version 4.9 [Yiffy Twitch re-release]
+-- Version 5.0 [Yiffy Twitch re-release]
 
 
 _AUTO_UPDATE = true -- Set this to false to prevent automatic updates
@@ -29,8 +29,8 @@ if VIP_USER then
 	end
 end
 
-_SCRIPT_VERSION = 4.9
-_SCRIPT_VERSION_MENU = "4.9"
+_SCRIPT_VERSION = 5.0
+_SCRIPT_VERSION_MENU = "5.0"
 _FILE_PATH = SCRIPT_PATH .. GetCurrentEnv().FILE_NAME
 _PATCH = "5.23"
 
@@ -600,17 +600,17 @@ function Twitch:Cast(spell, target)
 end
 
 function OnCreateObj(obj)
-	if obj.name:lower():find("twitch_poison_counter_01") then
+	if obj and obj.name:lower():find("twitch_poison_counter_01") then
 		PoisonStacker(obj, 1)
-	elseif obj.name:lower():find("twitch_poison_counter_02") then
+	elseif obj and obj.name:lower():find("twitch_poison_counter_02") then
 		PoisonStacker(obj, 2)
-	elseif obj.name:lower():find("twitch_poison_counter_03") then
+	elseif obj and obj.name:lower():find("twitch_poison_counter_03") then
 		PoisonStacker(obj, 3)
-	elseif obj.name:lower():find("twitch_poison_counter_04") then
+	elseif obj and obj.name:lower():find("twitch_poison_counter_04") then
 		PoisonStacker(obj, 4)
-	elseif obj.name:lower():find("twitch_poison_counter_05") then
+	elseif obj and obj.name:lower():find("twitch_poison_counter_05") then
 		PoisonStacker(obj, 5)
-	elseif obj.name:lower():find("twitch_poison_counter_06") then
+	elseif obj and obj.name:lower():find("twitch_poison_counter_06") then
 		PoisonStacker(obj, 6)
 	end
 	if obj.spellOwner == myHero and obj.name:find("missile") then
@@ -667,7 +667,7 @@ function OnProcessSpell(unit, buff)
 end
 
 function OnUpdateBuff(target, buff, stacks)
-	if target.isMe then
+	if target and target.isMe then
 		if buff.name == "TwitchHideInShadows" then
 			VisibleSelf = false
 			stealthLocation = os.clock()
@@ -1153,9 +1153,9 @@ drawing = VisualManager()
 minions = Minions()
 twitch = Twitch()
 
-AddCreateObjCallback(function(obj)
-	OnCreateObj(obj)
-end)
+--AddCreateObjCallback(function(obj)
+--	OnCreateObj(obj)
+--end)
 
 AddUpdateBuffCallback(function(obj)
 	OnCreateObj(obj)
