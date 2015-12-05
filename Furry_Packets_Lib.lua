@@ -8,13 +8,12 @@ _AUTO_UPDATE_FURRY = true -- Set this to false to prevent automatic updates
 --  There is no ChangeLog, this is just a script to keep AutoLeveler and SkinChanger Packets all in one place, so when I need to update them, all I need to do is update this script.
 --			[ ChangeLog ]
 
-_SCRIPT_VERSION_FURRY = 5.23
 _GAME_VERSION = string.find(GetGameVersion(), 'Releases/5.23') -- Change this after a patch if you want errors and bugsplats :)
 _GAME_VERSION_LEVELER = string.find(GetGameVersion(), 'Releases/5.23') -- Change this after a patch if you want errors and bugsplats :)
 
 local serveradress = "raw.githubusercontent.com"
 local scriptadress = "/FurryBoL/master/master"
-local LocalVersion = "5.23"
+local LocalVersion = "5.235"
  
  
 if _AUTO_UPDATE_FURRY or true then
@@ -83,10 +82,10 @@ if (_GAME_VERSION ~= nil) then
 		[7] = 0xD4,
 		[8] = 0x94,
 		[9] = 0x14,
-		[10] = 0x04,
+		[10] = 0x84,
 		[11] = 0x44,
-		[12] = 0x84,
-		[13] = 0xC4,
+		[12] = 0xC4,
+		[13] = 0x04,
 	}
 	skinObjectPos = 11
 	skinHeader = 0x13
