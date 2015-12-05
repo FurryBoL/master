@@ -1,6 +1,6 @@
 -- Furry Packets Lib
 -- by Furry
--- Version 5.23
+-- Version 5.24
 
 _AUTO_UPDATE_FURRY = true -- Set this to false to prevent automatic updates
 
@@ -13,7 +13,7 @@ _GAME_VERSION_LEVELER = string.find(GetGameVersion(), 'Releases/5.23') -- Change
 
 local serveradress = "raw.githubusercontent.com"
 local scriptadress = "/FurryBoL/master/master"
-local LocalVersion = "5.235"
+local LocalVersion = "5.24"
  
  
 if _AUTO_UPDATE_FURRY or true then
