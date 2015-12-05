@@ -11,7 +11,7 @@
 --		                                                                      ░   
 
 -- by Furry
--- Version 1.1
+-- Version 1.2
 
 _AUTO_UPDATE = true -- Set this to false to prevent automatic updates
 
@@ -39,8 +39,8 @@ if VIP_USER then
 	end
 end
 
-_SCRIPT_VERSION = 1.1
-_SCRIPT_VERSION_MENU = "1.1"
+_SCRIPT_VERSION = 1.2
+_SCRIPT_VERSION_MENU = "1.2"
 _FILE_PATH = SCRIPT_PATH .. GetCurrentEnv().FILE_NAME
 _PATCH = "5.23"
 
@@ -235,15 +235,6 @@ function Irelia:OnTick()
 			end
 		end
 	end
-	if settings.oSpells.evadeeeintegration then
-		for _, target in pairs(minions.enemyMinions.objects) do
-			if ValidTarget(target, 660) then
-				if _G.Evadeee_impossibleToEvade then
-					self:Cast("Q", target)
-				end
-			end
-		end
-	end
 	if settings.oSpells.onlyQmana then
 		local manaQ = {60, 65, 70, 75, 80}
 		local manaW = {40, 40, 40, 40, 40}
@@ -344,7 +335,6 @@ function OnLoad()
 			settings.combo:addParam("QAboveHP", "Only Q above % HP:", SCRIPT_PARAM_SLICE, 80, 0, 100, 0)
 			settings.combo:addParam("UseW", "Use W in Combo", SCRIPT_PARAM_ONOFF, true)
 		settings:addSubMenu("Other Spells", "oSpells")
-			settings.oSpells:addParam("evadeeeintegration", "Use Q Evadeee Integration", SCRIPT_PARAM_ONOFF, true)
 			settings.oSpells:addParam("onlyQmana", "Save Mana for Q", SCRIPT_PARAM_ONOFF, true)
 			settings.oSpells:addParam("UseEHP", "Use E if my % HP under enemy % HP", SCRIPT_PARAM_ONOFF, true)
 	if VIP_USER then
