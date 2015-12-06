@@ -10,7 +10,7 @@
 --		 ░                                                                           ░ 
 
 -- by Furry
--- Version 1.3
+-- Version 1.4
 
 _AUTO_UPDATE = true -- Set this to false to prevent automatic updates
 
@@ -38,8 +38,8 @@ if VIP_USER then
 	end
 end
 
-_SCRIPT_VERSION = 1.3
-_SCRIPT_VERSION_MENU = "1.3"
+_SCRIPT_VERSION = 1.4
+_SCRIPT_VERSION_MENU = "1.4"
 _FILE_PATH = SCRIPT_PATH .. GetCurrentEnv().FILE_NAME
 _PATCH = "5.23"
 
@@ -577,13 +577,15 @@ function Darius:GetRDmg(target)
 		return 0
 	end
 	local BaseDamage = { 100, 200, 300}
-	if Hemmorrhage[target.networkID] ~= nil then
+	if Hemmorrhage[target.networkID] ~= nil and darius.skills.SkillR.ready then
 		local StackDamage = { 1.2, 1.4, 1.6, 1.8, 2}
 		local trueDmg = (BaseDamage[myHero:GetSpellData(_R).level] + (myHero.damage * 0.75)) * StackDamage[GetStacks(target)]
 		return trueDmg
 	end
-	if myHero:GetSpellData(_R).level >= 1 then
+	if myHero:GetSpellData(_R).level >= 1 and darius.skills.SkillR.ready then
 		return BaseDamage[myHero:GetSpellData(_R).level] + (myHero.damage * 0.75)
+	else
+		return 0
 	end
 end
 
