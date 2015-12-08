@@ -11,7 +11,7 @@
 --		      ░  ░░  ░        ░  ░    ░  ░ ░           ░        ░  ░ ░          ░ ░     ░              ░ 
 --		                                                               ░ 
 -- by Furry
--- Version 2.0
+-- Version 2.1
 
 _AUTO_UPDATE = true -- Set this to false to prevent automatic updates
 
@@ -39,8 +39,8 @@ if VIP_USER then
 	end
 end
 
-_SCRIPT_VERSION = 2.0
-_SCRIPT_VERSION_MENU = "2.0"
+_SCRIPT_VERSION = 2.1
+_SCRIPT_VERSION_MENU = "2.1"
 _FILE_PATH = SCRIPT_PATH .. GetCurrentEnv().FILE_NAME
 _PATCH = "5.23"
 
@@ -257,10 +257,16 @@ function Akali:OnTick()
 	else
 		Eup = false
 	end
-	if settings.draws.DrawR and self.skills.SkillR.ready then
-		Rup = true
-	else
-		Rup = false
+	if self.skills.SkillR.ready then
+		if settings.draws.DrawR then
+			Rup = true
+		else
+			Rup = false
+		if ettings.draws.DrawR2 then
+			Rup2 = true
+		else
+			Rup2 = false
+		end
 	end
 	if not FakeLoad then
 		if ((CurrentTimeInMillis() - lastTimeTickCalled) > 200) then
@@ -418,7 +424,7 @@ function OnLoad()
 			settings.draws:addParam("DrawWtext", "Draw W Text", SCRIPT_PARAM_ONOFF, true)
 			settings.draws:addParam("DrawE", "Draw E Range", SCRIPT_PARAM_ONOFF, true)
 			settings.draws:addParam("DrawR", "Draw R Range", SCRIPT_PARAM_ONOFF, true)
-			settings.draws:addParam("DrawR", "Draw R Safe Range", SCRIPT_PARAM_ONOFF, true)
+			settings.draws:addParam("DrawR2", "Draw R Safe Range", SCRIPT_PARAM_ONOFF, true)
 			settings.draws:addParam("DrawHitBox", "Draw Hit Box", SCRIPT_PARAM_ONOFF, true)
 			settings.draws:addParam("LFCwidth", "LFC - Width", 4, 2, 1, 5, 0)
 			settings.draws:addParam("LFCsnap", "LFC - Length Before Snapping", 4, 100, 50, 510, 0)
@@ -1109,7 +1115,7 @@ function VisualManager:OnDraw()
 	if Eup then
 		self:DrawCircle(myHero.x, myHero.y, myHero.z, 320, ARGB(table.unpack(settings.draws.color.Ecolor)))
 	end
-	if Rup then
+	if Rup2 then
 		self:DrawCircle(myHero.x, myHero.y, myHero.z, settings.combo.Rdebuff, ARGB( 50, 255, 255, 255))
 	end
 	if Rup then
