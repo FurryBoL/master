@@ -881,7 +881,7 @@ function OnUpdateBuff(target, buff, stacks)
 end
 
 function OnApplyBuff(unit, target, buff)
-	if target.isMe and buff.name == "DariusNoxianTacticsONH" then
+	if unit.isMe and buff.name == "DariusNoxianTacticsONH" then
 		Wactive = true
 	end
 end
