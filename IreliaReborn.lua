@@ -11,7 +11,7 @@
 --		                                                                      ░   
 
 -- by Furry
--- Version 1.2
+-- Version 1.3
 
 _AUTO_UPDATE = true -- Set this to false to prevent automatic updates
 
@@ -39,10 +39,10 @@ if VIP_USER then
 	end
 end
 
-_SCRIPT_VERSION = 1.2
-_SCRIPT_VERSION_MENU = "1.2"
+_SCRIPT_VERSION = 1.3
+_SCRIPT_VERSION_MENU = "1.3"
 _FILE_PATH = SCRIPT_PATH .. GetCurrentEnv().FILE_NAME
-_PATCH = "5.23"
+_PATCH = "5.24"
 
 --		  ██████  ▄████▄   ██▀███   ██▓ ██▓███  ▄▄▄█████▓        ██████ ▄▄▄█████▓ ▄▄▄     ▄▄▄█████▓ █    ██   ██████ 
 --		▒██    ▒ ▒██▀ ▀█  ▓██ ▒ ██▒▓██▒▓██░  ██▒▓  ██▒ ▓▒      ▒██    ▒ ▓  ██▒ ▓▒▒████▄   ▓  ██▒ ▓▒ ██  ▓██▒▒██    ▒ 
