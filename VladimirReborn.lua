@@ -10,7 +10,7 @@
 --		     ░                     ░                                                              ░
 
 -- by Furry
--- Version 1.7
+-- Version 1.8
 
 _AUTO_UPDATE = true -- Set this to false to prevent automatic updates
 
@@ -38,8 +38,8 @@ if VIP_USER then
 	end
 end
 
-_SCRIPT_VERSION = 1.7
-_SCRIPT_VERSION_MENU = "1.7"
+_SCRIPT_VERSION = 1.8
+_SCRIPT_VERSION_MENU = "1.8"
 _FILE_PATH = SCRIPT_PATH .. GetCurrentEnv().FILE_NAME
 _PATCH = "5.24"
 
@@ -2133,6 +2133,11 @@ function Vladimir:OnTick()
 	else
 		R2up = false
 	end
+	if not TargetableSelf then
+		if settings.comboactive or settings.harassKey or settings.lastHit or settings.clearKey then
+			MoveToMouse()
+		end
+	end
 	if settings.oSpells.MaintainEstacks and self.skills.SkillE.ready and not Recalling then
 		if myHero.level >= settings.oSpells.MaintainEstacks2 then
 			--if noEbuff then
@@ -2183,6 +2188,13 @@ function Vladimir:OnTick()
 			end
 			Levelstart()
 		end
+	end
+end
+
+function MoveToMouse()
+	if GetDistance(mousePos) then
+		local a = myHero + (Vector(mousePos) - myHero):normalized() * 300
+		myHero:MoveTo(a.x, a.z)
 	end
 end
 
