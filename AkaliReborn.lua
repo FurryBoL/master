@@ -11,7 +11,7 @@
 --		      ░  ░░  ░        ░  ░    ░  ░ ░           ░        ░  ░ ░          ░ ░     ░              ░ 
 --		                                                               ░ 
 -- by Furry
--- Version 2.4
+-- Version 2.5
 
 _AUTO_UPDATE = true -- Set this to false to prevent automatic updates
 
@@ -39,8 +39,8 @@ if VIP_USER then
 	end
 end
 
-_SCRIPT_VERSION = 2.4
-_SCRIPT_VERSION_MENU = "2.4"
+_SCRIPT_VERSION = 2.5
+_SCRIPT_VERSION_MENU = "2.5"
 _FILE_PATH = SCRIPT_PATH .. GetCurrentEnv().FILE_NAME
 _PATCH = "5.24"
 
@@ -344,7 +344,7 @@ end
 --		       ░      ░  ░         ░    ░   
 
 function OnLoad()
-	settings = scriptConfig("> > > Akali Reborn < < <", "Akali_Reborn")
+	settings = scriptConfig("> > > Akali Reborn < < <", "Akali_Reborn_Final")
 			settings.ts = TargetSelector(TARGET_LESS_CAST, 740, DAMAGE_MAGIC, true)
 			settings.ts.name = 'Akali'
 			settings:addTS(settings.ts)
@@ -394,8 +394,10 @@ function OnLoad()
 			settings.farm:addParam("lasthite2", "Only E minions outside of AA Range", SCRIPT_PARAM_ONOFF, true)
 			settings.farm:addParam("space", "", SCRIPT_PARAM_INFO, "")
 			settings.farm:addParam("space", "Lane Clear:", SCRIPT_PARAM_INFO, "")
-			settings.farm:addParam("farmqlast", "Use Q Last Hit in Clear", SCRIPT_PARAM_ONOFF, true)
-			settings.farm:addParam("farmq", "Use Q Lane Clear", SCRIPT_PARAM_ONOFF, false)
+			settings.farm:addParam("farmq", "Use Q in Lane Clear Method:", SCRIPT_PARAM_LIST, 1, {
+				"Last Hit",
+				"Clear"
+			})
 			settings.farm:addParam("farme", "Use E Lane Clear", SCRIPT_PARAM_ONOFF, false)
 			settings.farm:addParam("space", "", SCRIPT_PARAM_INFO, "")
 			settings.farm:addParam("space", "Jungle Creeps:", SCRIPT_PARAM_INFO, "")
@@ -813,12 +815,15 @@ end
 
 function Akali:clearLane()
 	for _, target in pairs(minions.enemyMinions.objects) do
-		local Qdamage = getDmg("Q", target, myHero)
-		if ValidTarget(target) and target ~= nil and self.skills.SkillQ.ready and settings.farm.farmqlast and GetDistanceSqr(target) <= self.skills.SkillQ.range * self.skills.SkillQ.range and Qdamage >= target.health then
-			self:Cast("Q", target)
-		end
-		if ValidTarget(target) and target ~= nil and self.skills.SkillQ.ready and settings.farm.farmq and GetDistanceSqr(target) <= self.skills.SkillQ.range * self.skills.SkillQ.range then
-			self:Cast("Q", target)
+		if ValidTarget(target) and target ~= nil and self.skills.SkillQ.ready and GetDistanceSqr(target) <= self.skills.SkillQ.range * self.skills.SkillQ.range then
+			if settings.farm.farmq == 2 then
+				self:Cast("Q", target)
+			elseif settings.farm.farmq == 1 then
+				local Qdamage = getDmg("Q", target, myHero)
+				if Qdamage >= target.health then
+					self:Cast("Q", target)
+				end
+			end
 		end
 		if ValidTarget(target) and target ~= nil and self.skills.SkillE.ready and settings.farm.farme and GetDistanceSqr(target) <= self.skills.SkillE.range * self.skills.SkillE.range then
 			self:Cast("E", target)
