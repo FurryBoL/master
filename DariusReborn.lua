@@ -10,7 +10,7 @@
 --		 ░                                                                           ░ 
 
 -- by Furry
--- Version 1.7
+-- Version 1.9
 
 _AUTO_UPDATE = true -- Set this to false to prevent automatic updates
 
@@ -38,8 +38,8 @@ if VIP_USER then
 	end
 end
 
-_SCRIPT_VERSION = 1.7
-_SCRIPT_VERSION_MENU = "1.7"
+_SCRIPT_VERSION = 1.9
+_SCRIPT_VERSION_MENU = "1.9"
 _FILE_PATH = SCRIPT_PATH .. GetCurrentEnv().FILE_NAME
 _PATCH = "5.24"
 
@@ -594,7 +594,7 @@ function Darius:KillSteal()
 		if ValidTarget(target, 740) then
 			local DmgTable = {
 				Q = self.skills.SkillQ.ready and getDmg("Q", target, myHero) or 0,
-				R = self.skills.SkillR.ready and Darius:GetRDmg(target) or 0
+				R = self.skills.SkillR.ready and Darius:GetRDmg(target, myHero) or 0
 			}
 			if DmgTable.R > target.health then
 				self:Cast("R", target)
