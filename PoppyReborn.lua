@@ -11,7 +11,7 @@
 --		                                    ░ ░                                 ░
 
 -- by Furry
--- Version 1.0
+-- Version 1.1
 
 _AUTO_UPDATE = true -- Set this to false to prevent automatic updates
 
@@ -39,8 +39,8 @@ if VIP_USER then
 	end
 end
 
-_SCRIPT_VERSION = 1.0
-_SCRIPT_VERSION_MENU = "1.0"
+_SCRIPT_VERSION = 1.1
+_SCRIPT_VERSION_MENU = "1.1"
 _FILE_PATH = SCRIPT_PATH .. GetCurrentEnv().FILE_NAME
 _PATCH = "5.24"
 
