@@ -17,7 +17,7 @@ _AUTO_UPDATE = true -- Set this to false to prevent automatic updates
 
 --			[ ChangeLog ]
 --  Check forum:
---  forum.botoflegends.com/topic/86477-vipfreesxorbsacr-poppy-reborn-patch-523/
+--  http://forum.botoflegends.com/topic/87013-vipfreesxorbsacr-poppy-reborn-always-updated/
 --			[ ChangeLog ]
 
 if myHero.charName ~= 'Poppy' then return end
