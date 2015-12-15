@@ -28,8 +28,8 @@ if VIP_USER then
 	end
 end
 
-_SCRIPT_VERSION = 3.0
-_SCRIPT_VERSION_MENU = "3.0"
+_SCRIPT_VERSION = 3.1
+_SCRIPT_VERSION_MENU = "3.1"
 _PATCH = "5.24"
 
 if FakeLoad then
