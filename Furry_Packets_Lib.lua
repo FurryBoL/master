@@ -1,6 +1,6 @@
 -- Furry Packets Lib
 -- by Furry
--- Version 6.1
+-- Version 6.15
 
 _AUTO_UPDATE_FURRY = true -- Set this to false to prevent automatic updates
 
@@ -13,7 +13,7 @@ _GAME_VERSION_LEVELER = string.find(GetGameVersion(), 'Releases/6.1') -- Change 
 
 local serveradress = "raw.githubusercontent.com"
 local scriptadress = "/FurryBoL/master/master"
-local LocalVersion = "6.1"
+local LocalVersion = "6.15"
 
 if _AUTO_UPDATE_FURRY or true then
 	local ServerVersionDATA = GetWebResult(serveradress , scriptadress.."/Furry_Packets_Lib.version")
@@ -43,27 +43,24 @@ print("<font color='#9900FF'>[Furry Packets Lib] </font><font color='#FF0000'>-<
 if (_GAME_VERSION_LEVELER ~= nil) then
 	_G.LevelSpell = function(id)
 	local offsets = { 
-		[_Q] = 0x71,
-		[_W] = 0xF1,
-		[_E] = 0x31,
-		[_R] = 0xB1,
+		[_Q] = 0x41,
+		[_W] = 0xFC,
+		[_E] = 0x64,
+		[_R] = 0xAA,
 	}
-	local p = CLoLPacket(0x00DB)
-	p.vTable = 0xF6D830
+	local p = CLoLPacket(0x0153)
+	p.vTable = 0xFE9264
 	p:EncodeF(myHero.networkID)
-	for i = 1, 4 do
-		p:Encode1(0x30)
-	end
-	p:Encode1(0x17)
-	for i = 1, 4 do
-		p:Encode1(0x81)
-	end
-	for i = 1, 4 do
-		p:Encode1(0x6A)
-	end
 	p:Encode1(offsets[id])
 	for i = 1, 4 do
-		p:Encode1(0x00)
+		p:Encode1(0xF7)
+	end
+	for i = 1, 4 do
+		p:Encode1(0xAF)
+	end
+	p:Encode1(0x8F)
+	for i = 1, 4 do
+		p:Encode1(0xA5)
 	end
 	SendPacket(p)
 	end
