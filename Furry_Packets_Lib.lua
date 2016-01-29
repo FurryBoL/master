@@ -9,7 +9,7 @@ _AUTO_UPDATE_FURRY = true -- Set this to false to prevent automatic updates
 --			[ ChangeLog ]
 
 _GAME_VERSION = string.find(GetGameVersion(), 'Releases/6.1') -- Change this after a patch if you want errors and bugsplats :)
-_GAME_VERSION_LEVELER = string.find(GetGameVersion(), 'Releases/6.1') -- Change this after a patch if you want errors and bugsplats :)
+_GAME_VERSION_LEVELER = string.find(GetGameVersion(), 'Releases/6.2') -- Change this after a patch if you want errors and bugsplats :)
 
 local serveradress = "raw.githubusercontent.com"
 local scriptadress = "/FurryBoL/master/master"
