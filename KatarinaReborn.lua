@@ -1,6 +1,6 @@
 -- Katarina Reborn by Furry
 -- Encrypted by Furry
--- Version 3.3111
+-- Version 3.3112
 
 _AUTO_UPDATE = true -- Set this to false to prevent automatic updates
 
@@ -26,9 +26,9 @@ if VIP_USER then
 	end
 end
 
-_SCRIPT_VERSION = 3.3111
-_SCRIPT_VERSION_MENU = "3.3111"
-_PATCH = "6.1"
+_SCRIPT_VERSION = 3.3112
+_SCRIPT_VERSION_MENU = "3.3112"
+_PATCH = "6.2"
 
 if FakeLoad then
 	local skinsPB = {}
