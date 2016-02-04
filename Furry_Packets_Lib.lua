@@ -1,19 +1,18 @@
 -- Furry Packets Lib
 -- by Furry
--- Version 6.2
+-- Version 6.21
 
 _AUTO_UPDATE_FURRY = true -- Set this to false to prevent automatic updates
 
 --			[ ChangeLog ]
---  There is no ChangeLog, this is just a script to keep AutoLeveler and SkinChanger Packets all in one place, so when I need to update them, all I need to do is update this script.
+-- removed AutoLevel Packets, LevelSpell(id) function was fixed internally by most likely: "gReY"
 --			[ ChangeLog ]
 
-_GAME_VERSION = string.find(GetGameVersion(), 'Releases/6.2') -- Change this after a patch if you want errors and bugsplats :)
-_GAME_VERSION_LEVELER = string.find(GetGameVersion(), 'Releases/6.2') -- Change this after a patch if you want errors and bugsplats :)
+_GAME_VERSION = string.find(GetGameVersion(), 'Releases/6.1') -- Change this after a patch if you want errors and bugsplats :)
 
 local serveradress = "raw.githubusercontent.com"
 local scriptadress = "/FurryBoL/master/master"
-local LocalVersion = "6.2"
+local LocalVersion = "6.21"
 
 if _AUTO_UPDATE_FURRY or true then
 	local ServerVersionDATA = GetWebResult(serveradress , scriptadress.."/Furry_Packets_Lib.version")
@@ -39,32 +38,6 @@ if _AUTO_UPDATE_FURRY or true then
 end
 	
 print("<font color='#9900FF'>[Furry Packets Lib] </font><font color='#FF0000'>-</font><font color='#00FFFF'> Loaded!</font>")
-
-if (_GAME_VERSION_LEVELER ~= nil) then
-	_G.LevelSpell = function(id)
-	local offsets = { 
-		[_Q] = 0x41,
-		[_W] = 0xFC,
-		[_E] = 0x64,
-		[_R] = 0xAA,
-	}
-	local p = CLoLPacket(0x0153)
-	p.vTable = 0xFE9264
-	p:EncodeF(myHero.networkID)
-	p:Encode1(offsets[id])
-	for i = 1, 4 do
-		p:Encode1(0xF7)
-	end
-	for i = 1, 4 do
-		p:Encode1(0xAF)
-	end
-	p:Encode1(0x8F)
-	for i = 1, 4 do
-		p:Encode1(0xA5)
-	end
-	SendPacket(p)
-	end
-end
 
 function SkinChanger()
 local skinsPB = {}
