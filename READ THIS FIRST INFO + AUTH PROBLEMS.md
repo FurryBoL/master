@@ -3,5 +3,4 @@ A few scripts from now on will be authed by either donators or by good friends o
 
 I no longer wish to support spudgy on the scripting side unless I get gratitude or fair ground.  Call me Yomie if you will.
 
-my skype is: 'gamehelp1000' if you have any further questions.
-## if you wish to donate you can message me via my skype contact above. Minimum of $2 for access.
+# Script open beta is now <u>CLOSED.</u> Thank you to all the contributors, current contributors will have lifetime access.
