@@ -1,4 +1,4 @@
---  > > > Katarina Reborn by Furry
+-- > > > Katarina Reborn by Furry
 -- > > > Encrypted by Furry
 -- > > > Version 3.34
 
@@ -14,10 +14,10 @@ Set to turn ON = " true "
 Set to turn OFF = " false "
 ]]--
 
-_AUTO_UPDATE = true -- Automatic Updates Switch
-_W_CALCS = false -- More W Calculation -> Draws
-_LUDENS = true -- Ludens Echo -> Debug
-_SKIN_CHANGER = true -- Skin Changer Switch
+_AUTO_UPDATE = true 	-- Automatic Updates Switch
+_W_CALCS = false 	-- More W Calculation -> Draws
+_LUDENS = false 	-- Ludens Echo -> Debug
+_SKIN_CHANGER = true 	-- Skin Changer Switch
 
 --[[
 			[ ChangeLog ]
