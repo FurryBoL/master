@@ -52,7 +52,10 @@ Added better W calculation to relative movement speed.
 Added Ludens Echo Support + Damage Calculation + Debug Addon (Switch).
 ]]--
 
-if myHero.charName ~= "Katarina" then return end
+if myHero.charName ~= "Katarina" then
+	print("<font color='#FF00FF'>[Katarina Reborn] <font color='#00FF00'>-</font></font><font color='#FFFFFF'> Please use this script with: <u><b>Katarina</b></u></font>")
+	return
+end
 
 -- You can mess with these if u want :/ don't give a shit.
 _SCRIPT_VERSION = 3.34
