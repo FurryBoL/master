@@ -52,9 +52,11 @@ Added better W calculation to relative movement speed.
 Added Ludens Echo Support + Damage Calculation + Debug Addon (Switch).
 
 		 07/05/2016 | 1:07AM
-Fixed E Reduction Draws in "All For One" Featured Gamemode.
-Fixed Victory Mode in "All For One" Featured Gamemode.
-Fixed a Spelling Error on line
+Fixed E Reduction Draws in "One For All" Featured Gamemode.
+Fixed Victory Mode in "One For All" Featured Gamemode.
+Fixed a Spelling Error on line: 706
+Fixed a Spelling Error on line: 750
+Fixed a Spelling Error on line: 2474
 ]]--
 
 if myHero.charName ~= "Katarina" then
