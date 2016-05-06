@@ -4,7 +4,7 @@
 
 --_______________________________________________________________________________
 
--- This is a script for Donators Only (minimum of $2) Add my skype @ Gamehelp1000
+-- This is a script for Donators Only (minimum of $5) Add my skype @ Gamehelp1000
 --_______________________________________________________________________________
 
 --[[
