@@ -15,7 +15,7 @@
 ]]
 -- > > > Katarina Reborn by Furry
 -- > > > Encrypted by Furry
--- > > > Version 3.4
+-- > > > Version 3.5
 -- > > > Current Lines of Deticated Katarina Code: 3692
 
 --_______________________________________________________________________________
@@ -105,8 +105,8 @@ if myHero.charName ~= "Katarina" then
 	return
 end
 -- You can mess with these if u want :/ don't give a shit.
-_SCRIPT_VERSION = 3.4
-_SCRIPT_VERSION_MENU = "3.4"
+_SCRIPT_VERSION = 3.5
+_SCRIPT_VERSION_MENU = "3.5"
 _PATCH = "6.9"
 
 -- Start Encryption
