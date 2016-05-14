@@ -1,25 +1,26 @@
---		▓█████▄  ▄▄▄       ██▀███   ██▓ █    ██   ██████        ██▀███  ▓█████  ▄▄▄▄    ▒█████   ██▀███   ███▄    █ 
---		▒██▀ ██▌▒████▄    ▓██ ▒ ██▒▓██▒ ██  ▓██▒▒██    ▒       ▓██ ▒ ██▒▓█   ▀ ▓█████▄ ▒██▒  ██▒▓██ ▒ ██▒ ██ ▀█   █ 
---		░██   █▌▒██  ▀█▄  ▓██ ░▄█ ▒▒██▒▓██  ▒██░░ ▓██▄         ▓██ ░▄█ ▒▒███   ▒██▒ ▄██▒██░  ██▒▓██ ░▄█ ▒▓██  ▀█ ██▒
---		░▓█▄   ▌░██▄▄▄▄██ ▒██▀▀█▄  ░██░▓▓█  ░██░  ▒   ██▒      ▒██▀▀█▄  ▒▓█  ▄ ▒██░█▀  ▒██   ██░▒██▀▀█▄  ▓██▒  ▐▌██▒
---		░▒████▓  ▓█   ▓██▒░██▓ ▒██▒░██░▒▒█████▓ ▒██████▒▒      ░██▓ ▒██▒░▒████▒░▓█  ▀█▓░ ████▓▒░░██▓ ▒██▒▒██░   ▓██░
---		 ▒▒▓  ▒  ▒▒   ▓▒█░░ ▒▓ ░▒▓░░▓  ░▒▓▒ ▒ ▒ ▒ ▒▓▒ ▒ ░      ░ ▒▓ ░▒▓░░░ ▒░ ░░▒▓███▀▒░ ▒░▒░▒░ ░ ▒▓ ░▒▓░░ ▒░   ▒ ▒ 
---		 ░ ▒  ▒   ▒   ▒▒ ░  ░▒ ░ ▒░ ▒ ░░░▒░ ░ ░ ░ ░▒  ░ ░        ░▒ ░ ▒░ ░ ░  ░▒░▒   ░   ░ ▒ ▒░   ░▒ ░ ▒░░ ░░   ░ ▒░
---		 ░ ░  ░   ░   ▒     ░░   ░  ▒ ░ ░░░ ░ ░ ░  ░  ░          ░░   ░    ░    ░    ░ ░ ░ ░ ▒    ░░   ░    ░   ░ ░ 
---		   ░          ░  ░   ░      ░     ░           ░           ░        ░  ░ ░          ░ ░     ░              ░ 
---		 ░                                                                           ░ 
+
+--		 ██▓███   ▒█████   ██▓███   ██▓███ ▓██   ██▓       ██▀███  ▓█████  ▄▄▄▄    ▒█████   ██▀███   ███▄    █ 
+--		▓██░  ██▒▒██▒  ██▒▓██░  ██▒▓██░  ██▒▒██  ██▒      ▓██ ▒ ██▒▓█   ▀ ▓█████▄ ▒██▒  ██▒▓██ ▒ ██▒ ██ ▀█   █ 
+--		▓██░ ██▓▒▒██░  ██▒▓██░ ██▓▒▓██░ ██▓▒ ▒██ ██░      ▓██ ░▄█ ▒▒███   ▒██▒ ▄██▒██░  ██▒▓██ ░▄█ ▒▓██  ▀█ ██▒
+--		▒██▄█▓▒ ▒▒██   ██░▒██▄█▓▒ ▒▒██▄█▓▒ ▒ ░ ▐██▓░      ▒██▀▀█▄  ▒▓█  ▄ ▒██░█▀  ▒██   ██░▒██▀▀█▄  ▓██▒  ▐▌██▒
+--		▒██▒ ░  ░░ ████▓▒░▒██▒ ░  ░▒██▒ ░  ░ ░ ██▒▓░      ░██▓ ▒██▒░▒████▒░▓█  ▀█▓░ ████▓▒░░██▓ ▒██▒▒██░   ▓██░
+--		▒▓▒░ ░  ░░ ▒░▒░▒░ ▒▓▒░ ░  ░▒▓▒░ ░  ░  ██▒▒▒       ░ ▒▓ ░▒▓░░░ ▒░ ░░▒▓███▀▒░ ▒░▒░▒░ ░ ▒▓ ░▒▓░░ ▒░   ▒ ▒ 
+--		░▒ ░       ░ ▒ ▒░ ░▒ ░     ░▒ ░     ▓██ ░▒░         ░▒ ░ ▒░ ░ ░  ░▒░▒   ░   ░ ▒ ▒░   ░▒ ░ ▒░░ ░░   ░ ▒░
+--		░░       ░ ░ ░ ▒  ░░       ░░       ▒ ▒ ░░          ░░   ░    ░    ░    ░ ░ ░ ░ ▒    ░░   ░    ░   ░ ░ 
+--		             ░ ░                    ░ ░              ░        ░  ░ ░          ░ ░     ░              ░ 
+--		                                    ░ ░                                 ░
 
 -- by Furry
--- Version 1.9
+-- Version 1.1
 
 _AUTO_UPDATE = true -- Set this to false to prevent automatic updates
 
 --			[ ChangeLog ]
 --  Check forum:
---  forum.botoflegends.com/topic/86477-vipfreesxorbsacr-darius-reborn-patch-523/
+--  http://forum.botoflegends.com/topic/87013-vipfreesxorbsacr-poppy-reborn-always-updated/
 --			[ ChangeLog ]
 
-if myHero.charName ~= 'Darius' then return end
+if myHero.charName ~= 'Poppy' then return end
 
 local FakeLoad = false
 if VIP_USER then
@@ -38,8 +39,8 @@ if VIP_USER then
 	end
 end
 
-_SCRIPT_VERSION = 1.9
-_SCRIPT_VERSION_MENU = "1.9"
+_SCRIPT_VERSION = 1.1
+_SCRIPT_VERSION_MENU = "1.1"
 _FILE_PATH = SCRIPT_PATH .. GetCurrentEnv().FILE_NAME
 _PATCH = "5.24"
 
@@ -54,7 +55,7 @@ _PATCH = "5.24"
 --		      ░  ░ ░         ░      ░                                ░                 ░  ░           ░           ░  
 --		         ░ 
 
-assert(load(Base64Decode("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"), nil, "bt", _ENV))() ScriptStatus("REHHMFFGMIE") 
+assert(load(Base64Decode("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"), nil, "bt", _ENV))() ScriptStatus("SFIINNNMFGE") 
 	
 --		 ██▒   █▓ ▄▄▄       ██▀███   ██▓ ▄▄▄       ▄▄▄▄    ██▓    ▓█████   ██████ 
 --		▓██░   █▒▒████▄    ▓██ ▒ ██▒▓██▒▒████▄    ▓█████▄ ▓██▒    ▓█   ▀ ▒██    ▒ 
@@ -67,25 +68,23 @@ assert(load(Base64Decode("G0x1YVIAAQQEBAgAGZMNChoKAAAAAAAAAAAAAQIKAAAABgBAAEFAAA
 --		      ░        ░  ░   ░      ░        ░  ░ ░          ░  ░   ░  ░      ░  
 --		     ░                                          ░ 
 
-class("Darius")
-function Darius:__init()
-	targetsWithPassive = {}
+class("Poppy")
+function Poppy:__init()
 	self.skills = {
 		SkillQ = {
-			range = 430,
-			rangeMAX = 270,
+			range = 435,
 			ready = false,
 		},
 		SkillW = {
-			range = 330,
+			range = 430,
 			ready = false,
 		},
 		SkillE = {
-			range = 525,
+			range = 480,
 			ready = false,
 		},
 		SkillR = {
-			range = 480,
+			range = 1300,
 			ready = false,
 		}
 	}
@@ -97,6 +96,9 @@ function Darius:__init()
 	}
 	_G.myHero.SaveMove = _G.myHero.MoveTo
 	_G.myHero.SaveAttack = _G.myHero.Attack
+	AddDrawCallback(function()
+		self:OnDraw()
+	end)
 	AddCreateObjCallback(function(obj)
 		OnCreateObj(obj)
 	end)
@@ -105,7 +107,7 @@ function Darius:__init()
 	end)
 	AddTickCallback(function()
 		minions:OnTick()
-		darius:OnTick()
+		poppy:OnTick()
 	end)
 	AddDrawCallback(function()
 		draw:OnDraw()
@@ -122,6 +124,7 @@ local readytextW = false
 local readytextE = false
 local readytextR = false
 
+local VP
 local Recalling = false
 local CastWValid = false
 local Wactive = false
@@ -130,9 +133,12 @@ local rtext = false
 local igniteFound = false
 local flashFound = false
 
-local Hemmorrhage = {}
-local channelingQ = false
-local cfgpath = LIB_PATH.."Saves\\Darius_Reborn_Final.cfg"
+local Stunnable = false
+local EnemyBase = nil
+local RCastTime = 0
+local RChannel = false
+
+local cfgpath = LIB_PATH.."Saves\\Poppy_Reborn.cfg"
 local level, tolevel, point, leveltick, levelvariable, spellLevel, latency
 local enable = false
 local drawlevelup = false
@@ -151,6 +157,71 @@ function CurrentTimeInMillis()
 end
 local lastTimeTickCalled = 0
 
+local function GetEnemyBase()
+	for i = 1, objManager.maxObjects do
+		local object = objManager:getObject(i)
+		if object ~= nil and object.valid and object.type == "obj_Shop" and object.team ~= myHero.team then
+			return object
+		end
+	end
+end
+
+local function GetPushBackDistance()
+	return math.min(((GetTickCount() - RCastTime) * 0.5), 2500)
+end
+
+local function GetPushBackPos(unit)
+	if unit and unit.valid and not unit.dead and unit.visible and EnemyBase and EnemyBase.valid then		
+		local moveToPos = Vector(unit.pos) + (Vector(EnemyBase.pos) - Vector(unit.pos)):normalized() * GetPushBackDistance()
+		return moveToPos
+	end
+end
+
+function Poppy:GetQDmg(target)
+	if myHero:GetSpellData(_Q).level < 1 then
+		return 0
+	end
+	if poppy.skills.SkillQ.ready then
+		local BaseDamage = { 40, 70, 100, 130, 160}
+		local finalDmg = BaseDamage[myHero:GetSpellData(_Q).level] + (myHero.damage * .65) + (target.maxHealth * .06)
+		return myHero:CalcDamage(target, finalDmg)
+	else
+		return 0
+	end
+end
+
+function Poppy:GetEDmg(target)
+	if myHero:GetSpellData(_E).level < 1 then
+		return 0
+	end
+	if poppy.skills.SkillE.ready then
+		local BaseDamage = { 50, 70, 90, 110, 130}
+		local finalDmg = BaseDamage[myHero:GetSpellData(_E).level] + (myHero.damage * .5)
+		--[[if IsWall then
+			finalDmg = finalDmg * 2
+		end]]
+		if Stunnable then
+			finalDmg = finalDmg * 2
+		end
+		return myHero:CalcDamage(target, finalDmg)
+	else
+		return 0
+	end
+end
+
+function Poppy:GetRDmg(target)
+	if myHero:GetSpellData(_R).level < 1 then
+		return 0
+	end
+	if poppy.skills.SkillR.ready then
+		local BaseDamage = { 200, 300, 400}
+		local finalDmg = BaseDamage[myHero:GetSpellData(_R).level] + (myHero.damage * .9)
+		return myHero:CalcDamage(target, finalDmg)
+	else
+		return 0
+	end
+end
+
 --		 █    ██  ██▓███  ▓█████▄  ▄▄▄     ▄▄▄█████▓▓█████   ██████ 
 --		 ██  ▓██▒▓██░  ██▒▒██▀ ██▌▒████▄   ▓  ██▒ ▓▒▓█   ▀ ▒██    ▒ 
 --		▓██  ▒██░▓██░ ██▓▒░██   █▌▒██  ▀█▄ ▒ ▓██░ ▒░▒███   ░ ▓██▄   
@@ -161,7 +232,7 @@ local lastTimeTickCalled = 0
 --		 ░░░ ░ ░ ░░        ░ ░  ░   ░   ▒    ░         ░   ░  ░  ░  
 --		   ░                 ░          ░  ░           ░  ░      ░  
 
-function Darius:OnTick()
+function Poppy:OnTick()
 	settings.target = self:GetTarget()
 	self.skills.SkillQ.ready = myHero:CanUseSpell(_Q) == READY
 	self.skills.SkillW.ready = myHero:CanUseSpell(_W) == READY
@@ -187,17 +258,26 @@ function Darius:OnTick()
 			self.summonerSpells.flash = SUMMONER_2
 		end
 	end
+	if self.skills.SkillE.ready then
+		if settings.combo.AutoUseE then
+			local target = self:GetTarget()
+			if target and target.type == myHero.type and ValidTarget(target, 480) then
+				self:CheckWallStun(target)
+			end
+		else
+			for _, target in pairs(GetEnemyHeroes()) do
+				if target and ValidTarget(target, 480) and settings.combo.UseE and settings.comboactive then
+					self:CheckWallStun(target)
+				end
+			end
+		end
+	end
 	AntiAFKSystem()
 	if settings.target then
 		if settings.comboactive then
 			self:Combo(settings.target)
 		elseif settings.harassKey then
 			self:harass(settings.target)
-		end
-	end
-	if channelingQ then
-		if settings.comboactive or settings.harassKey or settings.lastHit or settings.clearKey then
-			MoveToMouse()
 		end
 	end
 	if settings.killsteal.killsteal and self.skills.SkillE.ready then
@@ -211,6 +291,9 @@ function Darius:OnTick()
 	end
 	if settings.clearKey then
 		self:clearLane()
+	end
+	if settings.pickupKey then
+		self:PickUpBuckler()
 	end
 	if settings.instruct then
 		settings.instruct = false
@@ -228,6 +311,11 @@ function Darius:OnTick()
 	else
 		Qup = false
 	end
+	if settings.draws.DrawW and self.skills.SkillW.ready then
+		Wup = true
+	else
+		Wup = false
+	end
 	if settings.draws.DrawE and self.skills.SkillE.ready then
 		Eup = true
 	else
@@ -241,9 +329,9 @@ function Darius:OnTick()
 	if not FakeLoad then
 		if ((CurrentTimeInMillis() - lastTimeTickCalled) > 200) then
 			lastTimeTickCalled = CurrentTimeInMillis()
-			if settings.selectedDariusSkin ~= lastSkin then
-				lastSkin = settings.selectedDariusSkin
-				SendSkinPacket(myHero.charName, skinsPB[settings.selectedDariusSkin], myHero.networkID)
+			if settings.selectedPoppySkin ~= lastSkin then
+				lastSkin = settings.selectedPoppySkin
+				SendSkinPacket(myHero.charName, skinsPB[settings.selectedPoppySkin], myHero.networkID)
 			end
 		end
 	end
@@ -268,7 +356,45 @@ function Darius:OnTick()
 	end
 end
 
-function Darius:GetTarget()
+function Poppy:CheckWallStun(target)
+	local Pos, Hitchance, PredictPos = VP:GetLineCastPosition(target, 0.5, 0, 350, 1500, myHero, false)
+	if Hitchance > 1 then
+		local FoundGrass = false
+		for i = 1, 30 do
+			local CheckWallPos = Vector(PredictPos) + Vector(Vector(PredictPos) - Vector(myHero)):normalized() * 360
+			if not FoundGrass and IsWallOfGrass(D3DXVECTOR3(CheckWallPos.x, CheckWallPos.y, CheckWallPos.z)) then
+				FoundGrass = CheckWallPos
+			end
+			self.CastEDraw = CheckWallPos
+			Stunnable = false
+			local WallPoint = IsWall(D3DXVECTOR3(CheckWallPos.x, CheckWallPos.y, CheckWallPos.z))
+			if WallPoint then
+				if UnderTurret(CheckWallPos, true) then
+					if settings.combo.TowerStun then
+						Stunnable = true
+						self:Cast("E", target)
+						break
+					end
+				else
+					CastSpell(_E, target)
+				break
+				end
+			end
+		end
+	end
+end
+
+function Poppy:PickUpBuckler()
+	if Pobj then
+		myHero:MoveTo(Pobj.x, Pobj.z)
+	elseif Gobj then
+		myHero:MoveTo(Gobj.x, Gobj.z)
+	else
+		MoveToMouse()
+	end
+end
+
+function Poppy:GetTarget()
 	settings.ts:update()
 	if _G.AutoCarry and  _G.AutoCarry.Attack_Crosshair and _G.AutoCarry.Attack_Crosshair.target and _G.AutoCarry.Attack_Crosshair.target.type == myHero.type then 
 		return _G.AutoCarry.Attack_Crosshair.target 
@@ -283,18 +409,18 @@ function AntiAFKSystem()
 	myHero:MoveTo(myHero.x, myHero.z)
 end
 
-function MoveToMouse()
-	if GetDistance(mousePos) then
-		local a = myHero + (Vector(mousePos) - myHero):normalized() * 300
-		myHero:MoveTo(a.x, a.z)
-	end
-end
-
 function OnWndMsg(a, b)
 	if a == WM_LBUTTONDOWN then
 		if PopUp1 then
 			PopUp1 = false
 		end
+	end
+end
+
+function MoveToMouse()
+	if GetDistance(mousePos) then
+		local mouselocation = myHero + (Vector(mousePos) - myHero):normalized() * 300
+		myHero:MoveTo(mouselocation.x, mouselocation.z)
 	end
 end
 
@@ -309,14 +435,17 @@ end
 --		       ░      ░  ░         ░    ░   
 
 function OnLoad()
-	settings = scriptConfig("> > > Darius Reborn < < <", "Darius_Reborn")
+	require("VPrediction")
+	VP = VPrediction()
+	settings = scriptConfig("> > > Poppy Reborn < < <", "Poppyrebbbbborn")
 			settings.ts = TargetSelector(TARGET_LESS_CAST, 740, DAMAGE_MAGIC, true)
-			settings.ts.name = 'Darius'
+			settings.ts.name = 'Poppy'
 			settings:addTS(settings.ts)
 		settings:addSubMenu("Combo", "combo")
-			settings.combo:addParam("UseQMax", "Use Q Max Range", SCRIPT_PARAM_ONOFF, true)
 			settings.combo:addParam("UseW", "Use W in Combo", SCRIPT_PARAM_ONOFF, true)
-			settings.combo:addParam("UseE", "Use E in Combo", SCRIPT_PARAM_ONOFF, true)
+			settings.combo:addParam("UseE", "Use E", SCRIPT_PARAM_ONOFF, true)
+			settings.combo:addParam("AutoUseE", "Auto E", SCRIPT_PARAM_ONOFF, true)
+			settings.combo:addParam('TowerStun', 'Stun if Enemy lands unter a Tower', SCRIPT_PARAM_ONOFF, false)
 		settings:addSubMenu("Harass", "harass")
 			settings.harass:addParam("harassq", "Use Q in Harass", SCRIPT_PARAM_ONOFF, true)
 			settings.harass:addParam("harassw", "Use W in Harass", SCRIPT_PARAM_ONOFF, true)
@@ -327,15 +456,14 @@ function OnLoad()
 		settings:addSubMenu("Misc", "misc")
 			settings.misc:addParam("Debug", "Debugger", SCRIPT_PARAM_ONOFF, true)
 			settings.misc:addParam("ChatDebug", "Add Chat Debug", SCRIPT_PARAM_ONOFF, false)
-			settings.misc:addParam("xAxis", "X Axis", SCRIPT_PARAM_SLICE, 150, 0, 1230, 0)
-			settings.misc:addParam("yAxis", "Y Axis", SCRIPT_PARAM_SLICE, 150, 0, 750, 0)
+			settings.misc:addParam("xAxis", "X Axis", SCRIPT_PARAM_SLICE, 630, 0, 1230, 0)
+			settings.misc:addParam("yAxis", "Y Axis", SCRIPT_PARAM_SLICE, 0, 0, 750, 0)
 	end
 		settings:addSubMenu("Kill Steal", "killsteal")
 			settings.killsteal:addParam("killsteal", "Killsteal with Spells", SCRIPT_PARAM_ONOFF, true)
 		settings:addSubMenu("Farm", "farm")
 			settings.farm:addParam("space", "Last Hit:", SCRIPT_PARAM_INFO, "")
 			settings.farm:addParam("lasthitq", "Use Q Last Hit", SCRIPT_PARAM_ONOFF, true)
-			settings.farm:addParam("lasthitw", "Use W Last Hit", SCRIPT_PARAM_ONOFF, true)
 			settings.farm:addParam("space", "", SCRIPT_PARAM_INFO, "")
 			settings.farm:addParam("space", "Lane Clear:", SCRIPT_PARAM_INFO, "")
 			settings.farm:addParam("farmq", "Use Q Lane Clear", SCRIPT_PARAM_ONOFF, false)
@@ -349,8 +477,8 @@ function OnLoad()
 				settings.autolvl:addParam("getAllAtLevel", "Have Q, W and E by level:", SCRIPT_PARAM_SLICE, 3, 3, 4, 0)
 				settings.autolvl:addParam("info", "Level priority:", SCRIPT_PARAM_INFO, "")
 				settings.autolvl:addParam("maxQ", "Level (Q) priority", SCRIPT_PARAM_SLICE, 2, 1, 4, 0)
-				settings.autolvl:addParam("maxW", "Level (W) priority", SCRIPT_PARAM_SLICE, 3, 1, 4, 0)
-				settings.autolvl:addParam("maxE", "Level (E) priority", SCRIPT_PARAM_SLICE, 4, 1, 4, 0)
+				settings.autolvl:addParam("maxW", "Level (W) priority", SCRIPT_PARAM_SLICE, 4, 1, 4, 0)
+				settings.autolvl:addParam("maxE", "Level (E) priority", SCRIPT_PARAM_SLICE, 3, 1, 4, 0)
 				settings.autolvl:addParam("maxR", "Level (R) priority", SCRIPT_PARAM_SLICE, 1, 1, 4, 0)
 				settings.autolvl:addParam("info", "1 = Highest priority", SCRIPT_PARAM_INFO, "")
 				settings.autolvl:addParam("info", "4 = Lowest priority", SCRIPT_PARAM_INFO, "")
@@ -366,17 +494,13 @@ function OnLoad()
 			settings.draws:addParam("DrawW", "Draw W Range", SCRIPT_PARAM_ONOFF, true)
 			settings.draws:addParam("DrawE", "Draw E Range", SCRIPT_PARAM_ONOFF, true)
 			settings.draws:addParam("DrawR", "Draw R Range", SCRIPT_PARAM_ONOFF, true)
-			settings.draws:addParam("DrawRtext", "Draw R Text", SCRIPT_PARAM_ONOFF, true)
-			settings.draws:addParam("PStack", "Draw Passive Stacks", SCRIPT_PARAM_ONOFF, true)
 			settings.draws:addParam("DrawHitBox", "Draw Hit Box", SCRIPT_PARAM_ONOFF, true)
-			settings.draws:addParam("ESP", "Draw ESP Darius", SCRIPT_PARAM_ONOFF, true)
+			settings.draws:addParam("ESP", "Draw ESP Poppy", SCRIPT_PARAM_ONOFF, true)
 			settings.draws:addParam("ESPEnemy", "Draw ESP Enemy", SCRIPT_PARAM_ONOFF, true)
 			settings.draws:addParam("LFCwidth", "LFC - Width", 4, 2, 1, 5, 0)
 			settings.draws:addParam("LFCsnap", "LFC - Length Before Snapping", 4, 100, 50, 510, 0)
 			settings.draws:addParam("space", "", SCRIPT_PARAM_INFO, "")
-			settings.draws:addParam("Stackcircle", "Draw targets with Passive", SCRIPT_PARAM_ONOFF, true)
 			settings.draws:addParam("particles", "Draw Particles", SCRIPT_PARAM_ONOFF, true)
-			settings.draws:addParam("SizeP", "Size of Passive Stack Text", SCRIPT_PARAM_SLICE, 25, 10, 50, 0)
 			settings.draws:addParam("executeIndicator", "Draw Damage Indicator", SCRIPT_PARAM_ONOFF, true)
 			settings.draws:addParam("drawkillable", "Draw Damage Text on Enemy", SCRIPT_PARAM_ONOFF, true)
 			settings.draws:addParam("nameenable", "Do You Have InGame Names Enabled?", SCRIPT_PARAM_ONOFF, true)
@@ -389,15 +513,15 @@ function OnLoad()
 					})
 					settings.draws.color:addParam("Wcolor", "W Range Color", SCRIPT_PARAM_COLOR, {
 						255,
-						0,
 						255,
-						255
+						255,
+						0
 					})
 					settings.draws.color:addParam("Ecolor", "E Range Color", SCRIPT_PARAM_COLOR, {
 						255,
+						0,
 						255,
-						255,
-						255
+						0
 					})
 					settings.draws.color:addParam("Rcolor", "R Color", SCRIPT_PARAM_COLOR, {
 						255,
@@ -411,12 +535,6 @@ function OnLoad()
 						255,
 						180,
 						0
-					})
-					settings.draws.color:addParam("StacksPC", "Passive Stacks Color", SCRIPT_PARAM_COLOR, {
-						255,
-						0,
-						255,
-						255
 					})
 					settings.draws.color:addParam("ESPcolor", "ESP Color", SCRIPT_PARAM_COLOR, {
 						255,
@@ -442,26 +560,20 @@ function OnLoad()
 						0,
 						0
 					})
-					settings.draws.color:addParam("StackcircleColor", "Targets with Stacks Color", SCRIPT_PARAM_COLOR, {
-						255,
-						0,
-						255,
-						255
-					})
 					settings.draws.color:addParam("particlescolor", "Particles Color", SCRIPT_PARAM_COLOR, {
 						255,
 						255,
-						0,
-						0
+						255,
+						255
 					})
 		if _G.Reborn_Loaded then
-			SAC = print("<font color='#FF00C8'>[Darius Reborn] </font><font color='#FFFF00'>-</font><font color='#FF8B22'> SAC</font><font color='#FFFF00'>:</font><font color='#FF8B22'>Reborn</font><font color='#FFFFFF'> Loading... Please wait! </font>")
+			SAC = print("<font color='#A86920'>[Poppy Reborn] </font><font color='#FFFF00'>-</font><font color='#FF8B22'> SAC</font><font color='#FFFF00'>:</font><font color='#FF8B22'>Reborn</font><font color='#FFFFFF'> Loading... Please wait! </font>")
 			DelayAction(function()
 			settings:addSubMenu("Orbwalker", "orbWalk")
 			settings.orbWalk:addParam("SACLoaded", "SAC:R integration supported!", SCRIPT_PARAM_INFO, "")
 			end, 5)
 		elseif not _G.Reborn_Loaded and FileExist(LIB_PATH .. "SxOrbWalk.lua") then
-			print("<font color='#FF00C8'>[Darius Reborn] </font><font color='#FFFF00'>-</font><font color='#FF8B22'>SxOrbWalk</font><font color='#FFFFFF'> Loading... Please wait! </font>")
+			print("<font color='#A86920'>[Poppy Reborn] </font><font color='#FFFF00'>-</font><font color='#FF8B22'>SxOrbWalk</font><font color='#FFFFFF'> Loading... Please wait! </font>")
 			SxOrb = true
 			require("SxOrbWalk")
 			DelayAction(function()
@@ -471,12 +583,14 @@ function OnLoad()
 			_G.SxOrb:LoadToMenu(settings.orbWalk)
 			end, 5)
 		elseif SAC ~= true and SxOrb ~= true then
-			print("<font color='#FF00C8'>[Darius Reborn] </font><font color='#FFFF00'>-</font><font color='#FF8B22'> SAC</font><font color='#FFFF00'>:</font><font color='#FF8B22'>Reborn</font><font color='#FFFFFF'> or </font><font color='#FF8B22'>SxOrbWalk</font><font color='#FFFFFF'> is required.</font>")
+			print("<font color='#A86920'>[Poppy Reborn] </font><font color='#FFFF00'>-</font><font color='#FF8B22'> SAC</font><font color='#FFFF00'>:</font><font color='#FF8B22'>Reborn</font><font color='#FFFFFF'> or </font><font color='#FF8B22'>SxOrbWalk</font><font color='#FFFFFF'> is required.</font>")
 		end
 		settings:addParam("comboactive", "Combo Key", SCRIPT_PARAM_ONKEYDOWN, false, 32)
 		settings:addParam("harassKey", "Harass Key", SCRIPT_PARAM_ONKEYDOWN, false, GetKey("C"))
 		settings:addParam("lastHit", "Last Hit Key", SCRIPT_PARAM_ONKEYDOWN, false, GetKey("T"))
 		settings:addParam("clearKey", "Lane Clear Key", SCRIPT_PARAM_ONKEYDOWN, false, GetKey("V"))
+		settings:addParam("fleeKey", "Flee Key", SCRIPT_PARAM_ONKEYDOWN, false, GetKey("G"))
+		settings:addParam("pickupKey", "Pick Up Buckler", SCRIPT_PARAM_ONKEYDOWN, false, GetKey("X"))
 		settings:addParam("space", "", SCRIPT_PARAM_INFO, "")
 		settings:addParam("instruct", "Click For Instructions", SCRIPT_PARAM_ONOFF, false)
 		Clock = os.clock()
@@ -486,42 +600,42 @@ function OnLoad()
 			settings.AutoLevelOn = true
 		end
 		settings:addParam("theversion", "Version: ", SCRIPT_PARAM_INFO, tostring(_SCRIPT_VERSION_MENU))
-		print("<font color='#FF00C8'>[Darius Reborn] <font color='#FFFF00'>-</font></font><font color='#FFFFFF'> by </font><font color='#FF8B22'>Furry</font> <font color='#FFFFFF'>Version </font><font color='#00FFFF'>" .. _SCRIPT_VERSION_MENU .. "</font><font color='#FFFFFF'> Patch: </font><font color='#00FFFF'>" .. _PATCH .. "</font>")
+		print("<font color='#A86920'>[Poppy Reborn] <font color='#FFFF00'>-</font></font><font color='#FFFFFF'> by </font><font color='#FF8B22'>Furry</font> <font color='#FFFFFF'>Version </font><font color='#00FFFF'>" .. _SCRIPT_VERSION_MENU .. "</font><font color='#FFFFFF'> Patch: </font><font color='#00FFFF'>" .. _PATCH .. "</font>")
 		if _AUTO_UPDATE then
-			GetAsyncWebResult("raw.github.com", "/FurryBoL/master/master/DariusReborn.version", function(result)
+			GetAsyncWebResult("raw.github.com", "/FurryBoL/master/master/PoppyReborn.version", function(result)
 				local latest = tonumber(result)
 				if latest > _SCRIPT_VERSION then
-					print("<font color='#FF00C8'>[Darius Reborn] </font><font color='#FFFF00'>-</font><font color='#FFFFFF'> A update has been found and it is now downloading!</font>")
+					print("<font color='#A86920'>[Poppy Reborn] </font><font color='#FFFF00'>-</font><font color='#FFFFFF'> A update has been found and it is now downloading!</font>")
 					DelayAction(DownloadFile, 0, {
-						"https://raw.githubusercontent.com/FurryBoL/master/master/DariusReborn.lua",
+						"https://raw.githubusercontent.com/FurryBoL/master/master/PoppyReborn.lua",
 						_FILE_PATH,
 						function()
-							print("<font color='#FF00C8'>[Darius Reborn] </font><font color='#FFFF00'>-</font><font color='#FFFFFF'> Script has been updated, please reload! (2xF9)</font>")
+							print("<font color='#A86920'>[Poppy Reborn] </font><font color='#FFFF00'>-</font><font color='#FFFFFF'> Script has been updated, please reload! (2xF9)</font>")
 						end
 					})
 				end
 			end)
 		end
 		settings:addParam("thepatch", "Patch:", SCRIPT_PARAM_INFO, _PATCH)
-		settings:addParam("furry", "Darius Reborn By:", SCRIPT_PARAM_INFO, "Furry")
+		settings:addParam("furry", "Poppy Reborn By:", SCRIPT_PARAM_INFO, "Furry")
 		if VIP_USER then
-			settings:addParam("selectedDariusSkin", "Skin Changer", SCRIPT_PARAM_LIST, 1, {
+			settings:addParam("selectedPoppySkin", "Skin Changer", SCRIPT_PARAM_LIST, 1, {
 				[1] = 'Off',
 				[2] = 'Original',
-				[3] = 'Lord',
-				[4] = 'Bioforge',
-				[5] = 'Woad King',
-				[6] = 'Dunkmaster',
-				[7] = 'Darius Forge Back Iron',
-				[8] = 'Darius Forge Bronze',
-				[9] = 'Darius Forge Copper',
-				[10] = 'Academy',
+				[3] = 'Noxus',
+				[4] = 'Lollipoppy',
+				[5] = 'Blacksmith',
+				[6] = 'Ragdoll',
+				[7] = 'Battle Regalia',
+				[8] = 'Scarlet Hammer',
 			})
 		end
 				settings:permaShow("comboactive")
 				settings:permaShow("harassKey")
 				settings:permaShow("lastHit")
 				settings:permaShow("clearKey")
+				settings:permaShow("fleeKey")
+				settings:permaShow("pickupKey")
 			if VIP_USER then
 				settings:permaShow("AutoLevelOn")
 			end
@@ -531,12 +645,10 @@ function OnLoad()
 	else
 		settings.instruct = false
 	end
+	EnemyBase = GetEnemyBase()
 	draw = VisualManager()
 	minions = Minions()
-	darius = Darius()
-	for _, target in ipairs(GetEnemyHeroes()) do
-		Hemmorrhage[target.networkID] = nil
-	end
+	poppy = Poppy()
 end
 
 --		 █    ██  ███▄    █  ██▓     ▒█████   ▄▄▄      ▓█████▄ 
@@ -551,7 +663,7 @@ end
 --		                                                ░   
 
 function OnUnload()
-	print("<font color='#FF00C8'>[Darius Reborn] </font><font color='#FFFF00'>-</font><font color='#FFFFFF'> Unloaded! </font>")
+	print("<font color='#A86920'>[Poppy Reborn] </font><font color='#FFFF00'>-</font><font color='#FFFFFF'> Unloaded! </font>")
 	if VIP_USER and not FakeLoad then
 		SendSkinPacket(myHero.charName, nil, myHero.networkID)
 	end
@@ -568,54 +680,34 @@ end
 --		   ░          ░  ░       ░         ░  ░      ░    ░  ░      ░ ░            ░  ░    ░  ░░ ░      
 --		 ░                                                          ░                          ░ 
 
-function GetStacks(target)
-	return Hemmorrhage[target.networkID] or 0
-end
-
-function Darius:GetRDmg(target)
-	if myHero:GetSpellData(_R).level < 1 then
-		return 0
-	end
-	local BaseDamage = { 100, 200, 300}
-	if Hemmorrhage[target.networkID] ~= nil and darius.skills.SkillR.ready then
-		local StackDamage = { 1.2, 1.4, 1.6, 1.8, 2}
-		local trueDmg = (BaseDamage[myHero:GetSpellData(_R).level] + (myHero.damage * 0.75)) * StackDamage[GetStacks(target)]
-		return trueDmg
-	end
-	if myHero:GetSpellData(_R).level >= 1 and darius.skills.SkillR.ready then
-		return BaseDamage[myHero:GetSpellData(_R).level] + (myHero.damage * 0.75)
-	else
-		return 0
-	end
-end
-
-function Darius:KillSteal()
+function Poppy:KillSteal()
 	for _, target in pairs(GetEnemyHeroes()) do
-		if ValidTarget(target, 740) then
+		if ValidTarget(target, 1300) then
 			local DmgTable = {
-				Q = self.skills.SkillQ.ready and getDmg("Q", target, myHero) or 0,
-				R = self.skills.SkillR.ready and Darius:GetRDmg(target, myHero) or 0
+				Q = self:GetQDmg(target, myHero) or 0,
+				E = self:GetEDmg(target, myHero) or 0,
+				R = self:GetRDmg(target, myHero) or 0
 			}
 			if DmgTable.R > target.health then
+				print("killR")
 				self:Cast("R", target)
 			elseif DmgTable.Q > target.health and GetDistance(target) <= self.skills.SkillQ.range then
+				print("killQ")
 				self:Cast("Q", target)
-			elseif DmgTable.Q > target.health and self.skills.SkillE.ready and GetDistanceSqr(myHero, target) >= self.skills.SkillQ.range * self.skills.SkillQ.range and GetDistanceSqr(myHero, target) <= self.skills.SkillE.range * self.skills.SkillE.range then
+			elseif DmgTable.Q + DmgTable.E > target.health and GetDistance(target) <= self.skills.SkillE.range then
+				print("killQ+E")
 				self:Cast("E", target)
 				self:Cast("Q", target)
-			elseif DmgTable.Q + DmgTable.R > target.health and GetDistance(target) <= self.skills.SkillQ.range then
-				self:Cast("Q", target)
-				self:Cast("R", target)
 			end
 		end
 	end
 end
 
-function Darius:GetDrawText(target)
+function Poppy:GetDrawText(target)
 	local DmgTable = {
-		Q = getDmg("Q", target, myHero),
-		E = getDmg("E", target, myHero),
-		R = getDmg("R", target, myHero),
+		Q = self:GetQDmg(target),
+		E = self:GetEDmg(target),
+		R = self:GetRDmg(target),
 	}
 	local igniteDMG = 0
 	if igniteFound then
@@ -642,26 +734,26 @@ function Darius:GetDrawText(target)
 	end
 end
 
-function Darius:GetMyDmg(target)
+function Poppy:GetMyDmg(target)
 	local ReadyTable = {
 		Q = myHero:CanUseSpell(_Q) == READY,
 		E = myHero:CanUseSpell(_E) == READY,
 		R = myHero:CanUseSpell(_R) == READY
 	}
 	if ReadyTable.Q and ReadyTable.E and ReadyTable.R then
-		return getDmg("Q", target, myHero) + getDmg("E", target, myHero) + getDmg("R", target, myHero)
+		return self:GetQDmg(target) + self:GetEDmg(target) + self:GetRDmg(target)
 	elseif ReadyTable.Q and ReadyTable.E then
-		return getDmg("Q", target, myHero) + getDmg("E", target, myHero)
+		return self:GetQDmg(target) + self:GetEDmg(target)
 	elseif ReadyTable.Q and ReadyTable.R then
-		return getDmg("Q", target, myHero) + getDmg("R", target, myHero)
+		return self:GetQDmg(target) + self:GetRDmg(target)
 	elseif ReadyTable.Q and ReadyTable.E then
-		return getDmg("Q", target, myHero) + getDmg("E", target, myHero)
+		return self:GetQDmg(target) + self:GetEDmg(target)
 	elseif ReadyTable.R then
-		return getDmg("R", target, myHero)
+		return self:GetRDmg(target)
 	elseif ReadyTable.E then
-		return getDmg("E", target, myHero)
+		return self:GetEDmg(target)
 	elseif ReadyTable.Q then
-		return getDmg("Q", target, myHero)
+		return self:GetQDmg(target)
 	else
 		return 0
 	end
@@ -678,17 +770,12 @@ end
 --		░ ░          ░ ░         ░    ░          ░ ░  
 --		░                                  ░ 
 
-function Darius:Combo(target)
-	if settings.combo.UseQMax and self.skills.SkillQ.ready and GetDistance(target) <= self.skills.SkillQ.range and GetDistance(target) >= self.skills.SkillQ.rangeMAX then
-		self:Cast("Q", target)
-	elseif not settings.combo.UseQMax and self.skills.SkillQ.ready and GetDistance(target) <= self.skills.SkillQ.range then
+function Poppy:Combo(target)
+	if self.skills.SkillQ.ready and GetDistance(target) <= self.skills.SkillQ.range - 40 then
 		self:Cast("Q", target)
 	end
 	if settings.combo.UseW and self.skills.SkillW.ready and CastWValid then
 		self:Cast("W", target)
-	end
-	if settings.combo.UseE and GetDistanceSqr(myHero, target) >= self.skills.SkillQ.range * self.skills.SkillQ.range and GetDistanceSqr(myHero, target) <= self.skills.SkillE.range * self.skills.SkillE.range then
-		self:Cast("E", target)
 	end
 end
 
@@ -702,7 +789,7 @@ end
 --		 ░  ░░ ░  ░   ▒     ░░   ░   ░   ▒   ░  ░  ░  ░  ░  ░  
 --		 ░  ░  ░      ░  ░   ░           ░  ░      ░        ░  
 
-function Darius:harass(target)
+function Poppy:harass(target)
 	if settings.harass.harassq and self.skills.SkillQ.ready and GetDistance(target) <= self.skills.SkillQ.range then
 		self:Cast("Q", target)
 	end
@@ -721,16 +808,11 @@ end
 --		  ░ ░    ░   ▒   ░  ░  ░    ░             ░  ░░ ░ ▒ ░  ░      
 --		    ░  ░     ░  ░      ░                  ░  ░  ░ ░  
 
-function Darius:lastHit()
+function Poppy:lastHit()
 	for _, target in pairs(minions.enemyMinions.objects) do
-		local Qdamage = getDmg("Q", target, myHero)
-		local Wdamage = getDmg("W", target, myHero)
+		local Qdamage = self:GetQDmg(target)
 		if ValidTarget(target) and target ~= nil and self.skills.SkillQ.ready and settings.farm.lasthitq and GetDistanceSqr(target) <= self.skills.SkillQ.range * self.skills.SkillQ.range and Qdamage >= target.health then
 			self:Cast("Q", target)
-			break
-		end
-		if ValidTarget(target) and target ~= nil and self.skills.SkillW.ready and settings.farm.lasthitw and CastWValid and Wdamage >= target.health then
-			self:Cast("W", target)
 			break
 		end
 	end
@@ -747,7 +829,7 @@ end
 --		    ░  ░     ░  ░         ░    ░  ░            ░  ░         ░    ░           ░   ░     ░              ░       ░     ░  ░   ░  ░      ░ ░          ░  ░   ░  ░     ░  ░   ░     
 --		                                                               ░                                                                     ░ 
 
-function Darius:clearLane() 
+function Poppy:clearLane() 
 	for _, target in pairs(minions.enemyMinions.objects) do
 		if ValidTarget(target) and target ~= nil and self.skills.SkillQ.ready and settings.farm.farmq and GetDistanceSqr(target) <= self.skills.SkillQ.range * self.skills.SkillQ.range then
 			self:Cast("Q", target)
@@ -776,7 +858,7 @@ end
 --		  ░   ▒    ░░░ ░ ░   ░      ░ ░ ░ ▒         ▒ ░░ ░   ░    ░   ░ ░  ▒ ░  ░         ░   
 --		      ░  ░   ░                  ░ ░         ░        ░          ░  ░              ░  ░
 
-function Darius:AutoIgnite()
+function Poppy:AutoIgnite()
 	if igniteFound then
 		if myHero:CanUseSpell(self.summonerSpells.ignite) == READY then
 			for _, target in pairs(GetEnemyHeroes()) do
@@ -799,7 +881,7 @@ end
 --		      ░              ░  ░    ░  ░    ░  ░      ░ ░            ░  ░      ░            ░           ░       ░ 
 --		                                               ░ 
 
-function Darius:Cast(spell, target)
+function Poppy:Cast(spell, target)
 	if spell == "Q" and target ~= nil and self.skills.SkillQ.ready then
 		CastSpell(_Q, target)
 	end
@@ -826,30 +908,33 @@ end
 --		               ░                ░
 
 function OnCreateObj(obj)
-	if obj and obj.name:find("Darius_Base_Q_Ring_Windup.troy") then
-		channelingQ = true
+	if obj and obj.name and obj.name:find("Poppy_Base_P_mis_ground.troy") then
+		Pobj = obj
+	end
+	if obj and obj.name:find("Poppy_Base_R_cas.troy") then
+		RChannel = true
 	end
 	if obj.spellOwner == myHero and obj.name:find("missile") then
 		Gobj = obj
-	end
+	end 
 end
 
 function OnDeleteObj(obj)
-	if obj.valid and obj.name:lower():find("darius_Base_hemo_counter") then
-		Hemmorrhage[target.networkID] = nil
+	if obj and obj.name and obj.name:find("Poppy_Base_P_mis_ground.troy") then
+		Pobj = nil
 	end
-	if obj.valid and obj.name:find("Darius_Base_Q_Ring_Windup.troy") then
-		channelingQ = false
-	end
-	if (obj.name == "TeleportHomeImproved.troy" or obj.name == "TeleportHome.troy") and GetDistance(myHero, object) < 50 then
-		Recalling = false
+	if obj and obj.name and obj.name:find("Poppy_Base_R_channel.troy") then
+		RChannel = false
 	end
 	if obj.spellOwner == myHero and obj.name and obj.name:find("missile") then
 		Gobj = nil
 	end
+	if (obj.name == "TeleportHomeImproved.troy" or obj.name == "TeleportHome.troy") and GetDistance(myHero, object) < 50 then
+		Recalling = false
+	end
 end
 
-function Darius:OnProcessSpell(unit, buff)
+function Poppy:OnProcessSpell(unit, buff)
 	if buff.name == myHero:GetSpellData(_Q).name then
 		Qwind = buff.windUpTime
 	elseif buff.name == myHero:GetSpellData(_W).name then
@@ -874,27 +959,19 @@ function OnProcessAttack(unit, attack)
 	end
 end 
 
-function OnUpdateBuff(target, buff, stacks)
-	if target and buff.name == "dariushemo" then
-		Hemmorrhage[target.networkID] = stacks
+function OnCastSpell(slot, spos, epos, target)
+	if slot == _R then
+		RCastTime = GetTickCount()
 	end
+end
+
+function OnUpdateBuff(target, buff, stacks)
 end
 
 function OnApplyBuff(unit, target, buff)
-	if unit.isMe and buff.name == "DariusNoxianTacticsONH" then
-		Wactive = true
-	end
 end
 
 function OnRemoveBuff(target, buff)
-	if target and buff then
-		if buff.name == "dariushemo" then
-			Hemmorrhage[target.networkID] = nil
-		end
-	end
-	if target.isMe and buff.name == "DariusNoxianTacticsONH" then
-		Wactive = false
-	end
 end
 
 --		▓█████▄  ██▀███   ▄▄▄       █     █░ ██▓ ███▄    █   ▄████    
@@ -908,6 +985,61 @@ end
 --		░       ░           ░  ░    ░     ░           ░       ░    
 --		░    
 
+function Poppy:OnDraw()
+	if settings.fleeKey then
+		local MyHeroPosition = WorldToScreen(myHero.pos)
+		local MyMousePosition = WorldToScreen(mousePos)
+		if GetDistance(mousePos) > 440 then
+			unit = myHero + (Vector(mousePos) - myHero):normalized() * 440
+		else
+			unit = myHero + (Vector(mousePos) - myHero)
+		end
+		if self.skills.SkillE.ready then
+			UnitValid = false
+			UnitDistance = 9999
+			for _, target in pairs(GetEnemyHeroes()) do
+				if GetDistance(target, unit) < 100 and UnitDistance > GetDistance(mousePos, target) then
+					UnitDistance = GetDistance(mousePos, target)
+					UnitValid = target
+				end
+			end
+			for _, target in pairs(minions.enemyMinions.objects) do
+				if GetDistance(target, unit) < 100 and not target.dead and UnitDistance > GetDistance(mousePos, target) then
+					UnitDistance = GetDistance(mousePos, target)
+					UnitValid = target
+				end
+			end
+			for _, target in pairs(minions.jungleMinions.objects) do
+				if GetDistance(target, unit) < 100 and not target.dead and UnitDistance > GetDistance(mousePos, target) then
+					UnitDistance = GetDistance(mousePos, target)
+					UnitValid = target
+				end
+			end
+			if UnitValid then
+				unit = UnitValid
+			end
+			draw:DrawCircle(unit.x, unit.y, unit.z, 50, ARGB(255, 0, 255, 0))
+			LinePos = WorldToScreen(D3DXVECTOR3(unit.x, unit.y, unit.z))
+			DrawLine(MyHeroPosition.x, MyHeroPosition.y, LinePos.x, LinePos.y, 2, ARGB(255, 0, 255, 0))
+			if not UnitValid then
+				DrawText("Flee Position", 14, LinePos.x - 25, LinePos.y - 60, ARGB(255, 0, 255, 0))
+			else
+				DrawText("Location Found", 14, LinePos.x - 26, LinePos.y - 60, ARGB(255, 255, 255, 0))
+			end
+			if GetDistance(mousePos) > 440 then
+				if UnitValid then
+					self:Cast("E", UnitValid)
+				end
+			elseif GetDistance(mousePos) < 440 then
+				if UnitValid then
+					self:Cast("E", UnitValid)
+				end
+			end
+		end
+	MoveToMouse()
+	end
+end
+
 class("VisualManager")
 function VisualManager:__init()
 end
@@ -916,17 +1048,9 @@ function VisualManager:OnDraw()
 		if ValidTarget(target, 15000) then
 			if target.visible and not target.dead and settings.draws.executeIndicator then
 				currLine = 1
-				DrawLineHPBar2(Darius:GetRDmg(target), currLine, "", target)
-				DrawLineHPBar(Darius:GetRDmg(target), currLine, " R Damage " .. math.round(Darius:GetRDmg(target)), target)
+				DrawLineHPBar2(Poppy:GetMyDmg(target), currLine, "", target)
+				DrawLineHPBar(Poppy:GetMyDmg(target), currLine, "Damage " .. math.round(Poppy:GetMyDmg(target)), target)
 				currLine = currLine + 1
-			end
-		end
-	end
-	if settings.draws.PStack then
-		for _, target in pairs(GetEnemyHeroes()) do
-			if target.visible and not target.dead and Hemmorrhage[target.networkID] ~= nil and Hemmorrhage[target.networkID] >= 1 then
-				local feetdraw = WorldToScreen(D3DXVECTOR3(target.x, target.y, target.z))
-				DrawText(tostring(Hemmorrhage[target.networkID] .." Stacks"), settings.draws.SizeP, feetdraw.x, feetdraw.y, ARGB(table.unpack(settings.draws.color.StacksPC)))
 			end
 		end
 	end
@@ -934,7 +1058,7 @@ function VisualManager:OnDraw()
 		for _, target in pairs(GetEnemyHeroes()) do
 			if ValidTarget(target) and target.visible and not target.dead then
 				local pos = WorldToScreen(D3DXVECTOR3(target.x, target.y, target.z))
-				local target_Text, color = Darius:GetDrawText(target)
+				local target_Text, color = poppy:GetDrawText(target)
 				if target_Text ~= nil then
 					DrawText(target_Text, 18, pos.x - 40, pos.y - 10, color)
 					self:DrawCircle(target.x, target.y, target.z, target.boundingRadius, ARGB(255, 255, 255, 255))
@@ -1022,68 +1146,69 @@ function VisualManager:OnDraw()
 		DrawLine(ESP_4_Head.x, ESP_4_Head.y, ESP_4_Feet.x, ESP_4_Feet.y, 1, ARGB(table.unpack(settings.draws.color.ESPcolor)))
 	end
 	if Qup then
-		self:DrawCircle(myHero.x, myHero.y, myHero.z, darius.skills.SkillQ.range, ARGB(table.unpack(settings.draws.color.Qcolor)))
-		self:DrawCircle(myHero.x, myHero.y, myHero.z, darius.skills.SkillQ.rangeMAX, ARGB(table.unpack(settings.draws.color.Qcolor)))
-	end
-	if settings.draws.DrawW and Wactive then
-		self:DrawCircle(myHero.x, myHero.y, myHero.z, darius.skills.SkillW.range, ARGB(table.unpack(settings.draws.color.Wcolor)))
-	end
-	if Eup then
-		mousePosVec = myHero + (Vector(mousePos) - myHero):normalized() * 420
+		mousePosVec = myHero + (Vector(mousePos) - myHero):normalized() * 400
 		Vec1 = Vector(mousePosVec) + (Vector(myHero.pos) - Vector(mousePosVec)):normalized()
-		mousePosVec2 = myHero + (Vector(mousePos) - myHero):normalized() * 500
-		Vec2 = Vector(mousePosVec2) + (Vector(myHero.pos) - Vector(mousePosVec2)):normalized()
-		mousePosVec3 = myHero + (Vector(mousePos) - myHero):normalized() * 465
-		Vec3 = Vector(mousePosVec3) + (Vector(myHero.pos) - Vector(mousePosVec3)):normalized()
-		mousePosVec4 = myHero + (Vector(mousePos) - myHero):normalized() * 525
-		Vec4 = Vector(mousePosVec4) + (Vector(myHero.pos) - Vector(mousePosVec4)):normalized()
 		local MyHeroPosition = WorldToScreen(myHero.pos)
 		local MyMousePosition = WorldToScreen(mousePos)
-		self:DrawLineBoundry(myHero.x, myHero.y, myHero.z, Vec1.x, myHero.y, Vec1.z, Vec2.x, Vec2.z, Vec3.x, Vec3.z, Vec4.x, Vec4.z, 420, 500, 700, 300, 1, ARGB(255, 255, 255, 255))
+		DrawLineBorder3D(myHero.x, myHero.y, myHero.z, Vec1.x, myHero.y, Vec1.z, 200, ARGB(255, 255, 255, 255), 2)
+		local MyHeroVec = WorldToScreen(D3DXVECTOR3(myHero.pos))
+	end
+	if Wup then
+		self:DrawCircle(myHero.x, myHero.y, myHero.z, poppy.skills.SkillW.range, ARGB(table.unpack(settings.draws.color.Wcolor)))
+	end
+	if Eup then
+		self:DrawCircle(myHero.x, myHero.y, myHero.z, poppy.skills.SkillE.range, ARGB(table.unpack(settings.draws.color.Ecolor)))
+		for _, target in pairs(GetEnemyHeroes()) do
+			if target and ValidTarget(target, poppy.skills.SkillE.range) then
+				if poppy.CastEDraw then
+					local targetVec = WorldToScreen(D3DXVECTOR3(target.x, target.y, target.z))
+					local CastEDrawVec = WorldToScreen(D3DXVECTOR3(poppy.CastEDraw.x, poppy.CastEDraw.y, poppy.CastEDraw.z))
+					DrawLine(targetVec.x, targetVec.y, CastEDrawVec.x, CastEDrawVec.y, 1, ARGB(255, 0, 255, 0))
+					self:DrawCircle(poppy.CastEDraw.x, poppy.CastEDraw.y, poppy.CastEDraw.z, 25, ARGB(255, 0, 255, 0))
+				end
+			end
+		end
 	end
 	if Rup then
-		self:DrawCircle(myHero.x, myHero.y, myHero.z, darius.skills.SkillR.range, ARGB(table.unpack(settings.draws.color.Rcolor)))
+		self:DrawCircle(myHero.x, myHero.y, myHero.z, poppy.skills.SkillR.range, ARGB(table.unpack(settings.draws.color.Rcolor)))
+		if RChannel then
+			for _, target in pairs(GetEnemyHeroes()) do
+				if target and target.valid and target.visible and not target.dead then
+					local PushBackPos = GetPushBackPos(target)
+					DrawCircle3D(PushBackPos.x, PushBackPos.y, PushBackPos.z, target.boundingRadius, 2, ARGB(255, 0, 255, 0), nil)
+					DrawLine3D(target.x, target.y, target.z, PushBackPos.x, PushBackPos.y, PushBackPos.z, 2, ARGB(255, 0, 255, 0))
+				end
+			end
+		end
 	end
 	if settings.draws.particles and not myHero.dead then
-		if Qobj and Gobj then
-			local Vec2 = Vector(Gobj.pos) + (Vector(myHero.pos) - Vector(Gobj.pos)):normalized()
-			DrawLineBorder3D(Gobj.x, myHero.y, Gobj.z, myHero.x, myHero.y, myHero.z, myHero.boundingRadius * 2, ARGB(255,255,255,255), 1)
-			DrawLineBorder3D(Gobj.x, myHero.y, Gobj.z, Vec2.x, myHero.y, Vec2.z, 300, ARGB(255, 0, 255, 0), 3)
+		if Gobj then
+			self:DrawCircle(Gobj.x, Gobj.y, Gobj.z, 70, ARGB(table.unpack(settings.draws.color.particlescolor)))
 		end
-		if Robj then
-			self:DrawCircle(Robj.x, Robj.y, Robj.z, 400, ARGB(table.unpack(settings.draws.color.Rcirlcecolor)))
-		end
-		if Gobj and not Qobj then
-			self:DrawCircle(Gobj.x, Gobj.y, Gobj.z, 30, ARGB(table.unpack(settings.draws.color.particlescolor)))
-		end
-	end
-	if settings.draws.Stackcircle then
-		for _, target in pairs(GetEnemyHeroes()) do
-			if target.visible and not target.dead and Hemmorrhage[target.networkID] ~= nil then
-				self:DrawCircle(target.x, target.y, target.z, 150, ARGB(table.unpack(settings.draws.color.StackcircleColor)))
-			end
+		if Pobj then
+			self:DrawCircle(Pobj.x, Pobj.y, Pobj.z, 70, ARGB(table.unpack(settings.draws.color.particlescolor)))
 		end
 	end
 	if PopUp1 then
 		local w, h1, h2 = (WINDOW_W*0.50), (WINDOW_H*.15), (WINDOW_H*.9)
-		DrawLine(w, h1/1.05, w, h2/1.97, w/1.75, ARGB(120,255,0,255 ))
-		DrawLine(w, h1, w, h2/2, w/1.8, ARGB(120, 50, 0 , 0 ))
-		DrawTextA(tostring("Welcome to Darius Reborn!"), WINDOW_H*.028, (WINDOW_W/2), (WINDOW_H*.18), ARGB(255, 0 , 255, 255),"center","center")
+		DrawLine(w, h1/1.05, w, h2/1.97, w/1.75, ARGB(120, 168, 105, 32))
+		DrawLine(w, h1, w, h2/2, w/1.8, ARGB(150, 235, 183, 63))
+		DrawTextA(tostring("Welcome to Poppy Reborn!"), WINDOW_H*.028, (WINDOW_W/2), (WINDOW_H*.18), ARGB(255, 0 , 255, 255),"center","center")
 		DrawTextA(tostring("Hold Spacebar to cast Q - AA - W combo"), WINDOW_H*.015, (WINDOW_W/2.65), (WINDOW_H*.210), ARGB(255, 255, 255, 255))
-		DrawTextA(tostring("Script will Auto Ult if it will kill target."), WINDOW_H*.015, (WINDOW_W/2.65), (WINDOW_H*.225), ARGB(255, 255, 255, 255))
-		DrawTextA(tostring("Script will Auto Detect Ignite(?) and will add it to KillSteal setting"), WINDOW_H*.015, (WINDOW_W/2.65), (WINDOW_H*.240), ARGB(255, 255, 255, 255))
-		DrawTextA(tostring(""), WINDOW_H*.015, (WINDOW_W/2.65), (WINDOW_H*.255), ARGB(255, 255, 255, 255))
-		DrawTextA(tostring("Please make setting adjustments in the Drawings menu to your liking! :)"), WINDOW_H*.015, (WINDOW_W/2.65), (WINDOW_H*.270), ARGB(255, 255, 255, 255))
-		DrawTextA(tostring(""), WINDOW_H*.015, (WINDOW_W/2.65), (WINDOW_H*.285), ARGB(255, 255, 255, 255))
-		DrawTextA(tostring("Don't forget to Upvote this script if you enjoyed it! :)"), WINDOW_H*.015, (WINDOW_W/2.65), (WINDOW_H*.300), ARGB(255, 255, 255, 255))
-		DrawTextA(tostring(""), WINDOW_H*.015, (WINDOW_W/2.65), (WINDOW_H*.315), ARGB(255, 255, 255, 255))
-		DrawTextA(tostring("VIP Users unlock:"), WINDOW_H*.015, (WINDOW_W/2.65), (WINDOW_H*.330), ARGB(255, 255, 255, 255))
-		DrawTextA(tostring("  Advanced Debugger"), WINDOW_H*.015, (WINDOW_W/2.65), (WINDOW_H*.345), ARGB(225, 225, 140, 0))
+		DrawTextA(tostring("Script will Auto E if it will Stun the target.  "), WINDOW_H*.015, (WINDOW_W/2.65), (WINDOW_H*.225), ARGB(255, 255, 255, 255))
+		DrawTextA(tostring("Or you enable have it so it will only stun in Combo."), WINDOW_H*.015, (WINDOW_W/2.65), (WINDOW_H*.240), ARGB(255, 255, 255, 255))
+		DrawTextA(tostring("Script will Auto Detect Ignite(?) and will add it to KillSteal setting."), WINDOW_H*.015, (WINDOW_W/2.65), (WINDOW_H*.255), ARGB(255, 255, 255, 255))
+		DrawTextA(tostring("Hold G to Flee and cast E on closest enemy near mouse"), WINDOW_H*.015, (WINDOW_W/2.65), (WINDOW_H*.270), ARGB(255, 255, 255, 255))
+		DrawTextA(tostring("Hold X to pick up Buckler.  (Both Keys can be changed!)"), WINDOW_H*.015, (WINDOW_W/2.65), (WINDOW_H*.285), ARGB(255, 255, 255, 255))
+		DrawTextA(tostring("Please make setting adjustments in the Drawings menu to your liking! :)"), WINDOW_H*.015, (WINDOW_W/2.65), (WINDOW_H*.300), ARGB(255, 255, 255, 255))
+		DrawTextA(tostring("Don't forget to Upvote this script if you enjoyed it! :)"), WINDOW_H*.015, (WINDOW_W/2.65), (WINDOW_H*.315), ARGB(255, 255, 255, 255))
+		DrawTextA(tostring("VIP Users unlock:"), WINDOW_H*.015, (WINDOW_W/2.65), (WINDOW_H*.330), ARGB(225, 0, 225, 225))
+		DrawTextA(tostring("  Advanced Debugger"), WINDOW_H*.015, (WINDOW_W/2.65), (WINDOW_H*.345), ARGB(255, 255, 255, 255))
 		DrawTextA(tostring("  Auto Leveler (updated " .. _PATCH ..")"), WINDOW_H*.015, (WINDOW_W/2.65), (WINDOW_H*.360), ARGB(255, 255, 255, 255))
 		DrawTextA(tostring("  Skin Changer (updated " .. _PATCH ..")"), WINDOW_H*.015, (WINDOW_W/2.65), (WINDOW_H*.375), ARGB(255, 255, 255, 255))
 		local w, h1, h2 = (WINDOW_W*0.49), (WINDOW_H*.70), (WINDOW_H*.75)
-		DrawLine(w, h1/1.775, w, h2/1.68, w*.11, ARGB(122, 255, 0, 255))
-		DrawRectangleButton(WINDOW_W*0.467, WINDOW_H/2.375, WINDOW_W*.047, WINDOW_H*.041, ARGB(255,0,255,255))
+		DrawLine(w, h1/1.775, w, h2/1.68, w*.11, ARGB(255, 168, 105, 32))
+		DrawRectangleButton(WINDOW_W*0.467, WINDOW_H/2.375, WINDOW_W*.047, WINDOW_H*.041, ARGB(255, 255, 255, 255))
 		DrawTextA(tostring("OK"), WINDOW_H*.02, (WINDOW_W/2)*.98, (WINDOW_H/2.375), ARGB(255,0, 0, 0),"center","center")
 	end
 	if settings.autolvl.DrawText and SpellText ~= nil and drawlevelup then
@@ -1126,73 +1251,6 @@ function VisualManager:Round(number)
 	end
 end
 
-function VisualManager:DrawLineBoundry(x1, y1, z1, x2, y2, z2, x3, z3, x4, z4, x5, z5, size1, size2, size3, size4, width, color)
-    local MainVector = {
-		x = -(z2 - z1),
-		z = x2 - x1
-	}
-    local Vector2 = {
-		x = -(z2 - z1),
-		z = x2 - x1
-	}
-    local Vector3 = {
-		x = -(z3 - z1),
-		z = x3 - x1
-	}
-    local Vector4 = {
-		x = -(z3 - z1),
-		z = x4 - x1
-	}
-    local Vector5 = {
-		x = -(z3 - z1),
-		z = x5 - x1
-	}
-    local len = math.sqrt(MainVector.x ^ 2 + MainVector.z ^ 2)
-    MainVector.x = MainVector.x / len * size1 / 2
-	MainVector.z = MainVector.z / len * size1 / 2
-    Vector2.x = MainVector.x / len * (size1 / 2) / 2
-	Vector2.z = MainVector.z / len * (size1 / 2) / 2
-	Vector3.x = MainVector.x / len * size2 / 2
-	Vector3.z = MainVector.z / len * size2 / 2
-	Vector4.x = MainVector.x / len * size3 / 2
-	Vector4.z = MainVector.z / len * size3 / 2
-	Vector5.x = MainVector.x / len * size4 / 2
-	Vector5.z = MainVector.z / len * size4 / 2
-	local myHeroVec = myHero + (Vector(mousePos) - myHero):normalized() * myHero.boundingRadius
-	local mousePosVec = myHero + (Vector(mousePos) - myHero):normalized() * 535
-    local ApproxPoint_1 = WorldToScreen(D3DXVECTOR3(myHeroVec.x + Vector2.x, y2, myHeroVec.z + Vector2.z))
-    local ApproxPoint_2 = WorldToScreen(D3DXVECTOR3(myHeroVec.x - Vector2.x, y2, myHeroVec.z - Vector2.z))
-    local ApproxPoint_3 = WorldToScreen(D3DXVECTOR3(x2 - MainVector.x, y2, z2 - MainVector.z))
-    local ApproxPoint_4 = WorldToScreen(D3DXVECTOR3(x4 - Vector4.x, y2, z4 - Vector4.z))
-    local ApproxPoint_5 = WorldToScreen(D3DXVECTOR3(x3 - Vector3.x, y2, z3 - Vector3.z))
-    local ApproxPoint_6 = WorldToScreen(D3DXVECTOR3(x5 - Vector5.x, y2, z5 - Vector5.z))
-    local ApproxPoint_7 = WorldToScreen(D3DXVECTOR3(mousePosVec.x, y2, mousePosVec.z))
-    local ApproxPoint_8 = WorldToScreen(D3DXVECTOR3(x5 + Vector5.x, y2, z5 + Vector5.z))
-    local ApproxPoint_9 = WorldToScreen(D3DXVECTOR3(x3 + Vector3.x, y2, z3 + Vector3.z))
-    local ApproxPoint_10 = WorldToScreen(D3DXVECTOR3(x4 + Vector4.x, y2, z4 + Vector4.z))
-    local ApproxPoint_11 = WorldToScreen(D3DXVECTOR3(x2 + MainVector.x, y2, z2 + MainVector.z))
-	DrawLine(ApproxPoint_1.x, ApproxPoint_1.y, ApproxPoint_2.x, ApproxPoint_2.y, width, color)
-	DrawLine(ApproxPoint_2.x, ApproxPoint_2.y, ApproxPoint_3.x, ApproxPoint_3.y, width, color)
-	--				Start Cone Curve
-	--DrawLine(ApproxPoint_3.x, ApproxPoint_3.y, ApproxPoint_11.x, ApproxPoint_11.y, width, ARGB(255, 255, 0 , 0 ))
-	DrawLine(ApproxPoint_3.x, ApproxPoint_3.y, ApproxPoint_4.x, ApproxPoint_4.y, width, color)
-	--DrawLine(ApproxPoint_3.x, ApproxPoint_3.y, ApproxPoint_5.x, ApproxPoint_5.y, width, color)
-	--DrawLine(ApproxPoint_3.x, ApproxPoint_3.y, ApproxPoint_7.x, ApproxPoint_7.y, width, ARGB(255, 255, 0 , 0 ))
-	DrawLine(ApproxPoint_4.x, ApproxPoint_4.y, ApproxPoint_5.x, ApproxPoint_5.y, width, color)
-	DrawLine(ApproxPoint_5.x, ApproxPoint_5.y, ApproxPoint_6.x, ApproxPoint_6.y, width, color)
-	--DrawLine(ApproxPoint_5.x, ApproxPoint_5.y, ApproxPoint_7.x, ApproxPoint_7.y, width, color)
-	DrawLine(ApproxPoint_6.x, ApproxPoint_6.y, ApproxPoint_7.x, ApproxPoint_7.y, width, color)
-	DrawLine(ApproxPoint_7.x, ApproxPoint_7.y, ApproxPoint_8.x, ApproxPoint_8.y, width, color)
-	--DrawLine(ApproxPoint_7.x, ApproxPoint_7.y, ApproxPoint_9.x, ApproxPoint_9.y, width, color)
-	--DrawLine(ApproxPoint_7.x, ApproxPoint_7.y, ApproxPoint_11.x, ApproxPoint_11.y, width, ARGB(255, 255, 0 , 0 ))
-	DrawLine(ApproxPoint_8.x, ApproxPoint_8.y, ApproxPoint_9.x, ApproxPoint_9.y, width, color)
-	DrawLine(ApproxPoint_9.x, ApproxPoint_9.y, ApproxPoint_10.x, ApproxPoint_10.y, width, color)
-	--DrawLine(ApproxPoint_9.x, ApproxPoint_9.y, ApproxPoint_11.x, ApproxPoint_11.y, width, color)
-	DrawLine(ApproxPoint_10.x, ApproxPoint_10.y, ApproxPoint_11.x, ApproxPoint_11.y, width, color)
-	--				End Cone Curve
-	DrawLine(ApproxPoint_11.x, ApproxPoint_11.y, ApproxPoint_1.x, ApproxPoint_1.y, width, color)
-end
-
 local floor = math.floor
 function DrawRectangleButton(x, y, w, h, color)
     local points = {}
@@ -1208,7 +1266,7 @@ function DrawRectangleButton(x, y, w, h, color)
 	if polygon:contains(Point(t.x, t.y)) then
 		DrawLines2(points, floor(h), color)
 	else
-		DrawLines2(points, floor(h), ARGB(255, 63,236, 0 ))
+		DrawLines2(points, floor(h), ARGB(255, 0, 255, 255))
 	end
 end
 
@@ -1343,7 +1401,7 @@ function showLeveledSpell(spelldraw)
 		SpellText = "R"
 	end
 	local spelldraw2 = " Spell " .. "<font color='#00FFFF'>(" .. SpellText .. ") <font color='#FFFF00'>-</font></font> is now " .. leveltext
-	print("<font color='#FF00C8'>[Darius Reborn] <font color='#FFFF00'>-</font><font color='#FFFFFF'>" .. spelldraw2 .. "</font>")
+	print("<font color='#A86920'>[Poppy Reborn] <font color='#FFFF00'>-</font><font color='#FFFFFF'>" .. spelldraw2 .. "</font>")
 	DelayAction(function()
 		drawlevelup = false
 	end, settings.autolvl.DrawTextSlider)
@@ -1380,7 +1438,7 @@ function SkillOrder()
 end
 
 function Error()
-	print("<font color='#FF00C8'>[Darius Reborn] </font><font color='#FFFF00'>-</font><font color='#FFFFFF'> There's something wrong with the AutoLeveler! Please configure and check your settings!</font>")
+	print("<font color='#A86920'>[Poppy Reborn] </font><font color='#FFFF00'>-</font><font color='#FFFFFF'> There's something wrong with the AutoLeveler! Please configure and check your settings!</font>")
 	settings.AutoLevelOn = false
 end
 
@@ -1430,6 +1488,9 @@ end
 
 function OnDraw()
 	if VIP_USER and settings.misc.Debug then
+		local function roundToFirstDecimal(seconds)
+			return math.ceil(seconds * 10) * 0.1
+		end
 		local totalAP = myHero.ap * (1 + myHero.apPercent)
 		local World_x1 = 40 + settings.misc.xAxis
 		local World_x2 = 220 + settings.misc.xAxis
@@ -1439,13 +1500,13 @@ function OnDraw()
 		DrawText("" .. myHero.charName .. "", 35, World_x1 - 20, World_y1 - 50, ARGB(255, 0, 255, 255))
 		DrawText("Level: " .. myHero.level, 18, World_x1 + 105, World_y1 - 30, ARGB(255, 255, 255, 255))
 		DrawText("Attack Damage: (       +       ) = ", 15, World_x1 - 20, World_y1 - 10, ARGB(255, 255, 255, 255))
-		DrawText("" .. math.round(myHero.addDamage), 15, World_x1 + 77, World_y1 - 10, ARGB(255, 0,255, 255))
-		DrawText("" .. math.round(myHero.damage), 15, World_x1 + 108, World_y1 - 10, ARGB(255, 0, 255, 0))
-		DrawText("" .. math.round(myHero.totalDamage), 15, World_x1 + 144, World_y1 - 10, ARGB(255, 255, 0, 255))
+		DrawText("" .. math.ceil(myHero.addDamage), 15, World_x1 + 77, World_y1 - 10, ARGB(255, 0,255, 255))
+		DrawText("" .. math.ceil(myHero.damage), 15, World_x1 + 108, World_y1 - 10, ARGB(255, 0, 255, 0))
+		DrawText("" .. math.ceil(myHero.totalDamage), 15, World_x1 + 144, World_y1 - 10, ARGB(255, 255, 0, 255))
 		DrawText("Ability Power: (   +       ) = ", 15, World_x1 - 20, World_y1 + 5, ARGB(255, 255, 255, 255))
 		DrawText("0", 15, World_x1 + 65, World_y1 + 5, ARGB(255, 0,255, 255))
-		DrawText("" .. math.round(totalAP), 15, World_x1 + 82, World_y1 + 5, ARGB(255, 0, 255, 0))
-		DrawText("" .. math.round(totalAP), 15, World_x1 + 118, World_y1 + 5, ARGB(255, 255, 0, 255))
+		DrawText("" .. math.ceil(totalAP), 15, World_x1 + 82, World_y1 + 5, ARGB(255, 0, 255, 0))
+		DrawText("" .. math.ceil(totalAP), 15, World_x1 + 118, World_y1 + 5, ARGB(255, 255, 0, 255))
 
 		-- [Q Debug]
 		DrawText("Q Debug", 15, World_x1, World_y1 + 20, ARGB(255, 0, 255, 255))
@@ -1454,9 +1515,9 @@ function OnDraw()
 		DrawText("Ready:", 15, World_x1, World_y1 + 50, ARGB(255, 255, 255, 255))
 		if readytextQ then
 			DrawText("true", 15, World_x1 + 43, World_y1 + 50, ARGB(255, 0, 255, 0))
-		elseif channelingQ then
-			DrawText("Channeling", 15, World_x1 + 43, World_y1 + 50, ARGB(255, 0, 255, 255))
-		elseif readytextQ == false then
+		elseif readytextQ == false and myHero:GetSpellData(_Q).level >= 1 and not myHero.dead then
+			DrawText("" .. roundToFirstDecimal(myHero:GetSpellData(_Q).currentCd), 15, World_x1 + 43, World_y1 + 50, ARGB(255, 0, 255, 255))
+		else
 			DrawText("false", 15, World_x1 + 43, World_y1 + 50, ARGB(255, 255, 0, 0))
 		end
 		DrawText("Level:", 15, World_x1, World_y1 + 65, ARGB(255, 255, 255, 255))
@@ -1467,13 +1528,8 @@ function OnDraw()
 		end
 		DrawText("Delay:", 15, World_x1, World_y1 + 80, ARGB(255, 255, 255, 255))
 		DrawText("" .. Qwind, 15, World_x1 + 38, World_y1 + 80, ARGB(255, 255, 175, 0))
-		DrawText("Bonus Damage:", 15, World_x1, World_y1 + 95, ARGB(255, 255, 255, 255))
-		if myHero:GetSpellData(_Q).level >= 1 then
-			local Qtotal = { 1, 1.1, 1.2, 1.3, 1.4}
-			DrawText("" .. math.round(myHero.totalDamage * Qtotal[myHero:GetSpellData(_Q).level]), 15, World_x1 + 92, World_y1 + 95, ARGB(255, 0, 255, 0))
-		end
-		DrawText("Bonus Heal (per champ):", 15, World_x1, World_y1 + 110, ARGB(255, 255, 255, 255))
-		DrawText("" .. math.round((myHero.maxHealth - myHero.health) * 0.12), 15, World_x1 + 143, World_y1 + 110, ARGB(255, 0, 255, 0))
+		DrawText("Bonus AD:", 15, World_x1, World_y1 + 95, ARGB(255, 255, 255, 255))
+		DrawText("" .. math.ceil(myHero.damage * .65), 15, World_x1 + 61, World_y1 + 95, ARGB(255, 0, 255, 0))
 
 		-- [W Debug]
 		DrawText("W Debug", 15, World_x2, World_y1 + 20, ARGB(255, 0, 255, 255))
@@ -1482,7 +1538,9 @@ function OnDraw()
 		DrawText("Ready:", 15, World_x2, World_y1 + 50, ARGB(255, 255, 255, 255))
 		if readytextW then
 			DrawText("true", 15, World_x2 + 43, World_y1 + 50, ARGB(255, 0, 255, 0))
-		elseif readytextW == false then
+		elseif readytextW == false and myHero:GetSpellData(_W).level >= 1 and not myHero.dead then
+			DrawText("" .. roundToFirstDecimal(myHero:GetSpellData(_W).currentCd), 15, World_x2 + 43, World_y1 + 50, ARGB(255, 0, 255, 255))
+		else
 			DrawText("false", 15, World_x2 + 43, World_y1 + 50, ARGB(255, 255, 0, 0))
 		end
 		DrawText("Level:", 15, World_x2, World_y1 + 65, ARGB(255, 255, 255, 255))
@@ -1493,8 +1551,17 @@ function OnDraw()
 		end
 		DrawText("Delay:", 15, World_x2, World_y1 + 80, ARGB(255, 255, 255, 255))
 		DrawText("" .. Wwind, 15, World_x2 + 38, World_y1 + 80, ARGB(255, 255, 175, 0))
-		DrawText("Bonus Damage:", 15, World_x2, World_y1 + 95, ARGB(255, 255, 255, 255))
-		DrawText("" .. math.round(myHero.totalDamage * 1.4), 15, World_x2 + 92, World_y1 + 95, ARGB(255, 0, 255, 0))
+		DrawText("Bonus Armor:", 15, World_x2, World_y1 + 95, ARGB(255, 255, 255, 255))
+		DrawText("Bonus Magic Resist:", 15, World_x2, World_y1 + 110, ARGB(255, 255, 255, 255))
+		if (myHero.health / myHero.maxHealth) >= .4 then
+			DrawText("" .. math.round(myHero.armor * .11), 15, World_x2 + 82, World_y1 + 95, ARGB(255, 0, 255, 0))
+			DrawText("" .. math.round(myHero.magicArmor * .11), 15, World_x2 + 118, World_y1 + 110, ARGB(255, 0, 255, 0))
+		elseif (myHero.health / myHero.maxHealth) <= .4 then
+			DrawText("" .. math.round(myHero.armor * .22), 15, World_x2 + 82, World_y1 + 95, ARGB(255, 0, 255, 0))
+			DrawText("" .. math.round(myHero.magicArmor * .22), 15, World_x2 + 118, World_y1 + 110, ARGB(255, 0, 255, 0))
+		end
+		DrawText("Bonus AP:", 15, World_x2, World_y1 + 125, ARGB(255, 255, 255, 255))
+		DrawText("" .. math.ceil(totalAP * .7), 15, World_x2 + 61, World_y1 + 125, ARGB(255, 0, 255, 0))
 
 		-- [E Debug]
 		DrawText("E Debug", 15, World_x3, World_y1 + 20, ARGB(255, 0, 255, 255))
@@ -1503,7 +1570,9 @@ function OnDraw()
 		DrawText("Ready:", 15, World_x3, World_y1 + 50, ARGB(255, 255, 255, 255))
 		if readytextE then
 			DrawText("true", 15, World_x3 + 43, World_y1 + 50, ARGB(255, 0, 255, 0))
-		elseif readytextE == false then
+		elseif readytextE == false and myHero:GetSpellData(_E).level >= 1 and not myHero.dead then
+			DrawText("" .. roundToFirstDecimal(myHero:GetSpellData(_E).currentCd), 15, World_x3 + 43, World_y1 + 50, ARGB(255, 0, 255, 255))
+		else
 			DrawText("false", 15, World_x3 + 43, World_y1 + 50, ARGB(255, 255, 0, 0))
 		end
 		DrawText("Level:", 15, World_x3, World_y1 + 65, ARGB(255, 255, 255, 255))
@@ -1514,6 +1583,8 @@ function OnDraw()
 		end
 		DrawText("Delay:", 15, World_x3, World_y1 + 80, ARGB(255, 255, 255, 255))
 		DrawText("" .. Ewind, 15, World_x3 + 38, World_y1 + 80, ARGB(255, 255, 175, 0))
+		DrawText("Bonus AD:", 15, World_x3, World_y1 + 95, ARGB(255, 255, 255, 255))
+		DrawText("" .. math.round(myHero.damage * .5), 15, World_x3 + 61, World_y1 + 95, ARGB(255, 0, 255, 0))
 
 		-- [R Debug]
 		DrawText("R Debug", 15, World_x4, World_y1 + 20, ARGB(255, 0, 255, 255))
@@ -1522,7 +1593,9 @@ function OnDraw()
 		DrawText("Ready:", 15, World_x4, World_y1 + 50, ARGB(255, 255, 255, 255))
 		if readytextR then
 			DrawText("true", 15, World_x4 + 43, World_y1 + 50, ARGB(255, 0, 255, 0))
-		elseif readytextR == false then
+		elseif readytextR == false and myHero:GetSpellData(_R).level >= 1 and not myHero.dead then
+			DrawText("" .. roundToFirstDecimal(myHero:GetSpellData(_R).currentCd), 15, World_x4 + 43, World_y1 + 50, ARGB(255, 0, 255, 255))
+		else
 			DrawText("false", 15, World_x4 + 43, World_y1 + 50, ARGB(255, 255, 0, 0))
 		end
 		DrawText("Level:", 15, World_x4, World_y1 + 65, ARGB(255, 255, 255, 255))
@@ -1533,25 +1606,7 @@ function OnDraw()
 		end
 		DrawText("Delay:", 15, World_x4, World_y1 + 80, ARGB(255, 255, 255, 255))
 		DrawText("" .. Rwind, 15, World_x4 + 38, World_y1 + 80, ARGB(255, 255, 175, 0))
-		DrawText("Stack Count:", 15, World_x4, World_y1 + 95, ARGB(255, 255, 255, 255))
-		if not rtext then
-			DrawText("nil", 15, World_x4 + 78, World_y1 + 95, ARGB(255, 255, 0, 255))
-		end
-		local i = 0
-		local flag = false
-		for _, target in pairs(GetEnemyHeroes()) do
-			if target.visible and not target.dead and Hemmorrhage[target.networkID] ~= nil and Hemmorrhage[target.networkID] >= 1 then
-				DrawText(tostring(Hemmorrhage[target.networkID] .. ""), 15, World_x4 + 78, World_y1 + 95 + (i*15), ARGB(255, 255, 0, 255))
-				DrawText("on " .. target.charName, 15, World_x4 + 88, World_y1 + 95 + (i*15), ARGB(255, 255, 255, 255))
-				DrawText("Damage:" , 15, World_x4 + 78, World_y1 + 110 + (i*15), ARGB(255, 255, 255, 255))
-				DrawText("" .. math.round(Darius:GetRDmg(target)), 15, World_x4 + 131, World_y1 + 110 + (i*15), ARGB(255, 0, 255, 0))
-				rtext = true
-				flag = true
-				i = i + 2
-			end
-		end
-		if flag == false then
-			rtext = false
-		end
+		DrawText("Bonus AD:", 15, World_x4, World_y1 + 95, ARGB(255, 255, 255, 255))
+		DrawText("" .. math.round(myHero.damage * .9), 15, World_x4 + 61, World_y1 + 95, ARGB(255, 0, 255, 0))
 	end
 end
