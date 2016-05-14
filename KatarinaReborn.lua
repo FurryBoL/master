@@ -15,7 +15,7 @@
 ]]
 -- > > > Katarina Reborn by Furry
 -- > > > Encrypted by Furry
--- > > > Version 3.6
+-- > > > Version 4.0
 -- > > > Current Lines of Deticated Katarina Code: 3692
 
 --_______________________________________________________________________________
