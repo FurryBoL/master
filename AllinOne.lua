@@ -2,6 +2,7 @@
 
 Features:
 
+ESP Draws (Box, Frame, Circle, Advanced Circle) + Head and Lazer Draws.
 Custom Path Draws (Clicks)
 Awareness (tells you who how far enemies are away with dynamic draws.)
 
@@ -11,13 +12,49 @@ by: me
 _AUTO_UPDATE = true
 
 _FILE_PATH = SCRIPT_PATH .. GetCurrentEnv().FILE_NAME
-_SCRIPT_VERSION = 0.03
-_SCRIPT_VERSION_MENU = "0.03"
+_SCRIPT_VERSION = 0.04
+_SCRIPT_VERSION_MENU = "0.04"
 
 local Updated = false
 
 function OnLoad()
-	settings = scriptConfig("All in One", "savesettings_allin1_test0002")
+	DRAW_ESP_NOTICE = true
+	FindFirstPath(myHero)
+	CurrentTime = os.clock()
+	settings = scriptConfig("All in One", "savesettings_allin1_test0004")
+		settings:addSubMenu("ESP Settings", "esp")
+				settings.esp:addSubMenu("[Colour Settings]", "coloursettings")
+					settings.esp.coloursettings:addParam("myboxcolour", "My 3D ESP Colour", SCRIPT_PARAM_COLOR, {
+						255,
+						255,
+						255,
+						255
+					})
+					settings.esp.coloursettings:addParam("myheadcolour", "My Head Colour", SCRIPT_PARAM_COLOR, {
+						255,
+						255,
+						0,
+						0
+					})
+					settings.esp.coloursettings:addParam("mylazercolour", "My Lazer Colour", SCRIPT_PARAM_COLOR, {
+						255,
+						255,
+						0,
+						0
+					})
+			settings.esp:addParam("space", "", SCRIPT_PARAM_INFO, "")
+			settings.esp:addParam("draw3d", "Draw " .. myHero.charName .. " 3D ESP", SCRIPT_PARAM_ONOFF, true)
+			settings.esp:addParam("cubetype", "ESP Type:", SCRIPT_PARAM_LIST, 1, {
+				[1] = "Normal",
+				[2] = "Frame",
+				[3] = "Circle",
+				[4] = "Sharp Circle"
+			})
+			settings.esp:addParam("boxthickness", "" .. myHero.charName .. " ESP Box Thickness", SCRIPT_PARAM_SLICE, 1, 1, 5, 0)
+			settings.esp:addParam("space", "", SCRIPT_PARAM_INFO, "")
+			settings.esp:addParam("drawhead", "Draw My Head", SCRIPT_PARAM_ONOFF, false)
+			settings.esp:addParam("drawheadlazer", "Draw My Direction", SCRIPT_PARAM_ONOFF, false)
+			settings.esp:addParam("drawLazermultiplier", "Lazer Multiplier", SCRIPT_PARAM_SLICE, 200, 50, 500, 0)
 		settings:addSubMenu("Awareness Settings", "aws")
 			settings.aws:addSubMenu("Blacklist ->", "blacklist")
 			settings.aws:addParam("Toggle", "Toggle ON/OFF", SCRIPT_PARAM_ONOFF, true)
@@ -92,6 +129,32 @@ function OnLoad()
 	LoadedMessage()
 end
 
+function FindFirstPath(entity)
+	LastPath = entity.pos
+	return LastPath
+end
+
+function OnTick()
+	if CurrentTime + 5 <= os.clock() then
+		CurrentTime = os.clock()
+	end
+end
+
+function FindLastPathFor(entity)
+	local IndexPath = entity:GetPath(entity.pathIndex)
+	if IndexPath then
+		LastPath = entity + (Vector(entity:GetPath(entity.pathIndex)) - entity):normalized() * 150
+	end
+	return LastPath
+end
+
+function BlinkMultiplier2(var)
+	Base = ((var + var) * (os.clock() % var))
+	Algorithm = (var / 2) > (Base / (var + var)) and Base or var - (Base - var)
+	Alpha = ((Algorithm * 150) + 100)
+	return Alpha
+end
+
 function OnDraw()
 	if Updated then
 		DrawText3D("> > Script Successfully Updated, please reload by pressing F9 twice!!", myHero.x - 50, myHero.y, myHero.z + 50, 30, ARGB(255, 0, 255, 0), true)
@@ -151,6 +214,64 @@ function OnDraw()
 	end
 	if settings.pcs.EnemyClicks then
 		DrawOtherPathing(GetEnemyHeroes(), settings.pcs.EnemyThick, ARGB(table.unpack(settings.pcs.EnemyColor)))
+	end
+	if DRAW_ESP_NOTICE and settings.esp.draw3d then
+		DrawText3D("Please Move to Enable ESP!", myHero.x, myHero.y, myHero.z - 100, 20, ARGB(BlinkMultiplier2(1), 255, 255, 255), true)
+	end
+	if not myHero.dead then
+		if myHero.hasMovePath and myHero.pathCount >= 2 then
+			LastPath = FindLastPathFor(myHero)
+			local IndexPath = myHero:GetPath(myHero.pathIndex)
+			if IndexPath then
+				local HeadFloorPos = myHero + (Vector(IndexPath) - myHero):normalized() * 50
+				local LazerFloorPos = myHero + (Vector(IndexPath) - myHero):normalized() * (settings.esp.drawLazermultiplier)
+				if settings.esp.drawhead then
+					DrawCircle3(HeadFloorPos.x, HeadFloorPos.y + (myHero.boundingRadius * 2.5), HeadFloorPos.z, 15, ARGB(table.unpack(settings.esp.coloursettings.myheadcolour)), 2, 10)
+				end
+				if settings.esp.drawheadlazer then
+					DrawLine3D(HeadFloorPos.x, HeadFloorPos.y + (myHero.boundingRadius * 2.5), HeadFloorPos.z, LazerFloorPos.x, HeadFloorPos.y + (myHero.boundingRadius * 2.5), LazerFloorPos.z, width, ARGB(table.unpack(settings.esp.coloursettings.mylazercolour)))
+				end
+				if settings.esp.draw3d then
+					DRAW_ESP_NOTICE = false
+					if settings.esp.cubetype == 1 then
+						DrawNormalESP(myHero, settings.esp.boxthickness, ARGB(table.unpack(settings.esp.coloursettings.myboxcolour)))
+					elseif settings.esp.cubetype == 2 then
+						DrawVectorESP(myHero, settings.esp.boxthickness, ARGB(table.unpack(settings.esp.coloursettings.myboxcolour)))
+					elseif settings.esp.cubetype == 3 then
+						if not DRAW_ESP_NOTICE then
+							DrawCircle(myHero.x, myHero.y, myHero.z, myHero.boundingRadius, ARGB(table.unpack(settings.esp.coloursettings.myboxcolour)))
+						end
+					elseif settings.esp.cubetype == 4 then
+						if not DRAW_ESP_NOTICE then
+							DrawCircle3(myHero.x, myHero.y, myHero.z, myHero.boundingRadius, ARGB(table.unpack(settings.esp.coloursettings.myboxcolour)), settings.esp.boxthickness, 20)
+						end
+					end
+				end
+			end
+		else
+			if settings.esp.drawhead then
+				DrawCircle3(myHero.x, myHero.y + (myHero.boundingRadius * 2.8), myHero.z, 15, ARGB(table.unpack(settings.esp.coloursettings.myheadcolour)), 2, 10)
+			end
+			if settings.esp.drawheadlazer and not DRAW_ESP_NOTICE then
+				local LazerFloorPos = myHero + (Vector(LastPath) - myHero):normalized() * (settings.esp.drawLazermultiplier)
+				DrawLine3D(myHero.x, myHero.y + (myHero.boundingRadius * 2.8), myHero.z, LazerFloorPos.x, myHero.y + (myHero.boundingRadius * 2.8), LazerFloorPos.z, width, ARGB(table.unpack(settings.esp.coloursettings.mylazercolour)))
+			end
+			if settings.esp.draw3d then
+				if settings.esp.cubetype == 1 then
+					DrawNormalESPStationary(myHero, LastPath, settings.esp.boxthickness, ARGB(table.unpack(settings.esp.coloursettings.myboxcolour)))
+				elseif settings.esp.cubetype == 2 then
+					DrawVectorESPStationary(myHero, LastPath, settings.esp.boxthickness, ARGB(table.unpack(settings.esp.coloursettings.myboxcolour)))
+				elseif settings.esp.cubetype == 3 then
+					if not DRAW_ESP_NOTICE then
+						DrawCircle(myHero.x, myHero.y, myHero.z, myHero.boundingRadius, ARGB(table.unpack(settings.esp.coloursettings.myboxcolour)))
+					end
+				elseif settings.esp.cubetype == 4 then
+					if not DRAW_ESP_NOTICE then
+						DrawCircle3(myHero.x, myHero.y, myHero.z, myHero.boundingRadius, ARGB(table.unpack(settings.esp.coloursettings.myboxcolour)), settings.esp.boxthickness, 20)
+					end
+				end
+			end
+		end
 	end
 end
 
@@ -260,6 +381,85 @@ function DrawEndPos(unit, Thickness, Color)
 	end
 end
 
+function DrawNormalESPStationary(entity, LastPath, width, colour)
+	local Vec1 = entity + (Vector(LastPath) - entity):rotated(0, 45 * math.pi / 180, 0):normalized() * (entity.boundingRadius)
+	local Vec2 = entity + (Vector(LastPath) - entity):rotated(0, 135 * math.pi / 180, 0):normalized() * (entity.boundingRadius)
+	local Vec3 = entity + (Vector(LastPath) - entity):rotated(0, 225 * math.pi / 180, 0):normalized() * (entity.boundingRadius)
+	local Vec4 = entity + (Vector(LastPath) - entity):rotated(0, 315 * math.pi / 180, 0):normalized() * (entity.boundingRadius)
+	DrawNormalESPNextLvl(entity, Vec1, Vec2, Vec3, Vec4, width, colour)
+end
+
+function DrawVectorESPStationary(entity, LastPath, width, colour)
+	local Vec1 = entity + (Vector(LastPath) - entity):rotated(0, 45 * math.pi / 180, 0):normalized() * (entity.boundingRadius)
+	local Vec2 = entity + (Vector(LastPath) - entity):rotated(0, 135 * math.pi / 180, 0):normalized() * (entity.boundingRadius)
+	local Vec3 = entity + (Vector(LastPath) - entity):rotated(0, 225 * math.pi / 180, 0):normalized() * (entity.boundingRadius)
+	local Vec4 = entity + (Vector(LastPath) - entity):rotated(0, 315 * math.pi / 180, 0):normalized() * (entity.boundingRadius)
+	DrawVectorESPNextLvl(entity, Vec1, Vec2, Vec3, Vec4, width, colour)
+end
+
+function DrawNormalESP(entity, width, colour)
+	local Vec1 = entity + (Vector(entity:GetPath(entity.pathIndex)) - entity):rotated(0, 45 * math.pi / 180, 0):normalized() * (entity.boundingRadius)
+	local Vec2 = entity + (Vector(entity:GetPath(entity.pathIndex)) - entity):rotated(0, 135 * math.pi / 180, 0):normalized() * (entity.boundingRadius)
+	local Vec3 = entity + (Vector(entity:GetPath(entity.pathIndex)) - entity):rotated(0, 225 * math.pi / 180, 0):normalized() * (entity.boundingRadius)
+	local Vec4 = entity + (Vector(entity:GetPath(entity.pathIndex)) - entity):rotated(0, 315 * math.pi / 180, 0):normalized() * (entity.boundingRadius)
+	DrawNormalESPNextLvl(entity, Vec1, Vec2, Vec3, Vec4, width, colour)
+end
+
+function DrawVectorESP(entity, width, colour)
+	local Vec1 = entity + (Vector(entity:GetPath(entity.pathIndex)) - entity):rotated(0, 45 * math.pi / 180, 0):normalized() * (entity.boundingRadius)
+	local Vec2 = entity + (Vector(entity:GetPath(entity.pathIndex)) - entity):rotated(0, 135 * math.pi / 180, 0):normalized() * (entity.boundingRadius)
+	local Vec3 = entity + (Vector(entity:GetPath(entity.pathIndex)) - entity):rotated(0, 225 * math.pi / 180, 0):normalized() * (entity.boundingRadius)
+	local Vec4 = entity + (Vector(entity:GetPath(entity.pathIndex)) - entity):rotated(0, 315 * math.pi / 180, 0):normalized() * (entity.boundingRadius)
+	DrawVectorESPNextLvl(entity, Vec1, Vec2, Vec3, Vec4, width, colour)
+end
+
+function DrawVectorESPNextLvl(entity, Vec1, Vec2, Vec3, Vec4, width, colour)
+	DrawNewIndexLine3D(Vec1.x, Vec1.y, Vec1.z, Vec2.x, Vec2.y, Vec2.z, width, colour)
+	DrawNewIndexLine3D(Vec2.x, Vec2.y, Vec2.z, Vec3.x, Vec3.y, Vec3.z, width, colour)
+	DrawNewIndexLine3D(Vec3.x, Vec3.y, Vec3.z, Vec4.x, Vec4.y, Vec4.z, width, colour)
+	DrawNewIndexLine3D(Vec4.x, Vec4.y, Vec4.z, Vec1.x, Vec1.y, Vec1.z, width, colour)
+	DrawNewIndexLine3D(Vec1.x, Vec1.y + (entity.boundingRadius * 2.5), Vec1.z, Vec2.x, Vec2.y + (entity.boundingRadius * 2.5), Vec2.z, width, colour)
+	DrawNewIndexLine3D(Vec2.x, Vec2.y + (entity.boundingRadius * 2.5), Vec2.z, Vec3.x, Vec3.y + (entity.boundingRadius * 2.5), Vec3.z, width, colour)
+	DrawNewIndexLine3D(Vec3.x, Vec3.y + (entity.boundingRadius * 2.5), Vec3.z, Vec4.x, Vec4.y + (entity.boundingRadius * 2.5), Vec4.z, width, colour)
+	DrawNewIndexLine3D(Vec4.x, Vec4.y + (entity.boundingRadius * 2.5), Vec4.z, Vec1.x, Vec1.y + (entity.boundingRadius * 2.5), Vec1.z, width, colour)
+	DrawNewIndexLine3D(Vec1.x, Vec1.y, Vec1.z, Vec1.x, Vec1.y + (entity.boundingRadius * 2.5), Vec1.z, width, colour)
+	DrawNewIndexLine3D(Vec2.x, Vec2.y, Vec2.z, Vec2.x, Vec2.y + (entity.boundingRadius * 2.5), Vec2.z, width, colour)
+	DrawNewIndexLine3D(Vec3.x, Vec3.y, Vec3.z, Vec3.x, Vec3.y + (entity.boundingRadius * 2.5), Vec3.z, width, colour)
+	DrawNewIndexLine3D(Vec4.x, Vec4.y, Vec4.z, Vec4.x, Vec4.y + (entity.boundingRadius * 2.5), Vec4.z, width, colour)
+end
+
+function DrawNormalESPNextLvl(entity, Vec1, Vec2, Vec3, Vec4, width, colour)
+	DrawLine3D(Vec1.x, Vec1.y, Vec1.z, Vec2.x, Vec2.y, Vec2.z, width, colour)
+	DrawLine3D(Vec2.x, Vec2.y, Vec2.z, Vec3.x, Vec3.y, Vec3.z, width, colour)
+	DrawLine3D(Vec3.x, Vec3.y, Vec3.z, Vec4.x, Vec4.y, Vec4.z, width, colour)
+	DrawLine3D(Vec4.x, Vec4.y, Vec4.z, Vec1.x, Vec1.y, Vec1.z, width, colour)
+	DrawLine3D(Vec1.x, Vec1.y + (entity.boundingRadius * 2.5), Vec1.z, Vec2.x, Vec2.y + (entity.boundingRadius * 2.5), Vec2.z, width, colour)
+	DrawLine3D(Vec2.x, Vec2.y + (entity.boundingRadius * 2.5), Vec2.z, Vec3.x, Vec3.y + (entity.boundingRadius * 2.5), Vec3.z, width, colour)
+	DrawLine3D(Vec3.x, Vec3.y + (entity.boundingRadius * 2.5), Vec3.z, Vec4.x, Vec4.y + (entity.boundingRadius * 2.5), Vec4.z, width, colour)
+	DrawLine3D(Vec4.x, Vec4.y + (entity.boundingRadius * 2.5), Vec4.z, Vec1.x, Vec1.y + (entity.boundingRadius * 2.5), Vec1.z, width, colour)
+	DrawLine3D(Vec1.x, Vec1.y, Vec1.z, Vec1.x, Vec1.y + (entity.boundingRadius * 2.5), Vec1.z, width, colour)
+	DrawLine3D(Vec2.x, Vec2.y, Vec2.z, Vec2.x, Vec2.y + (entity.boundingRadius * 2.5), Vec2.z, width, colour)
+	DrawLine3D(Vec3.x, Vec3.y, Vec3.z, Vec3.x, Vec3.y + (entity.boundingRadius * 2.5), Vec3.z, width, colour)
+	DrawLine3D(Vec4.x, Vec4.y, Vec4.z, Vec4.x, Vec4.y + (entity.boundingRadius * 2.5), Vec4.z, width, colour)
+end
+
+function DrawNewIndexLine3D(x_start, y_start, z_start, x_end, y_end, z_end, width, colour)
+	StartLeftVectorPos = {
+		x = x_start,
+		y = y_start,
+		z = z_start
+	}
+	StartRightVectorPos = {
+		x = x_end,
+		y = y_end,
+		z = z_end
+	}
+	local StopLeftVectorPos = StartLeftVectorPos + (Vector(StartRightVectorPos) - StartLeftVectorPos):normalized() * (myHero.boundingRadius / 2)
+	local StopRightVectorPos = StartRightVectorPos + (Vector(StartLeftVectorPos) - StartRightVectorPos):normalized() * (myHero.boundingRadius / 2)
+	DrawLine3D(StartLeftVectorPos.x, StartLeftVectorPos.y, StartLeftVectorPos.z, StopLeftVectorPos.x, StopLeftVectorPos.y, StopLeftVectorPos.z, width, colour)
+	DrawLine3D(StartRightVectorPos.x, StartRightVectorPos.y, StartRightVectorPos.z, StopRightVectorPos.x, StopRightVectorPos.y, StopRightVectorPos.z, width, colour)
+end
+
 function DrawCircle2(x, y, z, width, radius, color)
 	local vPos1 = Vector(x, y, z)
 	local vPos2 = Vector(cameraPos.x, cameraPos.y, cameraPos.z)
@@ -267,6 +467,16 @@ function DrawCircle2(x, y, z, width, radius, color)
 	local sPos = WorldToScreen(D3DXVECTOR3(tPos.x, tPos.y, tPos.z))
 	if OnScreen({x = sPos.x, y = sPos.y}, {x = sPos.x, y = sPos.y}) then
 		DrawCircleNextLvl(x, y, z, radius, width, color, settings.pcs.snap)
+	end
+end
+
+function DrawCircle3(x, y, z, radius, colour, width, chordlength)
+	local vPos1 = Vector(x, y, z)
+	local vPos2 = Vector(cameraPos.x, cameraPos.y, cameraPos.z)
+	local tPos = vPos1 - (vPos1 - vPos2):normalized() * radius
+	local sPos = WorldToScreen(D3DXVECTOR3(tPos.x, tPos.y, tPos.z))
+	if OnScreen({x = sPos.x, y = sPos.y}, {x = sPos.x, y = sPos.y}) then
+		DrawCircleNextLvl(x, y, z, radius, width, colour, chordlength)
 	end
 end
 
