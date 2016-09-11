@@ -6,7 +6,7 @@ by: me
 
 ]]--
 
-_AUTO_UPDATE = false
+_AUTO_UPDATE = true
 
 _SCRIPT_VERSION = 0.02
 _SCRIPT_VERSION_MENU = "0.02"
