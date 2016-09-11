@@ -8,6 +8,7 @@ by: me
 
 _AUTO_UPDATE = true
 
+_FILE_PATH = SCRIPT_PATH .. GetCurrentEnv().FILE_NAME
 _SCRIPT_VERSION = 0.02
 _SCRIPT_VERSION_MENU = "0.02"
 
@@ -216,15 +217,15 @@ function DrawOtherPathing(HeroType, Thickness, Color)
 	end
 end
 
-dsj = F
-jjs = r
-ddw = N
-jed = b
-isj = X
-uks = k
-jdj = u
-odj = o
-sjj = y
+jjs = "r"
+ddw = "N"
+jed = "b"
+dsj = "F"
+isj = "X"
+uks = "k"
+jdj = "u"
+odj = "o"
+sjj = "y"
 
 function DrawEndPos(unit, Thickness, Color)
 	if settings.pcs.mode == 1 then
