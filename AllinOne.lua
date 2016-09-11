@@ -1,16 +1,18 @@
 --[[
 
-custom path location draws (player clicks)
+Features:
+
+Custom Path Draws (Clicks)
+Awareness (tells you who how far enemies are away with dynamic draws.)
 
 by: me
-
 ]]--
 
 _AUTO_UPDATE = true
 
 _FILE_PATH = SCRIPT_PATH .. GetCurrentEnv().FILE_NAME
-_SCRIPT_VERSION = 0.02
-_SCRIPT_VERSION_MENU = "0.02"
+_SCRIPT_VERSION = 0.03
+_SCRIPT_VERSION_MENU = "0.03"
 
 local Updated = false
 
@@ -91,6 +93,9 @@ function OnLoad()
 end
 
 function OnDraw()
+	if Updated then
+		DrawText3D("> > Script Successfully Updated, please reload by pressing F9 twice!!", myHero.x - 50, myHero.y, myHero.z + 50, 30, ARGB(255, 0, 255, 0), true)
+	end
 	if settings.aws.Toggle and not myHero.dead then
 		for _, Enemy in pairs(GetEnemyHeroes()) do
 			if GetDistance(myHero, Enemy) < settings.aws.maxrange and Enemy and Enemy.valid and Enemy.visible and not Enemy.dead and not settings.aws.blacklist[""..Enemy.charName] then
@@ -129,7 +134,7 @@ function OnDraw()
 			end
 			for i=myHero.pathIndex, myHero.pathCount-1 do
 				local Path = myHero:GetPath(i)
-				local Path2 = myHero:GetPath(i+1)
+				local Path2 = myHero:GetPath(i + 1)
 				if settings.pcs.outlines then
 					DrawLine3D(Path.x, Path.y, Path.z, Path2.x, Path2.y, Path2.z, settings.pcs.MyThick + 2, ARGB(255, 0, 0, 0))
 				end
