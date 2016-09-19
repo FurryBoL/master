@@ -15,7 +15,7 @@
 ]]
 -- > > > Katarina Reborn by Furry
 -- > > > Encrypted by Furry
--- > > > Version 5.3
+-- > > > Version 5.4
 -- > > > Current Lines of Deticated Katarina Code: 3955
 
 --_______________________________________________________________________________
